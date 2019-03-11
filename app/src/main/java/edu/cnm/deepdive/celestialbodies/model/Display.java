@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.celestialbodies.model.entity;
+package edu.cnm.deepdive.celestialbodies.model;
 
 
 import android.arch.persistence.room.ColumnInfo;
