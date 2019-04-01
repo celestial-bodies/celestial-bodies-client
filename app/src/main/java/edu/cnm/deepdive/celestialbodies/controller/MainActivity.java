@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.celestialbodies;
+package edu.cnm.deepdive.celestialbodies.controller;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -8,17 +8,24 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import edu.cnm.deepdive.celestialbodies.R;
+import edu.cnm.deepdive.celestialbodies.service.FragmentService;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+public class MainActivity extends AppCompatActivity implements SensorEventListener  {
 
   private SensorManager sensorManager;
   private Sensor sensor;
   private TextView textView;
   private ImageView image;
+  private SearchFragment searchFragment;
+//  private InfoFragment infoFragment;
+//  private DashboardFragment dashboardFragment;
 
   private TextView mTextMessage;
 
@@ -27,18 +34,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+      FragmentService fragmentService = FragmentService.getInstance();
+      boolean handled = true;
       switch (item.getItemId()) {
         case R.id.navigation_info:
-          mTextMessage.setText(R.string.title_home);
-          return true;
+          loadFragment(new InfoFragment(), "InfoFragment");
+          break;
         case R.id.navigation_dashboard:
-          mTextMessage.setText(R.string.title_dashboard);
-          return true;
+          loadFragment(new DashboardFragment(), "DashboardFragment");
+          break;
         case R.id.navigation_search:
-          mTextMessage.setText(R.string.title_notifications);
-          return true;
+          loadFragment(new SearchFragment(), "SearchFragment");
+          break;
+        default:
+          handled = false;
       }
-      return false;
+      return handled;
     }
   };
 
@@ -108,6 +119,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     super.onPause();
     //unregister Sensor listener
     sensorManager.unregisterListener(this);
+  }
+
+  /**
+   * <code>loadFragment</code> creates a {@link FragmentManager} to support
+   * @param fragment
+   * @param tag
+   */
+  private void loadFragment(Fragment fragment, String tag) {
+    FragmentManager manager;
+    manager = getSupportFragmentManager();
+    manager.beginTransaction()
+        .add(R.id.fragment_container, fragment, tag)
+        .commit();
+
   }
 }
 
