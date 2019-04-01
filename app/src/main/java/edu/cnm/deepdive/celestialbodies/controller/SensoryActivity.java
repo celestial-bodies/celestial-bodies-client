@@ -1,4 +1,4 @@
-//package edu.cnm.deepdive.celestialbodies;
+//package edu.cnm.deepdive.controller.celestialbodies;
 //
 //
 //import android.app.Activity;
