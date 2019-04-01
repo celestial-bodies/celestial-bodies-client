@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.celestialbodies.model;
+package edu.cnm.deepdive.celestialbodies.model.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -23,7 +23,7 @@ public class User {
   @ColumnInfo(name = "city", index = true)
   private String city;
 
-  @ColumnInfo(name = "zipe_code", index = true)
+  @ColumnInfo(name = "zip_code", index = true)
   private long zipCode;
 
   @ColumnInfo(name = "email", index = true)

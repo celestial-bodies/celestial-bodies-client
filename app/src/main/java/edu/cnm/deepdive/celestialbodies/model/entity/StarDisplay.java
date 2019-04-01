@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.celestialbodies.model;
+package edu.cnm.deepdive.celestialbodies.model.entity;
 
 
 import android.arch.persistence.room.ColumnInfo;
@@ -15,7 +15,7 @@ import java.util.Date;
     )
 )
 
-public class Display {
+public class StarDisplay {
 
   @ColumnInfo(name = "display_id", index = true)
   private long displayId;
