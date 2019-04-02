@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  android:layout_width="360dp"
+  android:layout_height="300dp"
+  android:layout_gravity="bottom|center"
+  android:id="@+id/fragment_search"
+  android:orientation="horizontal"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:background="#000000"
   tools:context=".controller.InfoFragment">
 
   <TextView
-    android:id="@+id/yourFootprint"
+    android:id="@+id/dashboard_text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
@@ -20,10 +23,53 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
 
+    />
+  <Button
+    android:id="@+id/stars_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/stars_text"
+    android:textColor="@color/colorPrimaryDark"
+    android:drawableStart="@drawable/stars242"
+    android:paddingEnd="75dp"
+    android:paddingStart="50dp"
+    app:layout_constraintTop_toBottomOf="@id/dashboard_text"
+    />
+  <Button
+    android:id="@+id/planets_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/planets_text"
+    android:textColor="@color/colorPrimaryDark"
+    android:drawableStart="@drawable/planet24"
+   android:paddingEnd="75dp"
+    android:paddingStart="50dp"
+    app:layout_constraintTop_toBottomOf="@id/stars_button"
 
     />
+  <Button
+    android:id="@+id/meteor_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/meteor_showers_text"
+    android:textColor="@color/colorPrimaryDark"
+    android:drawableStart="@drawable/meteors24"
+    android:paddingEnd="75dp"
+    android:paddingStart="50dp"
+    app:layout_constraintTop_toBottomOf="@id/planets_button"
+    />
 
-
+  <Button
+    android:id="@+id/comets_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/comets_text"
+    android:textColor="@color/colorPrimaryDark"
+    android:drawableStart="@drawable/comet24"
+    android:paddingEnd="75dp"
+    android:paddingStart="50dp"
+    app:layout_constraintTop_toBottomOf="@id/meteor_button"
+    />
 
 
 </android.support.constraint.ConstraintLayout>

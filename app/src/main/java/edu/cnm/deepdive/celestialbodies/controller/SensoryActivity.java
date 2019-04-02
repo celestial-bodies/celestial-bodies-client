@@ -1,6 +1,13 @@
-//package edu.cnm.deepdive.controller.celestialbodies;
+package edu.cnm.deepdive.celestialbodies.controller;
 //
 //
+
+/**
+ * Needed for access of accelerometer
+ *
+ */
+
+
 //import android.app.Activity;
 //import android.content.Context;
 //import android.hardware.Sensor;
