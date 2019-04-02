@@ -23,8 +23,8 @@ public class StarDisplay {
   @ColumnInfo(name = "user_id", index = true)
   private long userId;
 
-  @ColumnInfo(name = "date", index = true)
-  private Date date;
+  @ColumnInfo(name = "time", index = true)
+  private Date time;
 
   @ColumnInfo(name = "latitude", index = true)
   private float latitude;
@@ -57,12 +57,12 @@ public class StarDisplay {
     this.userId = userId;
   }
 
-  public Date getDate() {
-    return date;
+  public Date getTime() {
+    return time;
   }
 
-  public void setDate(Date date) {
-    this.date = date;
+  public void setTime(Date time) {
+    this.time = time;
   }
 
   public float getLatitude() {

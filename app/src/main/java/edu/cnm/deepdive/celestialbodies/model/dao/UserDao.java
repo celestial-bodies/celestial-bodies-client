@@ -10,7 +10,6 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
-
   @Insert
   List<User> insert(User... users);
 
@@ -19,7 +18,6 @@ public interface UserDao {
 
   @Query("SELECT * FROM User")
   public List<User> findAll();
-
 
 
 }
