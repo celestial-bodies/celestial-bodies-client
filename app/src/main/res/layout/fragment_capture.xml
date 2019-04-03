@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="360dp"
+  android:layout_height="300dp"
+  android:layout_gravity="bottom|center"
+  android:id="@+id/fragment_search"
+  android:orientation="horizontal"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+
+  tools:context=".controller.InfoFragment">
+
+  <!--android:background="#000000"-->
+
+  <!--<TextView-->
+    <!--android:id="@+id/dashboard_text"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="4dp"-->
+    <!--android:paddingBottom="15dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="@string/capture_screen"-->
+    <!--android:textColor="@color/colorAccent"-->
+    <!--android:textSize="30sp"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+
+    <!--/>-->
+
+
+
+</android.support.constraint.ConstraintLayout>

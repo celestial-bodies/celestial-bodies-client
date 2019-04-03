@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity{
         case R.id.navigation_info:
           loadFragment(new InfoFragment(), "InfoFragment");
           break;
-        case R.id.navigation_dashboard:
-          loadFragment(new DashboardFragment(), "DashboardFragment");
+        case R.id.navigation_capture:
+          loadFragment(new CaptureFragment(), "CaptureFragment");
           break;
         case R.id.navigation_search:
           loadFragment(new SearchFragment(), "SearchFragment");

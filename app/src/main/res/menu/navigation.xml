@@ -7,19 +7,18 @@
     android:id="@+id/navigation_info"
     android:icon="@drawable/ic_info"
     android:title="@string/info"
-    android:fillColor="#538fe2"/>
+    android:fillColor="@color/nav_icon_color"/>
 
   <item
-    android:id="@+id/navigation_dashboard"
-    android:icon="@drawable/ic_dashboard_black_24dp"
-    android:title="@string/title_dashboard"
-    android:iconTint="#538fe2"
-    />
+    android:id="@+id/navigation_capture"
+    android:icon="@drawable/ic_blur_circular"
+    android:title="@string/capture"
+    android:iconTint="@color/nav_icon_color"/>
 
   <item
     android:id="@+id/navigation_search"
     android:icon="@drawable/ic_search2"
     android:title="@string/search"
-    android:iconTint="#538fe2"/>
+    android:iconTint="@color/nav_icon_color"/>
 
 </menu>
