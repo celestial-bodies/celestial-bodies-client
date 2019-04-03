@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
+import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
+import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.Star;
+import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
@@ -61,6 +63,19 @@ public class SearchFragment extends Fragment {
   public void onButtonPressed(Uri uri) {
     if (mListener != null) {
       mListener.onFragmentInteraction(uri);
+    }
+
+    //EXAMPLE
+    new StarGetter().execute(/*Right Ascension, etc*/);
+
+
+  }
+
+  public class StarGetter extends GetFromWikiSkyTask{
+
+    @Override
+    protected void onPostExecute(StarResponse starResponse) {
+      Star[] stars = starResponse.getResponse().getStar();
     }
   }
 
