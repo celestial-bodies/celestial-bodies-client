@@ -23,7 +23,7 @@ public class User {
   @ColumnInfo(name = "city", index = true)
   private String city;
 
-  @ColumnInfo(name = "zipe_code", index = true)
+  @ColumnInfo(name = "zip_code", index = true)
   private long zipCode;
 
   @ColumnInfo(name = "email", index = true)
