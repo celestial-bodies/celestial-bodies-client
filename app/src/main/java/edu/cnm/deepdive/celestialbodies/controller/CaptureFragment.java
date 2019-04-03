@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,21 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
- * {@link DashboardFragment.OnFragmentInteractionListener} interface to handle interaction events.
+ * {@link CaptureFragment.OnFragmentInteractionListener} interface to handle interaction events.
  *
  * fragment.
  */
-public class DashboardFragment extends Fragment {
+public class CaptureFragment extends Fragment {
 
 
 
   private OnFragmentInteractionListener mListener;
 
-  public DashboardFragment() {
+  public CaptureFragment() {
     // Required empty public constructor
   }
 
@@ -41,8 +41,11 @@ public class DashboardFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
+
+    Toast.makeText(getActivity(), "Captured Screen", Toast.LENGTH_SHORT).show();
+
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_dashboard, container, false);
+    return inflater.inflate(R.layout.fragment_capture, container, false);
   }
 
   // TODO: Rename method, update argument and hook method into UI event

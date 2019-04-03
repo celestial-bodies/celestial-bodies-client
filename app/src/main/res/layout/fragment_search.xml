@@ -30,9 +30,9 @@
 
     android:drawableEnd="@android:drawable/ic_menu_search"
     android:drawableTint="@color/design_default_color_primary_dark"
-
-
     />
+
+
 
 
 </LinearLayout>
