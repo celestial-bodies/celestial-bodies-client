@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
+import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetImageFromWikiSkyTask;
+import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +26,6 @@ import java.util.Map;
 public class CaptureFragment extends Fragment {
 
   private ImageView wikiImage;
-  Button captureButton;
 
   public CaptureFragment() {
     // Required empty public constructor
@@ -41,7 +42,9 @@ public class CaptureFragment extends Fragment {
         .inflate(R.layout.fragment_capture, container, false);
     wikiImage = view.findViewById(R.id.wiki_image);
 
-    captureButton = view.findViewById(R.id.bn_capture);
+
+
+    Button captureButton = view.findViewById(R.id.bn_capture);
     captureButton.setOnClickListener(v -> {
 
       Map<String,String> imageMap = new HashMap<>();
@@ -62,6 +65,14 @@ public class CaptureFragment extends Fragment {
     protected void onPostExecute(Bitmap bitmap) {
       wikiImage.setImageBitmap(bitmap);
 
+    }
+  }
+
+  class GetStarInfoTask extends GetFromWikiSkyTask {
+
+    @Override
+    protected void onPostExecute(StarResponse starResponse) {
+      super.onPostExecute(starResponse);
     }
   }
 }
