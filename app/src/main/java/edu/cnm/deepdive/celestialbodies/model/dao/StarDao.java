@@ -15,7 +15,7 @@ public interface StarDao {
   List<Long> insert(Star... displays);
 
   @Delete
-  List<Long> delete(Star...displays);
+  int delete(Star...displays);
 
   @Query("SELECT * FROM Star")
   List<Star> findAll();

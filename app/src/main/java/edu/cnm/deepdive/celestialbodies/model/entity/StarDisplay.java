@@ -5,6 +5,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
 import java.util.Date;
 
 
@@ -24,7 +25,7 @@ public class StarDisplay {
 
   @ColumnInfo(name = "user_id", index = true)
   private long userId;
-//
+
 //  @ColumnInfo(name = "time", index = true)
 //  private Date time;
 
@@ -59,13 +60,13 @@ public class StarDisplay {
     this.userId = userId;
   }
 
-  public Date getTime() {
-    return time;
-  }
+//  public Date getTime() {
+//    return time;
+//  }
 
-  public void setTime(Date time) {
-    this.time = time;
-  }
+//  public void setTime(Date time) {
+//    this.time = time;
+//  }
 
   public float getLatitude() {
     return latitude;

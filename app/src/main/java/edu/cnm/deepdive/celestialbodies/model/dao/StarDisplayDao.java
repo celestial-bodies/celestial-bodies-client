@@ -6,6 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor.DiscardOldestPolicy;
 
@@ -16,13 +17,13 @@ public interface StarDisplayDao {
   List<Long> insert(StarDisplay... displays);
 
   @Delete
-  List<Long> delete(StarDisplay...displays);
+  int delete(StarDisplay...displays);
 
   @Query("SELECT * FROM StarDisplay")
   List<StarDisplay> findAll();
 
 //  @Query("SELECT * FROM StarDisplay WHERE time = :time")
-//  StarDisplay findFirstByTime(Calendar time);
+//  StarDisplay findFirstByTime(Date time);
 //
 //  @Query("SELECT * FROM StarDisplay ORDER BY time DESC")
 //  List<StarDisplay> findTime();
