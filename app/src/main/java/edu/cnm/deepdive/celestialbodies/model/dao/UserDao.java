@@ -7,6 +7,11 @@ import android.arch.persistence.room.Query;
 import edu.cnm.deepdive.celestialbodies.model.entity.User;
 import java.util.List;
 
+/**
+ * DAO representing User entity class. Declares methods by which
+ * data w
+ */
+
 @Dao
 public interface UserDao {
 

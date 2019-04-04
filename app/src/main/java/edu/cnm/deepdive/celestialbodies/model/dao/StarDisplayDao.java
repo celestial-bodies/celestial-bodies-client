@@ -9,6 +9,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor.DiscardOldestPolicy;
 
+/**
+ * DAO representing the StarDisplay entity class. Declares methods by which the data within
+ * StarDisplay will be accessed.
+ */
+
 @Dao
 public interface StarDisplayDao {
 
@@ -16,7 +21,7 @@ public interface StarDisplayDao {
   List<StarDisplay> insert(StarDisplay... displays);
 
   @Delete
-  List<StarDisplay> delete(StarDisplay...displays);
+  List<StarDisplay> delete(StarDisplay... displays);
 
   @Query("SELECT * FROM StarDisplay")
   List<StarDisplay> findAll();
