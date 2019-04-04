@@ -7,8 +7,8 @@
   android:id="@+id/fragment_search"
   android:orientation="horizontal"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-
-  tools:context=".controller.InfoFragment">
+  android:padding="4dp"
+  tools:context=".controller.DashboardFragment">
 
   <ImageView
     android:id="@+id/wiki_image"
@@ -30,7 +30,23 @@
     android:layout_marginBottom="8dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toRightOf="@id/bn_info"
+    />
+
+  <Button
+    android:id="@+id/bn_info"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintRight_toLeftOf="@id/bn_capture"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginBottom="8dp"
+    android:drawableStart="@android:drawable/ic_dialog_info"
+    android:drawableTint="@color/colorAccent"
+    android:background="#000000"
     />
 
   <!--android:background="#000000"-->

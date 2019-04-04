@@ -8,7 +8,7 @@
   android:orientation="horizontal"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:background="#000000"
-  tools:context=".controller.InfoFragment">
+  tools:context=".controller.DashboardFragment">
 
   <TextView
     android:id="@+id/dashboard_text"

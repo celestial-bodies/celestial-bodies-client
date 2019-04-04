@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
   <item
-    android:id="@+id/navigation_info"
+    android:id="@+id/navigation_dashboard"
     android:icon="@drawable/ic_info"
     android:title="@string/info"
     android:fillColor="@color/nav_icon_color"/>

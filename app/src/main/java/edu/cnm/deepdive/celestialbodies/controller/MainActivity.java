@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity{
       FragmentService fragmentService = FragmentService.getInstance();
       boolean handled = true;
       switch (item.getItemId()) {
-        case R.id.navigation_info:
-          loadFragment(new InfoFragment(), "InfoFragment");
+        case R.id.navigation_dashboard:
+          loadFragment(new DashboardFragment(), "DashboardFragment");
           break;
         case R.id.navigation_capture:
           loadFragment(new CaptureFragment(), "CaptureFragment");
