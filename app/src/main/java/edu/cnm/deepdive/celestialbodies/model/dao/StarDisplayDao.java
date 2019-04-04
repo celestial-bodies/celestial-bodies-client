@@ -13,22 +13,22 @@ import java.util.concurrent.ThreadPoolExecutor.DiscardOldestPolicy;
 public interface StarDisplayDao {
 
   @Insert
-  List<StarDisplay> insert(StarDisplay... displays);
+  List<Long> insert(StarDisplay... displays);
 
   @Delete
-  List<StarDisplay> delete(StarDisplay...displays);
+  List<Long> delete(StarDisplay...displays);
 
   @Query("SELECT * FROM StarDisplay")
   List<StarDisplay> findAll();
 
-  @Query("SELECT * FROM StarDisplay WHERE time = :time")
-  StarDisplay findFirstByTime(Calendar time);
-
-  @Query("SELECT * FROM StarDisplay ORDER BY time DESC")
-  List<StarDisplay> findTime();
-
-  @Query("SELECT * FROM StarDisplay ORDER BY time DESC LIMIT 1")
-  StarDisplay findLast();
+//  @Query("SELECT * FROM StarDisplay WHERE time = :time")
+//  StarDisplay findFirstByTime(Calendar time);
+//
+//  @Query("SELECT * FROM StarDisplay ORDER BY time DESC")
+//  List<StarDisplay> findTime();
+//
+//  @Query("SELECT * FROM StarDisplay ORDER BY time DESC LIMIT 1")
+//  StarDisplay findLast();
 
 
 }

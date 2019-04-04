@@ -3,6 +3,7 @@ package edu.cnm.deepdive.celestialbodies.service;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import java.io.IOException;
 import java.util.Map;
 import okhttp3.ResponseBody;
@@ -31,9 +32,7 @@ public interface DisplayWebService {
    * @param max_vmag max_vmag
    */
   @GET("getstars.jsp")
-  Call<StarResponse> get(@Query("ra") String ra, @Query("de") String dec,
-      @Query("angle") String angle,
-      @Query("max_stars") String max_stars, @Query("max_vmag") String max_vmag);
+  Call<StarResponse> get(@QueryMap Map<String, String> queryMap);
 
   @GET("map")
   Call<ResponseBody> fetchImageMap(@QueryMap Map<String, String> queryMap);
@@ -60,14 +59,13 @@ public interface DisplayWebService {
    * Encapsulates the request lifecycle for the NASA APOD web service as a {@link
    * BaseFluentAsyncTask} subclass.
    */
-  class GetFromWikiSkyTask extends AsyncTask<String, Void, StarResponse> {
+  class GetFromWikiSkyTask extends AsyncTask<Map<String, String>, Void, StarResponse> {
 
     @Override
-    protected StarResponse doInBackground(String... params) {
+    protected StarResponse doInBackground(Map<String, String>... params) {
       StarResponse result = null;
       try {
-        Response<StarResponse> response = InstanceHolder.INSTANCE.get(params[0],
-            params[1], params[2], params[3], params[4]).execute();
+        Response<StarResponse> response = InstanceHolder.INSTANCE.get(params[0]).execute();
         if (!response.isSuccessful()) {
           throw new RuntimeException("Request Not Successful");
         }
@@ -102,64 +100,6 @@ public interface DisplayWebService {
   }
 
 
-  public class Star {
-
-    private String catId;
-
-    private String de;
-
-    private String mag;
-
-    private String id;
-
-    private String ra;
-
-    public String getCatId() {
-      return catId;
-    }
-
-    public void setCatId(String catId) {
-      this.catId = catId;
-    }
-
-    public String getDe() {
-      return de;
-    }
-
-    public void setDe(String de) {
-      this.de = de;
-    }
-
-    public String getMag() {
-      return mag;
-    }
-
-    public void setMag(String mag) {
-      this.mag = mag;
-    }
-
-    public String getId() {
-      return id;
-    }
-
-    public void setId(String id) {
-      this.id = id;
-    }
-
-    public String getRa() {
-      return ra;
-    }
-
-    public void setRa(String ra) {
-      this.ra = ra;
-    }
-
-    @Override
-    public String toString() {
-      return "ClassPojo [catId = " + catId + ", de = " + de + ", mag = " + mag + ", id = " + id
-          + ", ra = " + ra + "]";
-    }
-  }
 
   public class InnerResponse {
 

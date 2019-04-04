@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
+import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetImageFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
@@ -53,6 +53,7 @@ public class CaptureFragment extends Fragment {
       imageMap.put("max_stars", "50");
 
       new GetImageTask().execute(imageMap);
+      new GetStarInfoTask().execute(imageMap);
 
     });
 
@@ -71,8 +72,11 @@ public class CaptureFragment extends Fragment {
   class GetStarInfoTask extends GetFromWikiSkyTask {
 
     @Override
-    protected void onPostExecute(StarResponse starResponse) {
-      super.onPostExecute(starResponse);
+    protected StarResponse doInBackground(Map<String, String>... params) {
+      StarResponse starResponse = super.doInBackground(params);
+
+      CelestialBodiesDB.getInstance().getStarDao().insert(starResponse.getResponse().getStar());
+      return null;
     }
   }
 }

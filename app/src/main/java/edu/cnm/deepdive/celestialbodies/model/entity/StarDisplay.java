@@ -4,6 +4,7 @@ package edu.cnm.deepdive.celestialbodies.model.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
 import java.util.Date;
 
 
@@ -17,14 +18,15 @@ import java.util.Date;
 
 public class StarDisplay {
 
+  @PrimaryKey
   @ColumnInfo(name = "display_id", index = true)
   private long displayId;
 
   @ColumnInfo(name = "user_id", index = true)
   private long userId;
-
-  @ColumnInfo(name = "time", index = true)
-  private Date time;
+//
+//  @ColumnInfo(name = "time", index = true)
+//  private Date time;
 
   @ColumnInfo(name = "latitude", index = true)
   private float latitude;

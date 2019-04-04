@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(indices = @Index(value = "date", unique = true))
+@Entity(indices = @Index(value = "user_id", unique = true))
 
 public class User {
 

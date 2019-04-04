@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
-import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.Star;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 
 /**
