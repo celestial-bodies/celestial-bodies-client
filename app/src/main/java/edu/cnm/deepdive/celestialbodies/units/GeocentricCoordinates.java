@@ -13,7 +13,7 @@ package edu.cnm.deepdive.celestialbodies.units;
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import com.google.android.stardroid.util.Geometry;
+import edu.cnm.deepdive.celestialbodies.util.Geometry;
 import edu.cnm.deepdive.celestialbodies.util.MathUtil;
 
 /**

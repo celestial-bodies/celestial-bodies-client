@@ -18,24 +18,23 @@ package edu.cnm.deepdive.celestialbodies.controller;
 import android.hardware.SensorManager;
 import android.util.Log;
 
-import com.google.android.stardroid.ApplicationConstants;
-import com.google.android.stardroid.units.GeocentricCoordinates;
-import com.google.android.stardroid.units.LatLong;
-import com.google.android.stardroid.units.Matrix33;
-import com.google.android.stardroid.units.RaDec;
-import com.google.android.stardroid.units.Vector3;
-import com.google.android.stardroid.util.Geometry;
-import com.google.android.stardroid.util.MiscUtil;
-
+import edu.cnm.deepdive.celestialbodies.service.ApplicationConstants;
+import edu.cnm.deepdive.celestialbodies.units.GeocentricCoordinates;
+import edu.cnm.deepdive.celestialbodies.units.LatLong;
+import edu.cnm.deepdive.celestialbodies.units.Matrix33;
+import edu.cnm.deepdive.celestialbodies.units.RaDec;
+import edu.cnm.deepdive.celestialbodies.units.Vector3;
+import edu.cnm.deepdive.celestialbodies.util.Geometry;
+import edu.cnm.deepdive.celestialbodies.util.MiscUtil;
 import java.util.Date;
 
-import static com.google.android.stardroid.util.Geometry.addVectors;
-import static com.google.android.stardroid.util.Geometry.calculateRADecOfZenith;
-import static com.google.android.stardroid.util.Geometry.matrixMultiply;
-import static com.google.android.stardroid.util.Geometry.matrixVectorMultiply;
-import static com.google.android.stardroid.util.Geometry.scalarProduct;
-import static com.google.android.stardroid.util.Geometry.scaleVector;
-import static com.google.android.stardroid.util.Geometry.vectorProduct;
+import static edu.cnm.deepdive.celestialbodies.util.Geometry.addVectors;
+import static edu.cnm.deepdive.celestialbodies.util.Geometry.calculateRADecOfZenith;
+import static edu.cnm.deepdive.celestialbodies.util.Geometry.matrixMultiply;
+import static edu.cnm.deepdive.celestialbodies.util.Geometry.matrixVectorMultiply;
+import static edu.cnm.deepdive.celestialbodies.util.Geometry.scalarProduct;
+import static edu.cnm.deepdive.celestialbodies.util.Geometry.scaleVector;
+import static edu.cnm.deepdive.celestialbodies.util.Geometry.vectorProduct;
 
 /**
  * The model of the astronomer.
@@ -98,7 +97,7 @@ public class AstronomerModelImpl implements AstronomerModel {
   /** The sensor acceleration in the phone's coordinate system. */
   private Vector3 acceleration = ApplicationConstants.INITIAL_DOWN.copy();
 
-  private Vector3 upPhone = Geometry.scaleVector(acceleration, -1);
+  private Vector3 upPhone = scaleVector(acceleration, -1);
 
   /** The sensor magnetic field in the phone's coordinate system. */
   private Vector3 magneticField = ApplicationConstants.INITIAL_SOUTH.copy();
@@ -166,6 +165,11 @@ public class AstronomerModelImpl implements AstronomerModel {
   }
 
   @Override
+  public void setClock(java.time.Clock clock) {
+
+  }
+
+  @Override
   public LatLong getLocation() {
     return location;
   }
@@ -214,7 +218,7 @@ public class AstronomerModelImpl implements AstronomerModel {
   @Override
   public GeocentricCoordinates getSouth() {
     calculateLocalNorthAndUpInCelestialCoords(false);
-    return GeocentricCoordinates.getInstanceFromVector3(Geometry.scaleVector(trueNorthCelestial,
+    return GeocentricCoordinates.getInstanceFromVector3(scaleVector(trueNorthCelestial,
         -1));
   }
 
@@ -227,7 +231,7 @@ public class AstronomerModelImpl implements AstronomerModel {
   @Override
   public GeocentricCoordinates getNadir() {
     calculateLocalNorthAndUpInCelestialCoords(false);
-    return GeocentricCoordinates.getInstanceFromVector3(Geometry.scaleVector(upCelestial, -1));
+    return GeocentricCoordinates.getInstanceFromVector3(scaleVector(upCelestial, -1));
   }
 
   @Override
@@ -239,7 +243,7 @@ public class AstronomerModelImpl implements AstronomerModel {
   @Override
   public GeocentricCoordinates getWest() {
     calculateLocalNorthAndUpInCelestialCoords(false);
-    return GeocentricCoordinates.getInstanceFromVector3(Geometry.scaleVector(trueEastCelestial,
+    return GeocentricCoordinates.getInstanceFromVector3(scaleVector(trueEastCelestial,
         -1));
   }
 
@@ -293,7 +297,7 @@ public class AstronomerModelImpl implements AstronomerModel {
     float zDotu = scalarProduct(upCelestial, z);
     trueNorthCelestial = addVectors(z, scaleVector(upCelestial, -zDotu));
     trueNorthCelestial.normalize();
-    trueEastCelestial = Geometry.vectorProduct(trueNorthCelestial, upCelestial);
+    trueEastCelestial = vectorProduct(trueNorthCelestial, upCelestial);
 
     // Apply magnetic correction.  Rather than correct the phone's axes for
     // the magnetic declination, it's more efficient to rotate the
@@ -301,7 +305,7 @@ public class AstronomerModelImpl implements AstronomerModel {
     Matrix33 rotationMatrix = Geometry.calculateRotationMatrix(
         magneticDeclinationCalculator.getDeclination(), upCelestial);
 
-    Vector3 magneticNorthCelestial = Geometry.matrixVectorMultiply(rotationMatrix,
+    Vector3 magneticNorthCelestial = matrixVectorMultiply(rotationMatrix,
         trueNorthCelestial);
     Vector3 magneticEastCelestial = vectorProduct(magneticNorthCelestial, upCelestial);
 
@@ -371,7 +375,6 @@ public class AstronomerModelImpl implements AstronomerModel {
     this.pointing.updatePerpendicular(perpendicular);
   }
 
-  @Override
   public void setClock(Clock clock) {
     this.clock = clock;
     calculateLocalNorthAndUpInCelestialCoords(true);

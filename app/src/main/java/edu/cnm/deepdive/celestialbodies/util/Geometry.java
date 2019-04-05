@@ -14,12 +14,10 @@ package edu.cnm.deepdive.celestialbodies.util;
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-import com.google.android.stardroid.units.Matrix33;
-import com.google.android.stardroid.units.RaDec;
-
 import edu.cnm.deepdive.celestialbodies.units.GeocentricCoordinates;
 import edu.cnm.deepdive.celestialbodies.units.LatLong;
+import edu.cnm.deepdive.celestialbodies.units.Matrix33;
+import edu.cnm.deepdive.celestialbodies.units.RaDec;
 import edu.cnm.deepdive.celestialbodies.units.Vector3;
 import java.util.Date;
 

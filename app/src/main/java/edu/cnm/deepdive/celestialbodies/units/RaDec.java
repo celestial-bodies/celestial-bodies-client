@@ -16,11 +16,6 @@ package edu.cnm.deepdive.celestialbodies.units;
 
 import edu.cnm.deepdive.celestialbodies.util.Geometry;
 import edu.cnm.deepdive.celestialbodies.util.MathUtil;
-import java.util.Date;
-
-import com.google.android.stardroid.provider.ephemeris.Planet;
-import com.google.android.stardroid.util.Geometry;
-import com.google.android.stardroid.util.MathUtil;
 
 public class RaDec {
   public float ra;        // In degrees
@@ -46,44 +41,44 @@ public class RaDec {
 
     return new RaDec(ra, dec);
   }
+//
+//  public static RaDec getInstance(Planet planet, Date time,
+//      HeliocentricCoordinates earthCoordinates) {
+//    // TODO(serafini): This is a temporary hack until we re-factor the Planetary calculations.
+//    if (planet.equals(Planet.Moon)) {
+//      return Planet.calculateLunarGeocentricLocation(time);
+//    }
 
-  public static RaDec getInstance(Planet planet, Date time,
-      HeliocentricCoordinates earthCoordinates) {
-    // TODO(serafini): This is a temporary hack until we re-factor the Planetary calculations.
-    if (planet.equals(Planet.Moon)) {
-      return Planet.calculateLunarGeocentricLocation(time);
-    }
-
-    HeliocentricCoordinates coords = null;
-    if (planet.equals(Planet.Sun)) {
-      // Invert the view, since we want the Sun in earth coordinates, not the Earth in sun
-      // coordinates.
-      coords = new HeliocentricCoordinates(earthCoordinates.radius, earthCoordinates.x * -1.0f,
-                                           earthCoordinates.y * -1.0f, earthCoordinates.z * -1.0f);
-    } else {
-      coords = HeliocentricCoordinates.getInstance(planet, time);
-      coords.Subtract(earthCoordinates);
-    }
-    HeliocentricCoordinates equ = coords.CalculateEquatorialCoordinates();
-    return calculateRaDecDist(equ);
-  }
+//    HeliocentricCoordinates coords = null;
+//    if (planet.equals(Planet.Sun)) {
+//      // Invert the view, since we want the Sun in earth coordinates, not the Earth in sun
+//      // coordinates.
+//      coords = new HeliocentricCoordinates(earthCoordinates.radius, earthCoordinates.x * -1.0f,
+//          earthCoordinates.y * -1.0f, earthCoordinates.z * -1.0f);
+//    } else {
+//      coords = HeliocentricCoordinates.getInstance(planet, time);
+//      coords.Subtract(earthCoordinates);
+//    }
+//    HeliocentricCoordinates equ = coords.CalculateEquatorialCoordinates();
+//    return calculateRaDecDist(equ);
+//  }
 
   public static RaDec getInstance(GeocentricCoordinates coords) {
     float raRad = MathUtil.atan2(coords.y, coords.x);
     if (raRad < 0) raRad += MathUtil.TWO_PI;
     float decRad = MathUtil.atan2(coords.z,
-                                  MathUtil.sqrt(coords.x * coords.x + coords.y * coords.y));
+        MathUtil.sqrt(coords.x * coords.x + coords.y * coords.y));
 
     return new RaDec(raRad * Geometry.RADIANS_TO_DEGREES,
-                             decRad * Geometry.RADIANS_TO_DEGREES);
+        decRad * Geometry.RADIANS_TO_DEGREES);
   }
 
 
-    // This should be relatively easy to do. In the northern hemisphere,
-    // objects never set if dec > 90 - lat and never rise if dec < lat -
-    // 90. In the southern hemisphere, objects never set if dec < -90 - lat
-    // and never rise if dec > 90 + lat. There must be a better way to do
-    // this...
+  // This should be relatively easy to do. In the northern hemisphere,
+  // objects never set if dec > 90 - lat and never rise if dec < lat -
+  // 90. In the southern hemisphere, objects never set if dec < -90 - lat
+  // and never rise if dec > 90 + lat. There must be a better way to do
+  // this...
 
 
   /**
