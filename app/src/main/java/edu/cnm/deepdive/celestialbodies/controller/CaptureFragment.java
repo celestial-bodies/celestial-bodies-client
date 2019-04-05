@@ -26,6 +26,7 @@ import java.util.Map;
 public class CaptureFragment extends Fragment {
 
   private ImageView wikiImage;
+  private Button captureButton;
 
   public CaptureFragment() {
     // Required empty public constructor
@@ -35,16 +36,14 @@ public class CaptureFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    Toast.makeText(getActivity(), "Captured Screen", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(getActivity(), "Captured Screen", Toast.LENGTH_SHORT).show();
 
     // Inflate the layout for this fragment
     View view = inflater
         .inflate(R.layout.fragment_capture, container, false);
     wikiImage = view.findViewById(R.id.wiki_image);
 
-
-
-    Button captureButton = view.findViewById(R.id.bn_capture);
+    captureButton = view.findViewById(R.id.bn_capture);
     captureButton.setOnClickListener(v -> {
 
       Map<String,String> imageMap = new HashMap<>();
