@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import edu.cnm.deepdive.celestialbodies.R;
+import edu.cnm.deepdive.celestialbodies.controller.InfoFragment.StarDetailsTask;
 import edu.cnm.deepdive.celestialbodies.service.FragmentService;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
 
@@ -77,6 +78,9 @@ public class MainActivity extends AppCompatActivity{
       }
     });
 
+    //TODO remove this!
+    //Shortcut to retrieve stars from server
+    //new StarDetailsTask().execute();
   }
 
   /**

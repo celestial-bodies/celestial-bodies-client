@@ -20,6 +20,9 @@ public interface StarDao {
   @Delete
   int delete(Star...displays);
 
+  @Query("DELETE FROM Star")
+  void deleteAll();
+
   @Query("SELECT * FROM Star")
   List<Star> findAll();
 
