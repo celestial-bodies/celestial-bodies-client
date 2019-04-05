@@ -88,7 +88,7 @@ public class SearchFragment extends Fragment {
 
     @Override
     protected void onPostExecute(StarResponse starResponse) {
-      Star[] stars = starResponse.getResponse().getStar();
+      //Star[] stars = starResponse.getStar();
     }
   }
 

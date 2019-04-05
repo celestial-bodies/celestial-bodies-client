@@ -50,6 +50,7 @@ public class CaptureFragment extends Fragment {
       Map<String,String> imageMap = new HashMap<>();
       imageMap.put("ra", "30");
       imageMap.put("de", "25");
+      imageMap.put("angle","40");
       imageMap.put("max_stars", "50");
 
       new GetImageTask().execute(imageMap);
@@ -74,8 +75,9 @@ public class CaptureFragment extends Fragment {
     @Override
     protected StarResponse doInBackground(Map<String, String>... params) {
       StarResponse starResponse = super.doInBackground(params);
-
-      CelestialBodiesDB.getInstance().getStarDao().insert(starResponse.getResponse().getStar());
+      if (starResponse.getStar() != null) {
+        CelestialBodiesDB.getInstance().getStarDao().insert(starResponse.getStar());
+      }
       return null;
     }
   }

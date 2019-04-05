@@ -5,8 +5,12 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import okhttp3.ResponseBody;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementArray;
+import org.simpleframework.xml.ElementList;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -101,18 +105,24 @@ public interface DisplayWebService {
 
 
 
-  public class InnerResponse {
+  public class StarResponse {
 
+    @Element
     private String de;
 
+    @Element(required = false)
     private String msgs;
 
-    private Star[] star;
+    @ElementList(inline=true)
+    private List<Star> star;
 
+    @Element
     private String angle;
 
+    @Element
     private String max_stars;
 
+    @Element
     private String ra;
 
     public String getDe() {
@@ -131,11 +141,11 @@ public interface DisplayWebService {
       this.msgs = msgs;
     }
 
-    public Star[] getStar() {
+    public List<Star> getStar() {
       return star;
     }
 
-    public void setStar(Star[] star) {
+    public void setStar(List<Star> star) {
       this.star = star;
     }
 
@@ -167,24 +177,6 @@ public interface DisplayWebService {
     public String toString() {
       return "ClassPojo [de = " + de + ", msgs = " + msgs + ", star = " + star + ", angle = "
           + angle + ", max_stars = " + max_stars + ", ra = " + ra + "]";
-    }
-  }
-
-  public class StarResponse {
-
-    private InnerResponse response;
-
-    public InnerResponse getResponse() {
-      return response;
-    }
-
-    public void setResponse(InnerResponse response) {
-      this.response = response;
-    }
-
-    @Override
-    public String toString() {
-      return "ClassPojo [response = " + response + "]";
     }
   }
 

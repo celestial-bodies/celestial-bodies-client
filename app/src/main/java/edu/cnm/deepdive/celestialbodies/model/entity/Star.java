@@ -3,6 +3,8 @@ package edu.cnm.deepdive.celestialbodies.model.entity;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 
 @Entity
 
@@ -10,14 +12,19 @@ public class Star {
 
   @PrimaryKey
   @NonNull
+  @Attribute
   private String id;
 
+  @Element
   private String catId;
 
+  @Element
   private String de;
 
+  @Element
   private String mag;
 
+  @Element
   private String ra;
 
   public String getCatId() {

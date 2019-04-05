@@ -14,6 +14,9 @@ public interface StarDao {
   @Insert
   List<Long> insert(Star... displays);
 
+  @Insert
+  List<Long> insert(List<Star> stars);
+
   @Delete
   int delete(Star...displays);
 
