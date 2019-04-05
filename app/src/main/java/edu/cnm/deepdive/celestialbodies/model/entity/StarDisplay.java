@@ -16,8 +16,9 @@ import java.util.Date;
 )
 
 public class StarDisplay {
-
-  @ColumnInfo(name = "display_id", index = true)
+//do we need display, user_id, log
+//need catalog_id, magnitude, constellation_id
+  @ColumnInfo(name = "display_id", index = true) //star's name
   private long displayId;
 
   @ColumnInfo(name = "user_id", index = true)
