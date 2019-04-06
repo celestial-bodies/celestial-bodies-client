@@ -11,10 +11,10 @@ import java.util.List;
 public interface UserDao {
 
   @Insert
-  List<User> insert(User... users);
+  List<Long> insert(User... users);
 
   @Delete
-  List<User> delete(User...users);
+  int delete(User...users);
 
   @Query("SELECT * FROM User")
   public List<User> findAll();

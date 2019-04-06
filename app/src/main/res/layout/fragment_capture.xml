@@ -25,6 +25,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/capture"
+    android:textColor="@color/colorAccent"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginBottom="8dp"
@@ -32,11 +33,16 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@id/bn_info"
+    android:background="@drawable/roundedbutton"
+    android:drawableStart="@android:drawable/ic_menu_camera"
+    android:drawableTint="@color/colorAccent"
+
+
     />
 
   <Button
     android:id="@+id/bn_info"
-    android:layout_width="wrap_content"
+    android:layout_width="50dp"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintRight_toLeftOf="@id/bn_capture"
@@ -44,28 +50,11 @@
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginBottom="8dp"
+    android:paddingLeft="7dp"
     android:drawableStart="@android:drawable/ic_dialog_info"
     android:drawableTint="@color/colorAccent"
-    android:background="#000000"
+    android:background="@android:color/transparent"
     />
-
-  <!--android:background="#000000"-->
-
-  <!--<TextView-->
-    <!--android:id="@+id/dashboard_text"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginBottom="4dp"-->
-    <!--android:paddingBottom="15dp"-->
-    <!--android:gravity="center"-->
-    <!--android:text="@string/capture_screen"-->
-    <!--android:textColor="@color/colorAccent"-->
-    <!--android:textSize="30sp"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-
-    <!--/>-->
-
 
 
 </android.support.constraint.ConstraintLayout>

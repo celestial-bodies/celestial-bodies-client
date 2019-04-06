@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
+import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
-import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.Star;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 
 /**
@@ -88,7 +88,7 @@ public class SearchFragment extends Fragment {
 
     @Override
     protected void onPostExecute(StarResponse starResponse) {
-      Star[] stars = starResponse.getResponse().getStar();
+      //Star[] stars = starResponse.getStar();
     }
   }
 
