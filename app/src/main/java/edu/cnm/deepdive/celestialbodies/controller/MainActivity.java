@@ -1,13 +1,22 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.media.MediaRecorder.VideoSource.CAMERA;
+
+import android.Manifest;
+import android.Manifest.permission;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Camera;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,11 +28,12 @@ import edu.cnm.deepdive.celestialbodies.service.FragmentService;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements CaptureFragment.OnFragmentInteraction {
 
 
-
+  private static final int REQUEST_CAMERA = 0;
   private TextView mTextMessage;
+  private boolean cameraPermission;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
       = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,14 +60,50 @@ public class MainActivity extends AppCompatActivity{
   };
 
 
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+      @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (requestCode == CAMERA) {
+      if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+        boolean needRationale =
+            ActivityCompat.shouldShowRequestPermissionRationale(this, permission.CAMERA);
+        // TODO Present rationale.
+        cameraPermission = false;
 
+      } else {
+        cameraPermission = true;
+      }
+    }
+  }
+
+  @Override
+  public void onCaptureClicked() {
+    showCameraPreview();
+  }
+
+  private void checkPermissions() {
+    if (ContextCompat.checkSelfPermission(this, permission.CAMERA)
+        != PackageManager.PERMISSION_GRANTED) {
+      ActivityCompat.requestPermissions(this, new String[]{permission.CAMERA},
+          REQUEST_CAMERA);
+    } else {
+      cameraPermission = true;
+    }
+  }
+
+
+  private void showCameraPreview() {
+    getSupportFragmentManager().beginTransaction()
+        .add(R.id.bn_capture, CameraPreviewFragment.newInstance())
+        .commit();
+  }
 
   @SuppressLint("ClickableViewAccessibility")
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
 
     BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
     navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -66,8 +112,8 @@ public class MainActivity extends AppCompatActivity{
       @Override
       public void onClick(View v) {
         FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction  transaction = manager.beginTransaction();
-        for (Fragment f : manager.getFragments()){
+        FragmentTransaction transaction = manager.beginTransaction();
+        for (Fragment f : manager.getFragments()) {
           transaction.remove(f);
         }
 
@@ -76,13 +122,11 @@ public class MainActivity extends AppCompatActivity{
 
       }
     });
-
+    checkPermissions();
   }
 
   /**
    * <code>loadFragment</code> creates a {@link FragmentManager} to support
-   * @param fragment
-   * @param tag
    */
   private void loadFragment(Fragment fragment, String tag) {
     FragmentManager manager;
@@ -114,9 +158,9 @@ public class MainActivity extends AppCompatActivity{
     return handled;
   }
 
-  private void signOut(){
+  private void signOut() {
     GoogleSignInService.getInstance().getClient()
-        .signOut().addOnCompleteListener(this, (task)-> {
+        .signOut().addOnCompleteListener(this, (task) -> {
       GoogleSignInService.getInstance().setAccount(null);
       Intent intent = new Intent(this, LoginActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -124,8 +168,6 @@ public class MainActivity extends AppCompatActivity{
     });
   }
 }
-
-
 
 //
 //  @Override

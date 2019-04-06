@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,11 +24,24 @@ import java.util.Map;
  */
 public class CaptureFragment extends Fragment {
 
+  public interface OnFragmentInteraction {
+    public void onCaptureClicked();
+  }
+
+  private OnFragmentInteraction listener;
   private ImageView wikiImage;
   Button captureButton;
 
   public CaptureFragment() {
     // Required empty public constructor
+  }
+
+  @Override
+  public void onAttach(Context context) {
+    if (context instanceof OnFragmentInteraction) {
+      listener = (OnFragmentInteraction)context;
+    }
+    super.onAttach(context);
   }
 
   @Override
@@ -44,6 +58,7 @@ public class CaptureFragment extends Fragment {
     captureButton = view.findViewById(R.id.bn_capture);
     captureButton.setOnClickListener(v -> {
 
+
       Map<String,String> imageMap = new HashMap<>();
       imageMap.put("ra", "30");
       imageMap.put("de", "25");
@@ -51,6 +66,9 @@ public class CaptureFragment extends Fragment {
 
       new GetImageTask().execute(imageMap);
 
+      if (listener != null) {
+        listener.onCaptureClicked();
+      }
     });
 
     return view;

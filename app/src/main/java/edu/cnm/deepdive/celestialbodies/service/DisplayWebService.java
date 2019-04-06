@@ -56,10 +56,7 @@ public interface DisplayWebService {
 
   }
 
-  /**
-   * Encapsulates the request lifecycle for the NASA APOD web service as a {@link
-   * BaseFluentAsyncTask} subclass.
-   */
+
   class GetFromWikiSkyTask extends AsyncTask<String, Void, StarResponse> {
 
     @Override
