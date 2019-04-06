@@ -7,69 +7,53 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverter;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.Nullable;
+import edu.cnm.deepdive.celestialbodies.CelestialApplication;
+import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB.Converters;
+import edu.cnm.deepdive.celestialbodies.model.dao.StarDao;
+import edu.cnm.deepdive.celestialbodies.model.dao.StarDisplayDao;
+import edu.cnm.deepdive.celestialbodies.model.dao.UserDao;
+import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
 import edu.cnm.deepdive.celestialbodies.model.entity.User;
-import edu.cnm.deepdive.green_print.CC_APIApplication;
-import edu.cnm.deepdive.green_print.model.ConsumptionDB.Converters;
-import edu.cnm.deepdive.green_print.model.dao.ActivityDao;
-import edu.cnm.deepdive.green_print.model.dao.ConsumptionDao;
-import edu.cnm.deepdive.green_print.model.entity.Activity;
-import edu.cnm.deepdive.green_print.model.entity.Consumption;
 import java.util.Calendar;
 
-
-/**
- * Uses a singleton pattern to implement a single app-wide connection by defining the local database
- * assembled by its entities and converters. Asserts methods to obtain data access objects (DAOs)
- * for the database entities.
- *
- * @author Kevin Simms &amp; Deep Dive Coding Java + Android Bootcamp cohort 6
- * @version 1.0
- */
-
-@Database(
-    entities = {User.class, StarDisplay.class},
+@Database(entities = {StarDisplay.class, User.class, Star.class},
     version = 1,
-    exportSchema = true
-)
+    exportSchema = true)
 
 @TypeConverters(Converters.class)
-public abstract class ConsumptionDB extends RoomDatabase {
+public abstract class CelestialBodiesDB extends RoomDatabase {
 
   private static final String DB_NAME = "celestial_bodies_db";
 
   /**
-   * Returns the single instance of {@link ConsumptionDao} for the current application context.
+   * Returns the single instance of {@zaryn927 ConsumptionDao} for the current application context.
    *
-   * @return single {@link ConsumptionDao} instance reference.
+   * @return single {@zaryn927 ConsumptionDao} instance reference.
    */
-  public synchronized static ConsumptionDB getInstance() {
+  public synchronized static CelestialBodiesDB getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
   /**
-   * Returns an instance of a Room-generated implementation of {@link ConsumptionDao}.
+   * Returns an instance of a Room-generated implementation of {@zaryn927 ConsumptionDao}.
    *
-   * @return data access object for CRUD operations involving {@link Consumption} instances.
+   * @return data access object for CRUD operations involving {@zaryn927 Consumption} instances.
    */
-  public abstract ConsumptionDao getConsumtionDao();
+  public abstract StarDisplayDao getStarDisplayDao();
 
-  public abstract ActivityDao getActivityDao();
+  public abstract StarDao getStarDao();
+
+  public abstract UserDao getUserDao();
 
   private static class InstanceHolder {
 
-    private static final ConsumptionDB INSTANCE = Room.databaseBuilder(
-        CC_APIApplication.getInstance().getApplicationContext(), ConsumptionDB.class, DB_NAME)
+    private static final CelestialBodiesDB INSTANCE = Room.databaseBuilder(
+        CelestialApplication.getInstance().getApplicationContext(), CelestialBodiesDB.class,
+        DB_NAME)
         .build();
 
   }
-
-
-  /**
-   * Supports conversion operations for persistence of relevant types not natively supported by
-   * Room/SQLite.
-   */
-
 
   public static class Converters {
 
@@ -104,8 +88,6 @@ public abstract class ConsumptionDB extends RoomDatabase {
     @TypeConverter
     public static Long longFromCalendar(@Nullable Calendar calendar) {
       return (calendar != null) ? calendar.getTimeInMillis() : null;
-      }
-
     }
   }
 }

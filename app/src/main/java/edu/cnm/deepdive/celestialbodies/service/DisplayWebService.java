@@ -3,9 +3,14 @@ package edu.cnm.deepdive.celestialbodies.service;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import okhttp3.ResponseBody;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementArray;
+import org.simpleframework.xml.ElementList;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -31,9 +36,7 @@ public interface DisplayWebService {
    * @param max_vmag max_vmag
    */
   @GET("getstars.jsp")
-  Call<StarResponse> get(@Query("ra") String ra, @Query("de") String dec,
-      @Query("angle") String angle,
-      @Query("max_stars") String max_stars, @Query("max_vmag") String max_vmag);
+  Call<StarResponse> get(@QueryMap Map<String, String> queryMap);
 
   @GET("map")
   Call<ResponseBody> fetchImageMap(@QueryMap Map<String, String> queryMap);
@@ -60,14 +63,13 @@ public interface DisplayWebService {
    * Encapsulates the request lifecycle for the NASA APOD web service as a {@link
    * BaseFluentAsyncTask} subclass.
    */
-  class GetFromWikiSkyTask extends AsyncTask<String, Void, StarResponse> {
+  class GetFromWikiSkyTask extends AsyncTask<Map<String, String>, Void, StarResponse> {
 
     @Override
-    protected StarResponse doInBackground(String... params) {
+    protected StarResponse doInBackground(Map<String, String>... params) {
       StarResponse result = null;
       try {
-        Response<StarResponse> response = InstanceHolder.INSTANCE.get(params[0],
-            params[1], params[2], params[3], params[4]).execute();
+        Response<StarResponse> response = InstanceHolder.INSTANCE.get(params[0]).execute();
         if (!response.isSuccessful()) {
           throw new RuntimeException("Request Not Successful");
         }
@@ -102,77 +104,25 @@ public interface DisplayWebService {
   }
 
 
-  public class Star {
 
-    private String catId;
+  public class StarResponse {
 
+    @Element
     private String de;
 
-    private String mag;
-
-    private String id;
-
-    private String ra;
-
-    public String getCatId() {
-      return catId;
-    }
-
-    public void setCatId(String catId) {
-      this.catId = catId;
-    }
-
-    public String getDe() {
-      return de;
-    }
-
-    public void setDe(String de) {
-      this.de = de;
-    }
-
-    public String getMag() {
-      return mag;
-    }
-
-    public void setMag(String mag) {
-      this.mag = mag;
-    }
-
-    public String getId() {
-      return id;
-    }
-
-    public void setId(String id) {
-      this.id = id;
-    }
-
-    public String getRa() {
-      return ra;
-    }
-
-    public void setRa(String ra) {
-      this.ra = ra;
-    }
-
-    @Override
-    public String toString() {
-      return "ClassPojo [catId = " + catId + ", de = " + de + ", mag = " + mag + ", id = " + id
-          + ", ra = " + ra + "]";
-    }
-  }
-
-  public class InnerResponse {
-
-    private String de;
-
+    @Element(required = false)
     private String msgs;
 
-    private Star[] star;
+    @ElementList(inline=true)
+    private List<Star> star;
 
+    @Element
     private String angle;
 
+    @Element
     private String max_stars;
 
+    @Element
     private String ra;
 
     public String getDe() {
@@ -191,11 +141,11 @@ public interface DisplayWebService {
       this.msgs = msgs;
     }
 
-    public Star[] getStar() {
+    public List<Star> getStar() {
       return star;
     }
 
-    public void setStar(Star[] star) {
+    public void setStar(List<Star> star) {
       this.star = star;
     }
 
@@ -227,24 +177,6 @@ public interface DisplayWebService {
     public String toString() {
       return "ClassPojo [de = " + de + ", msgs = " + msgs + ", star = " + star + ", angle = "
           + angle + ", max_stars = " + max_stars + ", ra = " + ra + "]";
-    }
-  }
-
-  public class StarResponse {
-
-    private InnerResponse response;
-
-    public InnerResponse getResponse() {
-      return response;
-    }
-
-    public void setResponse(InnerResponse response) {
-      this.response = response;
-    }
-
-    @Override
-    public String toString() {
-      return "ClassPojo [response = " + response + "]";
     }
   }
 

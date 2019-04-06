@@ -4,6 +4,8 @@ package edu.cnm.deepdive.celestialbodies.model.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
 import java.util.Date;
 
 
@@ -16,16 +18,16 @@ import java.util.Date;
 )
 
 public class StarDisplay {
-//do we need display, user_id, log
-//need catalog_id, magnitude, constellation_id
-  @ColumnInfo(name = "display_id", index = true) //star's name
+
+  @PrimaryKey
+  @ColumnInfo(name = "display_id", index = true)
   private long displayId;
 
   @ColumnInfo(name = "user_id", index = true)
   private long userId;
 
-  @ColumnInfo(name = "time", index = true)
-  private Date time;
+//  @ColumnInfo(name = "time", index = true)
+//  private Date time;
 
   @ColumnInfo(name = "latitude", index = true)
   private float latitude;
@@ -58,13 +60,13 @@ public class StarDisplay {
     this.userId = userId;
   }
 
-  public Date getTime() {
-    return time;
-  }
+//  public Date getTime() {
+//    return time;
+//  }
 
-  public void setTime(Date time) {
-    this.time = time;
-  }
+//  public void setTime(Date time) {
+//    this.time = time;
+//  }
 
   public float getLatitude() {
     return latitude;
