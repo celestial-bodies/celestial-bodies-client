@@ -50,7 +50,7 @@ public class CaptureFragment extends Fragment {
       imageMap.put("ra", "30");
       imageMap.put("de", "25");
       imageMap.put("angle","40");
-      imageMap.put("max_stars", "50");
+      imageMap.put("max_stars", "10");
 
       new GetImageTask().execute(imageMap);
       new GetStarInfoTask().execute(imageMap);

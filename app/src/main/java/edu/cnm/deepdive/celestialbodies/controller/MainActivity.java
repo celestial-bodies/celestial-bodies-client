@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import edu.cnm.deepdive.celestialbodies.R;
-import edu.cnm.deepdive.celestialbodies.controller.InfoFragment.StarDetailsTask;
 import edu.cnm.deepdive.celestialbodies.service.FragmentService;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
 
@@ -106,8 +105,8 @@ public class MainActivity extends AppCompatActivity{
   public boolean onOptionsItemSelected(MenuItem item) {
     boolean handled = true;
     switch (item.getItemId()) {
-      case R.id.action_settings:
-        getActionBar();
+      case R.id.action_history:
+        loadFragment(new HistoryFragment(), "HistoryFragment");
         break;
       case R.id.sign_out:
         signOut();

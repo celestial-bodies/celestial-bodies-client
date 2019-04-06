@@ -4,6 +4,7 @@ package edu.cnm.deepdive.celestialbodies.model;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import edu.cnm.deepdive.celestialbodies.CelestialApplication;
 import edu.cnm.deepdive.celestialbodies.model.dao.StarDao;
 import edu.cnm.deepdive.celestialbodies.model.dao.StarDisplayDao;
@@ -15,7 +16,6 @@ import edu.cnm.deepdive.celestialbodies.model.entity.User;
 @Database(entities = {StarDisplay.class, User.class, Star.class},
     version = 1,
     exportSchema = true)
-
 public abstract class CelestialBodiesDB extends RoomDatabase {
 
   private static final String DB_NAME = "celestial_bodies_db";
