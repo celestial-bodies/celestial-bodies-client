@@ -16,8 +16,8 @@ public class Star {
   @Attribute
   private String id;
 
-//  @NonNull
-//  private Calendar time = Calendar.getInstance();
+  @NonNull
+  private Calendar time = Calendar.getInstance();
 
 
   @Element
@@ -32,14 +32,14 @@ public class Star {
   @Element
   private String ra;
 
-//  @NonNull
-//  public Calendar getTime() {
-//    return time;
-//  }
-//
-//  public void setTime(@NonNull Calendar time) {
-//    this.time = time;
-//  }
+  @NonNull
+  public Calendar getTime() {
+    return time;
+  }
+
+  public void setTime(@NonNull Calendar time) {
+    this.time = time;
+  }
 
   public String getCatId() {
     return catId;
