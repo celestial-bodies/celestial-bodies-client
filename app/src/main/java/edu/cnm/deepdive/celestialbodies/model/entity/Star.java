@@ -3,6 +3,7 @@ package edu.cnm.deepdive.celestialbodies.model.entity;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import java.util.Calendar;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
@@ -15,6 +16,10 @@ public class Star {
   @Attribute
   private String id;
 
+  @NonNull
+  private Calendar time = Calendar.getInstance();
+
+
   @Element
   private String catId;
 
@@ -26,6 +31,15 @@ public class Star {
 
   @Element
   private String ra;
+
+  @NonNull
+  public Calendar getTime() {
+    return time;
+  }
+
+  public void setTime(@NonNull Calendar time) {
+    this.time = time;
+  }
 
   public String getCatId() {
     return catId;

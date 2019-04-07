@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity{
       }
     });
 
+    //TODO remove this!
+    //Shortcut to retrieve stars from server
+    //new StarDetailsTask().execute();
   }
 
   /**
@@ -102,8 +105,8 @@ public class MainActivity extends AppCompatActivity{
   public boolean onOptionsItemSelected(MenuItem item) {
     boolean handled = true;
     switch (item.getItemId()) {
-      case R.id.action_settings:
-        getActionBar();
+      case R.id.action_history:
+        loadFragment(new HistoryFragment(), "HistoryFragment");
         break;
       case R.id.sign_out:
         signOut();

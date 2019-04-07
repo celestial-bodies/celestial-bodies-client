@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import java.util.Calendar;
 
 @Entity(indices = @Index(value = "user_id", unique = true))
 
@@ -28,6 +29,8 @@ public class User {
 
   @ColumnInfo(name = "email", index = true)
   private String email;
+
+  private Calendar timestamp = Calendar.getInstance();
 
   public long getId() {
     return userId;
@@ -83,6 +86,14 @@ public class User {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public Calendar getTimestamp() {
+    return timestamp;
+  }
+
+  public void setTimestamp(Calendar timestamp) {
+    this.timestamp = timestamp;
   }
 
 }

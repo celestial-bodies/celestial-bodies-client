@@ -6,13 +6,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
+import edu.cnm.deepdive.celestialbodies.model.entity.Star;
+import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
+import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import retrofit2.Call;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +50,13 @@ public class InfoFragment extends Fragment {
     adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList);
     listView.setAdapter(adapter);
 
+    //Create a listener for the listitems to get details
+    listView.setOnItemClickListener((parent, view1, position, id) -> {
+      //This is the star they clicked on
+      StarDisplay clickedStar = starList.get(position);
+      //Call the async task and show details in dialog
+    });
+
     new StarQueryTask().execute();
 
         return view;
@@ -58,6 +74,22 @@ public class InfoFragment extends Fragment {
     @Override
     protected List<StarDisplay> doInBackground(Void... voids) {
       return CelestialBodiesDB.getInstance().getStarDisplayDao().findAll();
+    }
+  }
+
+  //Modify this tast to retrieve details about one star
+  public static class StarDetailsTask extends AsyncTask<String, Void, StarDetail>{
+
+    @Override
+    protected StarDetail doInBackground(String... strings) {
+      try {
+        List<StarDetail> stars = InstanceHolder.INSTANCE
+            .getStars(GoogleSignInService.getInstance().getAccount().getIdToken()).execute().body();
+        return stars.get(0);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      return null;
     }
   }
 
