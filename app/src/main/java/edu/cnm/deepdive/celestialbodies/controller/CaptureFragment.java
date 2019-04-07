@@ -3,12 +3,14 @@ package edu.cnm.deepdive.celestialbodies.controller;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
@@ -19,7 +21,7 @@ import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
- * {@link CaptureFragment.OnFragmentInteractionListener} interface to handle interaction events.
+ * {@link CaptureFragment} interface to handle interaction events.
  *
  * fragment.
  */
@@ -27,6 +29,7 @@ public class CaptureFragment extends Fragment {
 
   private ImageView wikiImage;
   private Button captureButton;
+  private Button infoButton;
 
   public CaptureFragment() {
     // Required empty public constructor
@@ -57,6 +60,15 @@ public class CaptureFragment extends Fragment {
 
     });
 
+    infoButton = view.findViewById(R.id.bn_info);
+    infoButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        //Toast.makeText(getActivity(), "Info Clicked", Toast.LENGTH_SHORT).show();
+        loadInfoFragment(new InfoFragment());
+      }
+    });
+
     return view;
   }
 
@@ -79,5 +91,15 @@ public class CaptureFragment extends Fragment {
       }
       return null;
     }
+  }
+
+  private void loadInfoFragment(InfoFragment frag) {
+    FragmentManager nextFrag;
+    nextFrag = getFragmentManager();
+    assert nextFrag != null;
+    FragmentTransaction transaction = nextFrag.beginTransaction();
+    transaction.add(R.id.fragment_container, frag);
+    transaction.addToBackStack(null);
+    transaction.commit();
   }
 }
