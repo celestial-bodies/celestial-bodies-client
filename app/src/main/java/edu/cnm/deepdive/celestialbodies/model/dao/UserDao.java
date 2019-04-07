@@ -17,7 +17,7 @@ public interface UserDao {
   int delete(User...users);
 
   @Query("SELECT * FROM User")
-  public List<User> findAll();
+  List<User> findAll();
 
 
 }
