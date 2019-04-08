@@ -50,10 +50,10 @@ public class InfoAdapter extends ArrayAdapter<Star> {
     View view = (convertView != null) ? convertView
         : LayoutInflater.from(getContext()).inflate(R.layout.info_item, parent, false);
     Star star2 = getItem(position);
-    TextView row = view.findViewById(R.id.row_item);
+    //TextView row = view.findViewById(R.id.row_item);
     //TextView date2 = view.findViewById(R.id.date_item);
     TextView starName = view.findViewById(R.id.star_item);
-    row.setText(star2.getId());
+    //row.setText(star2.getId());
     // date2.setText(dateFormat2.format(star2.getTime().getTime()));
     starName.setText(star2.getCatId());
 

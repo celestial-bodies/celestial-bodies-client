@@ -26,7 +26,6 @@ import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
  */
 public class MainActivity extends AppCompatActivity {
 
-
   private TextView mTextMessage;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,17 +9,24 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
+import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
+import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
 import edu.cnm.deepdive.celestialbodies.view.InfoAdapter;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-
-//import android.widget.ArrayAdapter;
 
 /**
  * Populates a {@link android.webkit.WebView} with a list of detailed information about a star
@@ -28,8 +36,12 @@ import java.util.Objects;
  */
 public class InfoFragment extends Fragment {
 
+//  private List<StarDisplay> starList;
+//  private ArrayAdapter adapter;
+
   private List<Star> starsList2;
   private InfoAdapter adapter2;
+  private TextView textSearch;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -41,10 +53,9 @@ public class InfoFragment extends Fragment {
     ListView listView = view.findViewById(R.id.list_info);
     ViewGroup infoHeader = (ViewGroup) inflater.inflate(R.layout.info_header, listView,
         false);
-    ViewGroup infoCategories = (ViewGroup) inflater.inflate(R.layout.info_categories, listView,
-        false);
+    //ViewGroup infoCategories = (ViewGroup) inflater.inflate(R.layout.info_categories, listView, false);
     listView.addHeaderView(infoHeader, null, false);
-    listView.addHeaderView(infoCategories, null, false);
+    //listView.addHeaderView(infoCategories, null, false);
 
     starsList2 = new LinkedList<>();
 
@@ -52,15 +63,41 @@ public class InfoFragment extends Fragment {
     listView.setAdapter(adapter2);
 
 //
-//    adapter2 = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList2);
-//    listView.setAdapter(adapter2);
+    //adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList);
+    //listView.setAdapter(adapter);
 
     //Create a listener for the listitems to get details
-    //listView.setOnItemClickListener((parent, view1, position, id) -> {
-    //This is the star they clicked on
-    //StarDisplay clickedStar = starList2.get(position);
-    //Call the async task and show details in dialog
-    //});
+    listView.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view1, int position, long id) {
+        //This is the star they clicked on
+        Star clickedStar = starsList2.get(position);
+        //Call the async task and show details in dialog
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.info_dialog);
+        dialog.setTitle("Title...");
+
+        // set the custom dialog components - text, image and button
+        textSearch = (TextView) dialog.findViewById(R.id.text_info);
+        textSearch.setText("Android custom dialog example!");
+        //ImageView image = (ImageView) dialog.findViewById(R.id.image);
+        // image.setImageResource(R.drawable.ic_launcher);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.infoButtonOK);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            dialog.dismiss();
+          }
+        });
+
+        new StarDetailsTask().execute(225043l);
+        //new StarQueryTask().execute();
+        dialog.show();
+      }
+    });
+
 
     new InfoQueryTask().execute();
     return view;
@@ -87,15 +124,16 @@ public class InfoFragment extends Fragment {
 //  public static class StarDetailsTask extends AsyncTask<String, Void, StarDetail>{
 //
 //    @Override
-//    protected StarDetail doInBackground(String... strings) {
-//      try {
-//        List<StarDetail> stars = InstanceHolder.INSTANCE
-//            .getStars(GoogleSignInService.getInstance().getAccount().getIdToken()).execute().body();
-//        return stars.get(0);
-//      } catch (IOException e) {
-//        e.printStackTrace();
-//      }
-//      return null;
+//    protected void onPostExecute(List<StarDisplay> starDisplays) {
+//
+//      starsList2.clear();
+//      starsList2.addAll(starDisplays);
+//      adapter2.notifyDataSetChanged();
+//    }
+//
+//    @Override
+//    protected List<StarDisplay> doInBackground(Void... voids) {
+//      return CelestialBodiesDB.getInstance().getStarDisplayDao().findAll();
 //    }
 //  }
 

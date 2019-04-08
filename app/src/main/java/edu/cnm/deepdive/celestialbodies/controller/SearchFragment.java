@@ -1,19 +1,25 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
+import android.app.Dialog;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
-import edu.cnm.deepdive.celestialbodies.model.entity.Star;
+import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
+import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
@@ -21,6 +27,8 @@ import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
  */
 public class SearchFragment extends Fragment {
 
+
+  private EditText textSearch;
 
   private OnFragmentInteractionListener mListener;
 
@@ -40,12 +48,36 @@ public class SearchFragment extends Fragment {
       public void onClick(View v) {
         Toast.makeText(getActivity(), "Search Started", Toast.LENGTH_LONG).show();
 
+        final Dialog dialog = new Dialog(getContext(), R.style.Dialog);
+        dialog.setContentView(R.layout.search_dialog);
+        dialog.setTitle("Title...");
+
+        // set the custom dialog components - text, image and button
+        TextView textSearch = (TextView) dialog.findViewById(R.id.text_search);
+        textSearch.setText("Android custom dialog example!");
+        //ImageView image = (ImageView) dialog.findViewById(R.id.image);
+        // image.setImageResource(R.drawable.ic_launcher);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            dialog.dismiss();
+          }
+        });
+
+    return view;
+        dialog.show();
       }
     });
 
-    return view;
+
+
+  return view;
 
   }
+
 
   // TODO: Rename method, update argument and hook method into UI event
   public void onButtonPressed(Uri uri) {
@@ -80,5 +112,27 @@ public class SearchFragment extends Fragment {
 
     // TODO: Update argument type and name
     void onFragmentInteraction(Uri uri);
+  }
+
+  public class StarDetailsTask extends AsyncTask<Long, Void, StarDetail> {
+
+    @Override
+    protected StarDetail doInBackground(Long... id) {
+      try {
+        StarDetail star = InstanceHolder.INSTANCE
+            .getStarByHdid(GoogleSignInService.getInstance().getAccount().getIdToken(), id[0])
+            .execute()
+            .body();
+        return star;
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      return null;
+    }
+
+    @Override
+    protected void onPostExecute(StarDetail starDetail) {
+      textSearch.setText(starDetail.getComp() + " ");
+    }
   }
 }

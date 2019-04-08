@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="300dp"
+  android:layout_height="400dp"
+  android:layout_gravity="bottom|left"
+  android:orientation="vertical"
+  android:padding="5dp">
+
+
+  <TextView
+    android:id="@+id/text_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/colorPrimaryDark"/>
+
+
+  <Button
+    android:id="@+id/infoButtonOK"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:text=" Ok "
+    />
+
+</LinearLayout>
