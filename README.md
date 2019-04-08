@@ -90,6 +90,8 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ## Design Documentation
 
++ [User Stories](docs/User_Stories.md)
+
 ## Javadoc Page
 
 ## Licenses/Copyright
