@@ -1,4 +1,5 @@
 package edu.cnm.deepdive.celestialbodies.controller;
+
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
