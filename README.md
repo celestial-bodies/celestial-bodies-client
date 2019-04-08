@@ -63,7 +63,7 @@ for this application the following were used to test UI and function.
 ### WikiSky
 
 WikiSky provided the ability information and the ability to search for stars.
-[WikiSky.org](http://www.wikisky.org/)
++ [WikiSky.org](http://www.wikisky.org/)
 
 ### HYG Database
 
