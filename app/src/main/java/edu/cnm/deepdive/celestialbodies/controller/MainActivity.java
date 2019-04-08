@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
   /**
    * <code>loadFragment</code> creates a {@link FragmentManager} to support
+   * @param fragment
+   * @param tag
    */
   private void loadFragment(Fragment fragment, String tag) {
     FragmentManager manager;

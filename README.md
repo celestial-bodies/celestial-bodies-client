@@ -22,3 +22,72 @@ This app allows the user to point his phone at a celestial object or constellati
 * Automated pre-loading of any relevant base data sets (client- and server-side).
 
 * User authentication (this may&mdash;and often does&mdash;leverage the services of an OAuth2 provider, such as Google).
+
+## Current Development of Celestial Bodies
+
+Celestial Bodies is close to being complete, the user is able to point their device towards an a star or planet in the sky and click the capture button and instantly get the top 10 stars, ordered by magnitude. The user is able to check their previous sky-searches in the history screen or retrieve more info about the current stars that the user captured. Capturing stars displays an image of the grouping of stars and also the current ascension and declination of the position of the users device.
+
+### Unimplemented/Incomplete Elements of Celestial Bodies
+
++ The dashboard displays categories to search, but each categories do not diplay anything once clicked.
++ The search is currently no connected to backend server, therefore cannot make queries.
++ Info doesn't search when item is clicked
++ Need to make the app stay in profile orientation by disabling landscape view
+
+### Known Issues/Bugs
+
++ App crashes if there is a duplicate star within a search.
+
+## Android API Version and Hardware
+
+for this application the following were used to test UI and function.
++ Andrid API 27
++ Nexus 5x emulator
+
+## Third Party Libraries
+
++ [Retrofit](https://square.github.io/retrofit/) (includes OkHttp and Retrofit)
+
+  Retrofit is designed to establish and perform requests to CoolClimate API web service.
+  
++ [Stetho](https://github.com/facebook/stetho/blob/master/README.md)
+
+  Stetho is a developmental tool that examines the local display resources and database contents.
+
++ [Deep Dive Android Utilities](https://github.com/deep-dive-coding-java/android-utilities/blob/master/README.md)
+
++ Room
+
+## External Services
+
+### WikiSky
+
+WikiSky provided the ability information and the ability to search for stars.
++ [WikiSky.org](http://www.wikisky.org/)
+
+### HYG Database
+
+HYG Star Database provided and managed 100,000+ star database that was used for our backend server.
+
++ [GitHub](https://github.com/astronexus/HYG-Database/blob/master/README.md)
++ [Background Information](http://www.astronexus.com/hyg)
++ [Version Control](http://www.astronexus.com/endeavour)
+
+## Potential Future of Celestial Bodies
+
+### Goals
+
+### User Interface Improvements
+
+## Design Documentation
+
+## Javadoc Page
+
+## Licenses/Copyright
+[Copyright & Licenses](/docs/Copyright_&_Licenses.md)
+
+## Instructions for Building Celestrial Bodies
+
+## Instructions for Using Celestial Bodies
+
+## Celestial Bodies, All Rights Reserved
