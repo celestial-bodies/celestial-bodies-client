@@ -4,10 +4,11 @@
 
 ## HYG Star Database
 
-[GitHub](https://github.com/astronexus/HYG-Database/blob/master/README.md)
+HYG Star Database provided and managed 100,000+ star database that was used in our backend server.
+This data set is licensed by a Creative Commons Attribution-ShareAlike license. For more details, read the Creative Commons page.
+
 [Creative Commons Licenses](https://creativecommons.org/licenses/by-sa/2.5/)
-[Background Information](http://www.astronexus.com/hyg)
-[Version Control](http://www.astronexus.com/endeavour)
+
 
 
 ## OkHttp
