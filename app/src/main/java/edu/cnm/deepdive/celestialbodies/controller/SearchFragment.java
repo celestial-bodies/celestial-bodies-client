@@ -18,6 +18,7 @@ import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService;
 import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
 import java.io.IOException;
 
@@ -67,12 +68,11 @@ public class SearchFragment extends Fragment {
           }
         });
 
-    return view;
+
         dialog.show();
       }
+
     });
-
-
 
   return view;
 
@@ -119,7 +119,7 @@ public class SearchFragment extends Fragment {
     @Override
     protected StarDetail doInBackground(Long... id) {
       try {
-        StarDetail star = InstanceHolder.INSTANCE
+        StarDetail star = ServerWebService.getInstance()
             .getStarByHdid(GoogleSignInService.getInstance().getAccount().getIdToken(), id[0])
             .execute()
             .body();

@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.celestialbodies.service;
 
+import android.support.v4.app.INotificationSideChannel;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
 import java.util.List;
 import retrofit2.Call;
@@ -23,9 +24,13 @@ public interface ServerWebService {
 
   //Url for emulator to local server: 10.0.2.2
 
+  public static ServerWebService getInstance() {
+    return InstanceHolder.INSTANCE;
+  }
+
   class InstanceHolder {
 
-    static final ServerWebService INSTANCE;
+    private static final ServerWebService INSTANCE;
 
     static {
       Retrofit retrofit = new Retrofit.Builder()

@@ -20,7 +20,9 @@ import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
+import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService;
 import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
 import edu.cnm.deepdive.celestialbodies.view.InfoAdapter;
 import java.io.IOException;
@@ -36,14 +38,11 @@ import java.util.Objects;
  */
 public class InfoFragment extends Fragment {
 
-//  private List<StarDisplay> starList;
-//  private ArrayAdapter adapter;
-
   private List<Star> starsList2;
   private InfoAdapter adapter2;
   private TextView textSearch;
 
-  @Override
+
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 
       @Nullable Bundle savedInstanceState) {
@@ -79,7 +78,7 @@ public class InfoFragment extends Fragment {
 
         // set the custom dialog components - text, image and button
         textSearch = (TextView) dialog.findViewById(R.id.text_info);
-        textSearch.setText("Android custom dialog example!");
+        textSearch.setText("Retrieving Star Information... ");
         //ImageView image = (ImageView) dialog.findViewById(R.id.image);
         // image.setImageResource(R.drawable.ic_launcher);
 
@@ -97,7 +96,6 @@ public class InfoFragment extends Fragment {
         dialog.show();
       }
     });
-
 
     new InfoQueryTask().execute();
     return view;
@@ -120,21 +118,25 @@ public class InfoFragment extends Fragment {
     }
   }
 
-  //Modify this task to retrieve details about one star
-//  public static class StarDetailsTask extends AsyncTask<String, Void, StarDetail>{
-//
-//    @Override
-//    protected void onPostExecute(List<StarDisplay> starDisplays) {
-//
-//      starsList2.clear();
-//      starsList2.addAll(starDisplays);
-//      adapter2.notifyDataSetChanged();
-//    }
-//
-//    @Override
-//    protected List<StarDisplay> doInBackground(Void... voids) {
-//      return CelestialBodiesDB.getInstance().getStarDisplayDao().findAll();
-//    }
-//  }
+  public class StarDetailsTask extends AsyncTask<Long, Void, StarDetail> {
 
+    @Override
+    protected StarDetail doInBackground(Long... id) {
+      try {
+        StarDetail star = ServerWebService.getInstance()
+            .getStarByHdid(GoogleSignInService.getInstance().getAccount().getIdToken(), id[0])
+            .execute()
+            .body();
+        return star;
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      return null;
+    }
+
+    @Override
+    protected void onPostExecute(StarDetail starDetail) {
+      textSearch.setText(starDetail.getComp() + " ");
+    }
+  }
 }
