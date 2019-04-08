@@ -1,17 +1,17 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
+import android.app.Dialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
-import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 
@@ -53,8 +53,29 @@ public class SearchFragment extends Fragment {
       public void onClick(View v) {
         Toast.makeText(getActivity(), "Search Started", Toast.LENGTH_LONG).show();
 
+        final Dialog dialog = new Dialog(getContext(), R.style.Dialog);
+        dialog.setContentView(R.layout.search_dialog);
+        dialog.setTitle("Title...");
+
+        // set the custom dialog components - text, image and button
+        TextView textSearch = (TextView) dialog.findViewById(R.id.text_search);
+        textSearch.setText("Android custom dialog example!");
+        //ImageView image = (ImageView) dialog.findViewById(R.id.image);
+        // image.setImageResource(R.drawable.ic_launcher);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            dialog.dismiss();
+          }
+        });
+
+        dialog.show();
       }
     });
+
 
 //    exitButton.setOnClickListener(new OnClickListener() {
 //      @Override
@@ -67,10 +88,10 @@ public class SearchFragment extends Fragment {
 //      }
 //    });
 
-
   return view;
 
   }
+
 
   // TODO: Rename method, update argument and hook method into UI event
   public void onButtonPressed(Uri uri) {

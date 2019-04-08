@@ -9,6 +9,11 @@
 
   </style>
 
+  <style name="Dialog" parent="Theme.AppCompat.Dialog">
+    <item name="android:windowNoTitle">false</item>
+    <item name="android:windowIsFloating">true</item>
+  </style>
+
   <style name="BottomNavigator" parent="AppTheme">
     <item name="android:layout_marginStart">0dp</item>
     <item name="android:layout_marginEnd">0dp</item>
