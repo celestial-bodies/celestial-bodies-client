@@ -60,6 +60,14 @@ for this application the following were used to test UI and function.
 
 ## External Services
 
+### WikiSky
+
+### HYG Database
+
+[GitHub](https://github.com/astronexus/HYG-Database/blob/master/README.md)
+[Background Information](http://www.astronexus.com/hyg)
+[Version Control](http://www.astronexus.com/endeavour)
+
 ## Potential Future of Celestial Bodies
 
 ### Goals
