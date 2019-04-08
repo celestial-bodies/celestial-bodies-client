@@ -62,7 +62,12 @@ for this application the following were used to test UI and function.
 
 ### WikiSky
 
+WikiSky provided the ability information and the ability to search for stars.
+[WikiSky.org](http://www.wikisky.org/)
+
 ### HYG Database
+
+HYG Star Database provided and managed 100,000+ star database that was used for our backend server.
 
 + [GitHub](https://github.com/astronexus/HYG-Database/blob/master/README.md)
 + [Background Information](http://www.astronexus.com/hyg)
