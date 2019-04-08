@@ -21,14 +21,17 @@ import java.util.Objects;
 //import android.widget.ArrayAdapter;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Populates a {@link android.webkit.WebView} with a list of detailed information about a star
+ * chosen from a history list of stars which was formed when the user pressed the capture button,
+ * see {@link CaptureFragment}. The star is chosen by clicking on the list of stars at which point
+ * the server databae is queried for the relevant star's information.
  */
 public class InfoFragment extends Fragment {
 
   private List<Star> starsList2;
   private InfoAdapter adapter2;
 
-
+  @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 
       @Nullable Bundle savedInstanceState) {
@@ -54,13 +57,13 @@ public class InfoFragment extends Fragment {
 
     //Create a listener for the listitems to get details
     //listView.setOnItemClickListener((parent, view1, position, id) -> {
-      //This is the star they clicked on
+    //This is the star they clicked on
     //StarDisplay clickedStar = starList2.get(position);
-      //Call the async task and show details in dialog
+    //Call the async task and show details in dialog
     //});
 
     new InfoQueryTask().execute();
-        return view;
+    return view;
   }
 
 

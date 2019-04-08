@@ -26,7 +26,4 @@ public interface StarDao {
   @Query("SELECT * FROM Star")
   List<Star> findAll();
 
-  @Query("DELETE FROM Star")
-  void deleteAll();
-
 }

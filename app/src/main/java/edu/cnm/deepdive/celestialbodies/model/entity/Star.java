@@ -8,7 +8,6 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
 @Entity
-
 public class Star {
 
   @PrimaryKey

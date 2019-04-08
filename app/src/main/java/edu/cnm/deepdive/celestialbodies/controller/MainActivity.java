@@ -18,9 +18,13 @@ import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.service.FragmentService;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
 
-
-public class MainActivity extends AppCompatActivity{
-
+/**
+ * Primary controller class of the Celestial Bodies client app.  This activity configures and then
+ * responds to clicks in a {@link BottomNavigationView} to hide and show one of 3 main {@link
+ * android.support.v4.app.Fragment} instances. This activiy also responds to clicks on a single
+ * options {@link MenuItem} to display a {@link android.widget.ListView} of star items captured.
+ */
+public class MainActivity extends AppCompatActivity {
 
 
   private TextView mTextMessage;
@@ -50,14 +54,11 @@ public class MainActivity extends AppCompatActivity{
   };
 
 
-
-
   @SuppressLint("ClickableViewAccessibility")
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
 
     BottomNavigationView navigation = findViewById(R.id.navigation);
     navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -66,8 +67,8 @@ public class MainActivity extends AppCompatActivity{
       @Override
       public void onClick(View v) {
         FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction  transaction = manager.beginTransaction();
-        for (Fragment f : manager.getFragments()){
+        FragmentTransaction transaction = manager.beginTransaction();
+        for (Fragment f : manager.getFragments()) {
           transaction.remove(f);
         }
 
@@ -84,8 +85,6 @@ public class MainActivity extends AppCompatActivity{
 
   /**
    * <code>loadFragment</code> creates a {@link FragmentManager} to support
-   * @param fragment
-   * @param tag
    */
   private void loadFragment(Fragment fragment, String tag) {
     FragmentManager manager;
@@ -117,9 +116,9 @@ public class MainActivity extends AppCompatActivity{
     return handled;
   }
 
-  private void signOut(){
+  private void signOut() {
     GoogleSignInService.getInstance().getClient()
-        .signOut().addOnCompleteListener(this, (task)-> {
+        .signOut().addOnCompleteListener(this, (task) -> {
       GoogleSignInService.getInstance().setAccount(null);
       Intent intent = new Intent(this, LoginActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -128,17 +127,3 @@ public class MainActivity extends AppCompatActivity{
   }
 }
 
-
-
-//
-//  @Override
-//  protected void onCreate(Bundle savedInstanceState) {
-//    super.onCreate(savedInstanceState);
-//    setContentView(R.layout.activity_main);
-//
-
-//
-//
-//  }
-
-//}

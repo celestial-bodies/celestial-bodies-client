@@ -13,7 +13,11 @@ import com.google.android.gms.tasks.Task;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
 
-
+/**
+ * This activity integrates google sign in capability for this Android app.
+ * It represents an asynchronous login/registration task used to authenticate
+ * the user.
+ */
 public class LoginActivity extends AppCompatActivity {
 
   private static final int LOGIN_REQUEST_CODE = 1000;
