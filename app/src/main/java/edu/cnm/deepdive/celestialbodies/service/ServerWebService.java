@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 
+
 public interface ServerWebService {
 
 
@@ -19,7 +20,7 @@ public interface ServerWebService {
 
   class InstanceHolder {
 
-    public static final ServerWebService INSTANCE;
+    static final ServerWebService INSTANCE;
 
     static {
       Retrofit retrofit = new Retrofit.Builder()
@@ -30,7 +31,6 @@ public interface ServerWebService {
     }
 
   }
-
 
 
 }

@@ -10,26 +10,39 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor.DiscardOldestPolicy;
 
+/**
+ * Declares basic CRUD operations for {@link StarDisplay} instances in the local database, using
+ * Room annotations.
+ */
 @Dao
 public interface StarDisplayDao {
 
+  /**
+   * Inserts one or more {@link StarDisplay} instances into the local database. Any primary or
+   * unique key constraint violations will result in the existing records being retained.
+   *
+   * @param displays {@link StarDisplay} instance(s) to be inserted.
+   * @return inserted star ID(s).
+   */
   @Insert
   List<Long> insert(StarDisplay... displays);
 
+  /**
+   * Deletes one or more {@link StarDisplay} instances from local database.
+   *
+   * @param displays instances of {@link StarDisplay} to be deleted from database.
+   * @return number of records deleted.
+   */
   @Delete
-  int delete(StarDisplay...displays);
+  int delete(StarDisplay... displays);
 
+  /**
+   * Selects and returns all {@link StarDisplay} instances in the local database, sorting the result in
+   * descending id order.
+   *
+   * @return all {@link StarDisplay} instances in local database.
+   */
   @Query("SELECT * FROM StarDisplay")
   List<StarDisplay> findAll();
-
-//  @Query("SELECT * FROM StarDisplay WHERE time = :time")
-//  StarDisplay findFirstByTime(Date time);
-//
-//  @Query("SELECT * FROM StarDisplay ORDER BY time DESC")
-//  List<StarDisplay> findTime();
-//
-//  @Query("SELECT * FROM StarDisplay ORDER BY time DESC LIMIT 1")
-//  StarDisplay findLast();
-
 
 }

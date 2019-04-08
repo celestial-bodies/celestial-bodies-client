@@ -18,12 +18,12 @@ import edu.cnm.deepdive.celestialbodies.service.ApplicationConstants;
 
 /**
  * A collection of miscellaneous utility functions.
- * 
+ *
  * @author Brent Bryan
  */
 public class MiscUtil {
   private MiscUtil() {}
-  
+
   /** Returns the Tag for a class to be used in Android logging statements */
   public static String getTag(Object o) {
     if (o instanceof Class<?>) {

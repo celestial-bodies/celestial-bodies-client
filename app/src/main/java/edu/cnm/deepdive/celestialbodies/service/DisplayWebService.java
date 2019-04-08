@@ -9,19 +9,17 @@ import java.util.List;
 import java.util.Map;
 import okhttp3.ResponseBody;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementArray;
 import org.simpleframework.xml.ElementList;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /**
  * Declares the {@link #get(String, String)} Retrofit service method () for communicating with the
- * NASA APOD web service, and defines nested classes in support of making these requests and
+ * WikiSky web service, and defines nested classes in support of making these requests and
  * deserializing the JSON data returned.
  */
 public interface DisplayWebService {
@@ -61,7 +59,7 @@ public interface DisplayWebService {
 
   /**
    * Encapsulates the request lifecycle for the NASA APOD web service as a {@link
-   * BaseFluentAsyncTask} subclass.
+   * AsyncTask} subclass.
    */
   class GetFromWikiSkyTask extends AsyncTask<Map<String, String>, Void, StarResponse> {
 
@@ -81,9 +79,6 @@ public interface DisplayWebService {
 
   }
 
-  /**
-   *
-   */
   class GetImageFromWikiSkyTask extends AsyncTask<Map<String, String>, Void, Bitmap> {
 
     @Override
@@ -104,7 +99,6 @@ public interface DisplayWebService {
   }
 
 
-
   class StarResponse {
 
     @Element
@@ -113,7 +107,7 @@ public interface DisplayWebService {
     @Element(required = false)
     private String msgs;
 
-    @ElementList(inline=true)
+    @ElementList(inline = true)
     private List<Star> star;
 
     @Element
