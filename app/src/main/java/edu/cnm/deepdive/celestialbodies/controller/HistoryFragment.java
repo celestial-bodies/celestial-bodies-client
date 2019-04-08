@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * <code>HistoryFragmen</code> displays the users previous star search that populate after
+ * <code>HistoryFragment</code> displays the users previous star search that populate after
  * each successful completion of {@link CaptureFragment}. The user is able to scroll through each
  * query to see their past searches.
  * Future applications will allow the user to will allow the user to delete older scores or will
