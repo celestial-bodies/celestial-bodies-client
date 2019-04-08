@@ -2,12 +2,22 @@
 
 ## WikiSky
 
+WikiSky is a wiki and interactive sky map that covers more than half a billion celestial objects. Users can view the whole star sky at once and zoom in to view areas in greater detail. WikiSky includes many stars, galaxies, constellations, and planets, but it is still in development. Users can also edit information about different stars by writing articles, adding Internet links, uploading images, or create a special interest group for a specific task.
+
+Wikisky image copyrights
+Some images from Wikisky, such as Digitized Sky Survey (DSS2) are "non-commercial use". The DSS datarights are held by multiple institutions. Sloan Digital Sky Survey (SDSS) images are now public domain, although earlier data releases were for non-commercial use only
+
++ [Digitized Sky Survey (DDS) Copyright](https://web.archive.org/web/20080909112611/http://wikisky.org/wiki/Copyright_-_DSS2_images)
++ [Data Copyrights](http://gsss.stsci.edu/Acknowledgements/DataCopyrights.htm)
++ [Image Use Policy](https://www.sdss.org/collaboration/image-use-policy/)
+
+
 ## HYG Star Database
 
 HYG Star Database provided and managed 100,000+ star database that was used in our backend server.
 This data set is licensed by a Creative Commons Attribution-ShareAlike license. For more details, read the Creative Commons page.
 
-[Creative Commons Licenses](https://creativecommons.org/licenses/by-sa/2.5/)
++ [Creative Commons Licenses](https://creativecommons.org/licenses/by-sa/2.5/)
 
 
 
