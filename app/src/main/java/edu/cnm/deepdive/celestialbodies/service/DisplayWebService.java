@@ -105,7 +105,7 @@ public interface DisplayWebService {
 
 
 
-  public class StarResponse {
+  class StarResponse {
 
     @Element
     private String de;

@@ -36,7 +36,7 @@ public class SensoryActivity extends Activity implements SensorEventListener {
     sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
     //locate views
-    textView = (TextView) findViewById(R.id.txt);
+    textView = findViewById(R.id.txt);
     //image = (ImageView) findViewById(R.id.img);
   }
 
