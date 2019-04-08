@@ -2,6 +2,7 @@ package edu.cnm.deepdive.celestialbodies.controller;
 
 import android.app.Dialog;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,11 +10,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
+import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
+import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
@@ -21,7 +27,7 @@ import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
  */
 public class SearchFragment extends Fragment {
 
-
+  private EditText textSearch;
 
   private OnFragmentInteractionListener mListener;
 
@@ -77,16 +83,6 @@ public class SearchFragment extends Fragment {
     });
 
 
-//    exitButton.setOnClickListener(new OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        MainActivity mainActivity = new MainActivity();
-//        assert SearchFragment.this.getFragmentManager() != null;
-//        SearchFragment.this.getFragmentManager().beginTransaction()
-//            .replace(R.id.fragment_container,  )
-//            .commit();
-//      }
-//    });
 
   return view;
 
@@ -130,5 +126,27 @@ public class SearchFragment extends Fragment {
 
     // TODO: Update argument type and name
     void onFragmentInteraction(Uri uri);
+  }
+
+  public class StarDetailsTask extends AsyncTask<Long, Void, StarDetail> {
+
+    @Override
+    protected StarDetail doInBackground(Long... id) {
+      try {
+        StarDetail star = InstanceHolder.INSTANCE
+            .getStarByHdid(GoogleSignInService.getInstance().getAccount().getIdToken(), id[0])
+            .execute()
+            .body();
+        return star;
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      return null;
+    }
+
+    @Override
+    protected void onPostExecute(StarDetail starDetail) {
+      textSearch.setText(starDetail.getComp() + " ");
+    }
   }
 }

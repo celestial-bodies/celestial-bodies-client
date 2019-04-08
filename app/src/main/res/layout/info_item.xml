@@ -42,7 +42,6 @@
 
     android:gravity="center"
     android:paddingTop="7dp"
-    android:contextClickable="true"
     android:textSize="25sp"
     />
 

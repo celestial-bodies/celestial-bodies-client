@@ -9,6 +9,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,13 +19,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetImageFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 import edu.cnm.deepdive.celestialbodies.units.GeocentricCoordinates;
-import edu.cnm.deepdive.celestialbodies.units.LatLong;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -87,11 +90,45 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
   private float dec;
   private float ra;
 
+  DecimalFormat d = new DecimalFormat("#.##");
+  private Handler mHandler;
+  private RadioGroup mRadioGroup;
+  private TextView mAzimuthView;
+  private TextView mPitchView;
+  private TextView mRollView;
+  private int radioSelection = 2;
+  private Runnable updateOrientationDisplayTask = new Runnable() {
+    public void run() {
+      updateOrientationDisplay();
+    }
+  };
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    // unregister sensor listeners to prevent the activity from draining the device's battery.
+    mSensorManager.unregisterListener(this);
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+    // unregister sensor listeners to prevent the activity from draining the device's battery.
+    mSensorManager.unregisterListener(this);
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    // restore the sensor listeners when user resumes the application.
+    initListeners();
+  }
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    Toast.makeText(getActivity(), "Captured Screen", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(getActivity(), "Captured Screen", Toast.LENGTH_SHORT).show();
 
     // Inflate the layout for this fragment
     View view = inflater
@@ -174,29 +211,16 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
         loadInfoFragment(new InfoFragment());
       }
     });
+    mAzimuthView = view.findViewById(R.id.textView4);
+    mPitchView = view.findViewById(R.id.textView5);
+    mRollView = view.findViewById(R.id.textView6);
+
 
     return view;
   }
 
   @Override
-  public void onStop() {
-    super.onStop();
-    // unregister sensor listeners to prevent the activity from draining the device's battery.
-    mSensorManager.unregisterListener(this);
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-    // unregister sensor listeners to prevent the activity from draining the device's battery.
-    mSensorManager.unregisterListener(this);
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    // restore the sensor listeners when user resumes the application.
-    initListeners();
+  public void onAccuracyChanged(Sensor sensor, int accuracy) {
   }
 
   // This function registers sensor listeners for the accelerometer, magnetometer and gyroscope.
@@ -212,31 +236,8 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
     mSensorManager.registerListener(this,
         mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
         SensorManager.SENSOR_DELAY_FASTEST);
-  }
 
-  @Override
-  public void onAccuracyChanged(Sensor sensor, int accuracy) {
-  }
 
-  @Override
-  public void onSensorChanged(SensorEvent event) {
-    switch (event.sensor.getType()) {
-      case Sensor.TYPE_ACCELEROMETER:
-        // copy new accelerometer data into accel array and calculate orientation
-        System.arraycopy(event.values, 0, accel, 0, 3);
-        calculateAccMagOrientation();
-        break;
-
-      case Sensor.TYPE_GYROSCOPE:
-        // process gyro data
-        gyroFunction(event);
-        break;
-
-      case Sensor.TYPE_MAGNETIC_FIELD:
-        // copy new magnetometer data into magnet array
-        System.arraycopy(event.values, 0, magnet, 0, 3);
-        break;
-    }
   }
 
   // calculates orientation angles from accelerometer and magnetometer output
@@ -505,5 +506,62 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
     transaction.add(R.id.fragment_container, frag);
     transaction.addToBackStack(null);
     transaction.commit();
+  }
+
+  @Override
+  public void onSensorChanged(SensorEvent event) {
+    switch (event.sensor.getType()) {
+      case Sensor.TYPE_ACCELEROMETER:
+        // copy new accelerometer data into accel array and calculate orientation
+        System.arraycopy(event.values, 0, accel, 0, 3);
+        calculateAccMagOrientation();
+        break;
+
+      case Sensor.TYPE_GYROSCOPE:
+        // process gyro data
+        gyroFunction(event);
+        break;
+
+      case Sensor.TYPE_MAGNETIC_FIELD:
+        // copy new magnetometer data into magnet array
+        System.arraycopy(event.values, 0, magnet, 0, 3);
+        break;
+    }
+    updateOrientationDisplay();
+  }
+
+  public void onCheckedChanged(RadioGroup group, int checkedId) {
+    switch (checkedId) {
+      case R.id.radio0:
+        radioSelection = 0;
+        break;
+      case R.id.radio1:
+        radioSelection = 1;
+        break;
+      case R.id.radio2:
+        radioSelection = 2;
+        break;
+    }
+  }
+
+  private void updateOrientationDisplay() {
+
+    switch (radioSelection) {
+//      case 0:
+//        mAzimuthView.setText(d.format(accMagOrientation[0] * 180 / Math.PI) + '�');
+//        mPitchView.setText(d.format(accMagOrientation[1] * 180 / Math.PI) + '�');
+//        mRollView.setText(d.format(accMagOrientation[2] * 180 / Math.PI) + '�');
+//        break;
+//      case 1:
+//        mAzimuthView.setText(d.format(gyroOrientation[0] * 180 / Math.PI) + '�');
+//        mPitchView.setText(d.format(gyroOrientation[1] * 180 / Math.PI) + '�');
+//        mRollView.setText(d.format(gyroOrientation[2] * 180 / Math.PI) + '�');
+//        break;
+      case 2:
+        mAzimuthView.setText(d.format(fusedOrientation[0] * 180 / Math.PI) + '�');
+        mPitchView.setText(d.format(fusedOrientation[1] * 180 / Math.PI) + '�');
+        mRollView.setText(d.format(fusedOrientation[2] * 180 / Math.PI) + '�');
+        break;
+    }
   }
 }
