@@ -7,9 +7,9 @@ import android.arch.persistence.room.PrimaryKey;
 import java.util.Calendar;
 
 /**
- * Encapsulates the desired information to be collected regarding a user of the star app.  Room and GSon * annotations are used to specify entity &amp; attribute
- *  * mapping for database persistence, and * property mapping for JSON serialization/deserialization
- *  * mapping.
+ * Encapsulates the desired information to be collected regarding a user of the star app.  Room and
+ * GSon annotations are used to specify entity &amp; attribute mapping for database persistence,
+ * and property mapping for JSON serialization/deserialization mapping.
  */
 @Entity(indices = @Index(value = "user_id", unique = true))
 public class User {

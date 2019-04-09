@@ -18,7 +18,8 @@ import java.util.TimerTask;
 
 
 /**
- * needed to access ascension and declination... if it works
+ * Needed to access ascension and declination... if it works.  This class is used to display
+ * coordinate information accessed from a phone.s
  */
 public class SensorFusion extends Activity
     implements SensorEventListener, RadioGroup.OnCheckedChangeListener {

@@ -3,6 +3,9 @@ package edu.cnm.deepdive.celestialbodies.model.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * This class provides the fields needed for the user to access the server side database.
+ */
 public class StarDetail {
 
   @SerializedName("id")
@@ -400,27 +403,50 @@ public class StarDetail {
     this.ci = ci;
   }
 
-
+  /**
+   * Returns x local coordinate
+   * @return
+   */
   public Double getX() {
     return x;
   }
 
+  /**
+   * Sets x local coordinate
+   * @param x
+   */
   public void setX(Double x) {
     this.x = x;
   }
 
+  /**
+   * Returns y local coordinate
+   * @return
+   */
   public Double getY() {
     return y;
   }
 
+  /**
+   * Sets y local coordinate
+   * @param y
+   */
   public void setY(Double y) {
     this.y = y;
   }
 
+  /**
+   * Returns z local coordinate
+   * @return
+   */
   public Double getZ() {
     return z;
   }
 
+  /**
+   * Sets z local coordinate
+   * @param z
+   */
   public void setZ(Double z) {
     this.z = z;
   }

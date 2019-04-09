@@ -36,6 +36,11 @@ public interface DisplayWebService {
   @GET("getstars.jsp")
   Call<StarResponse> get(@QueryMap Map<String, String> queryMap);
 
+  /**
+   * Queries map image from WikiSky
+   *
+   * @param queryMap map to be queried from WikiSky
+   */
   @GET("map")
   Call<ResponseBody> fetchImageMap(@QueryMap Map<String, String> queryMap);
 
@@ -58,8 +63,8 @@ public interface DisplayWebService {
   }
 
   /**
-   * Encapsulates the request lifecycle for the NASA APOD web service as a {@link
-   * AsyncTask} subclass.
+   * Encapsulates the request lifecycle for the NASA APOD web service as a {@link AsyncTask}
+   * subclass.
    */
   class GetFromWikiSkyTask extends AsyncTask<Map<String, String>, Void, StarResponse> {
 
@@ -102,7 +107,7 @@ public interface DisplayWebService {
   class StarResponse {
 
     @Element
-    private String de;
+    private String dec;
 
     @Element(required = false)
     private String msgs;
@@ -119,57 +124,83 @@ public interface DisplayWebService {
     @Element
     private String ra;
 
-    public String getDe() {
-      return de;
+    /**
+     * Returns the star's declination, for epoch and equinox 2000.0.
+     *
+     * @return dec
+     */
+    public String getDec() {
+      return dec;
     }
 
-    public void setDe(String de) {
-      this.de = de;
+    /**
+     * Sets the star's declination, for epoch and equinox 2000.0.
+     *
+     * @param dec the star's declination, for epoch and equinox 2000.0.
+     */
+    public void setDec(String dec) {
+      this.dec = dec;
     }
 
-    public String getMsgs() {
-      return msgs;
-    }
-
-    public void setMsgs(String msgs) {
-      this.msgs = msgs;
-    }
-
+    /**
+     * Returns {@list List} of stars returned from query to WikiSky.
+     */
     public List<Star> getStar() {
       return star;
     }
 
+    /**
+     * Sets a {@list List} of stars returned from query to WikiSky.
+     */
     public void setStar(List<Star> star) {
       this.star = star;
     }
 
+    /**
+     * Returns angle view of sky queried from WikiSky.
+     */
     public String getAngle() {
       return angle;
     }
 
+    /**
+     * Sets angle view of sky queried from WikiSky.
+     */
     public void setAngle(String angle) {
       this.angle = angle;
     }
 
+    /**
+     * Returns maximum number of stars to be queried.
+     */
     public String getMax_stars() {
       return max_stars;
     }
 
+    /**
+     * Sets maximum number of stars to be queried.
+     */
     public void setMax_stars(String max_stars) {
       this.max_stars = max_stars;
     }
 
+    /**
+     * Returns the right ascension to be queried from WikiSky.
+     */
     public String getRa() {
       return ra;
     }
 
+    /**
+     * Sets the right ascension to be queried from WikiSky.
+     */
     public void setRa(String ra) {
       this.ra = ra;
     }
 
     @Override
     public String toString() {
-      return "ClassPojo [de = " + de + ", msgs = " + msgs + ", star = " + star + ", angle = "
+      return "ClassPojo [de = " + dec + ", msgs = " + msgs + ", star = " + star + ", angle = "
           + angle + ", max_stars = " + max_stars + ", ra = " + ra + "]";
     }
   }
