@@ -72,4 +72,16 @@
     />
 
 
+  <Button
+    android:id="@+id/cancel_button"
+    android:layout_width="60dp"
+    android:layout_height="50dp"
+    android:layout_weight="1"
+    android:paddingEnd="6dp"
+    android:background="#000000"
+    android:drawableStart="@android:drawable/ic_menu_close_clear_cancel"
+    android:drawableTint="#FFFFFF"
+    android:gravity="center"
+
+    />
 </android.support.constraint.ConstraintLayout>

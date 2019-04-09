@@ -5,7 +5,7 @@
   android:layout_height="match_parent"
   android:layout_gravity="bottom|center"
   android:id="@+id/fragment_search"
-
+  android:background="#000000"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:padding="4dp"
   tools:context=".controller.DashboardFragment">
@@ -13,10 +13,11 @@
   <ImageView
     android:id="@+id/wiki_image"
     android:layout_width="0dp"
-    android:layout_height="375dp"
+    android:layout_height="match_parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/bn_capture"
+
 
     />
 
@@ -24,7 +25,7 @@
     android:id="@+id/bn_capture"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/capture"
+
     android:textColor="@color/colorAccent"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
@@ -34,8 +35,10 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toRightOf="@id/bn_info"
     android:background="@drawable/roundedbutton"
-    android:drawableStart="@android:drawable/ic_menu_camera"
-    android:drawableTint="@color/colorAccent"
+    android:paddingBottom="20dp"
+
+    android:drawableBottom="@android:drawable/ic_menu_camera"
+
 
 
     />
@@ -166,6 +169,7 @@
       android:gravity="end"
       android:scaleX="0.8"
       android:scaleY="0.8"
+
       >
       <RadioButton
         android:id="@+id/radio0"
@@ -174,17 +178,17 @@
         android:checked="true"
         android:text="Accelerometer"
         android:textColor="@color/colorAccent"
-
+        android:paddingEnd="10dp"
 
         />
 
       <RadioButton
         android:id="@+id/radio1"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gyroscope"
         android:textColor="@color/colorAccent"
+        android:paddingEnd="10dp"
 
         />
 
@@ -194,7 +198,8 @@
         android:layout_height="wrap_content"
         android:text="Sensor Fusion"
         android:textColor="@color/colorAccent"
-
+        android:checked="true"
+        android:paddingEnd="10dp"
 
         />
 

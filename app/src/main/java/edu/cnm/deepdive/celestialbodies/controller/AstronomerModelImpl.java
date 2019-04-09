@@ -29,7 +29,7 @@
 //import java.util.Date;
 //
 //import static edu.cnm.deepdive.celestialbodies.util.Geometry.addVectors;
-//import static edu.cnm.deepdive.celestialbodies.util.Geometry.calculateRADecOfZenith;
+////import static edu.cnm.deepdive.celestialbodies.util.Geometry.calculateRADecOfZenith;
 //import static edu.cnm.deepdive.celestialbodies.util.Geometry.matrixMultiply;
 //import static edu.cnm.deepdive.celestialbodies.util.Geometry.matrixVectorMultiply;
 //import static edu.cnm.deepdive.celestialbodies.util.Geometry.scalarProduct;
@@ -82,7 +82,7 @@
 //  private MagneticDeclinationCalculator magneticDeclinationCalculator;
 //  private boolean autoUpdatePointing = true;
 //  private float fieldOfView = 45;  // Degrees
-//  private LatLong location = new LatLong(0f, 0f);
+//  //private LatLong location = new LatLong(0f, 0f);
 //  private Clock clock = new RealClock();
 //  private long celestialCoordsLastUpdated = -1;
 //
@@ -180,16 +180,16 @@
 //
 //  }
 //
-//  @Override
-//  public LatLong getLocation() {
-//    return location;
-//  }
-//
-//  @Override
-//  public void setLocation(LatLong location) {
-//    this.location = location;
-//    calculateLocalNorthAndUpInCelestialCoords(true);
-//  }
+////  @Override
+////  public LatLong getLocation() {
+////    return location;
+////  }
+////
+////  @Override
+////  public void setLocation(LatLong location) {
+////    this.location = location;
+////    calculateLocalNorthAndUpInCelestialCoords(true);
+////  }
 //
 //  @Override
 //  public Vector3 getPhoneUpDirection() {
@@ -298,15 +298,15 @@
 //            MINIMUM_TIME_BETWEEN_CELESTIAL_COORD_UPDATES_MILLIS) {
 //      return;
 //    }
-//    celestialCoordsLastUpdated = currentTime;
-//    updateMagneticCorrection();
-//    RaDec up = calculateRADecOfZenith(getTime(), location);
-//    upCelestial = GeocentricCoordinates.getInstance(up);
-//    Vector3 z = AXIS_OF_EARTHS_ROTATION;
-//    float zDotu = scalarProduct(upCelestial, z);
-//    trueNorthCelestial = addVectors(z, scaleVector(upCelestial, -zDotu));
-//    trueNorthCelestial.normalize();
-//    trueEastCelestial = vectorProduct(trueNorthCelestial, upCelestial);
+////    celestialCoordsLastUpdated = currentTime;
+////    updateMagneticCorrection();
+////    //RaDec up = calculateRADecOfZenith(getTime(), location);
+////    //upCelestial = GeocentricCoordinates.getInstance(up);
+////    Vector3 z = AXIS_OF_EARTHS_ROTATION;
+////    float zDotu = scalarProduct(upCelestial, z);
+////    trueNorthCelestial = addVectors(z, scaleVector(upCelestial, -zDotu));
+////    trueNorthCelestial.normalize();
+////    trueEastCelestial = vectorProduct(trueNorthCelestial, upCelestial);
 //
 //    // Apply magnetic correction.  Rather than correct the phone's axes for
 //    // the magnetic declination, it's more efficient to rotate the
@@ -365,9 +365,9 @@
 //  /**
 //   * Updates the angle between True North and Magnetic North.
 //   */
-//  private void updateMagneticCorrection() {
-//    magneticDeclinationCalculator.setLocationAndTime(location, getTimeMillis());
-//  }
+////  private void updateMagneticCorrection() {
+////    magneticDeclinationCalculator.setLocationAndTime(location, getTimeMillis());
+////  }
 //
 //  /**
 //   * Returns the user's pointing.  Note that clients should not usually modify this object as it is

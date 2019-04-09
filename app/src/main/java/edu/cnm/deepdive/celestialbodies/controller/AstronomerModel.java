@@ -137,7 +137,7 @@
 //  /**
 //   * Sets the user's current position on Earth.
 //   */
-//  void setLocation(LatLong location);
+//  //void setLocation(LatLong location);
 //
 //  /**
 //   * Gets the user's direction of view.

@@ -34,7 +34,7 @@ public class StarDetail {
   private Double dec;
   @SerializedName("dist")
   @Expose
-  private Integer dist;
+  private Double dist;
   @SerializedName("pmra")
   @Expose
   private Double pmra;
@@ -197,11 +197,11 @@ public class StarDetail {
     this.dec = dec;
   }
 
-  public Integer getDist() {
+  public Double getDist() {
     return dist;
   }
 
-  public void setDist(Integer dist) {
+  public void setDist(Double dist) {
     this.dist = dist;
   }
 

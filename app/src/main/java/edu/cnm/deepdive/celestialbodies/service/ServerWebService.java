@@ -7,6 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Query;
 
 
 public interface ServerWebService {
@@ -16,21 +17,29 @@ public interface ServerWebService {
   @GET("/rest/celestial_body_server/stars")
   Call<List<StarDetail>> getStars(@Header("Authorization") String formattedIdTokenString);
 
-  //Url for emulator to local server: 10.0.2.2
+  @GET("/rest/celestial_body_server/stars")
+  Call<StarDetail> getStarByHdid(@Header("Authorization") String formattedIdTokenString,
+      @Query("hdid") long hdid);
 
+  //Url for emulator to local server: 10.0.2.2
+  public static ServerWebService getINSTANCE() {
+    return InstanceHolder.INSTANCE;
+  }
   class InstanceHolder {
 
-    static final ServerWebService INSTANCE;
+
+    private static final ServerWebService INSTANCE;
 
     static {
       Retrofit retrofit = new Retrofit.Builder()
-          .baseUrl("http://10.0.2.2:8080/")
+          .baseUrl("http://10.46.2.144:8080/")
           .addConverterFactory(GsonConverterFactory.create())
           .build();
       INSTANCE = retrofit.create(ServerWebService.class);
     }
 
   }
+
 
 
 }

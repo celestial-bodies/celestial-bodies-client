@@ -13,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,14 +20,14 @@ import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
-import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
-import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
+import edu.cnm.deepdive.celestialbodies.service.ServerWebService;
 import edu.cnm.deepdive.celestialbodies.view.InfoAdapter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import retrofit2.Response;
 
 //import android.widget.ArrayAdapter;
 
@@ -40,11 +39,14 @@ import java.util.Objects;
  */
 public class InfoFragment extends Fragment {
 
-  private List<StarDisplay> starList;
-  private ArrayAdapter adapter;
+//  private List<StarDisplay> starList;
+//  private ArrayAdapter adapter;
 
   private List<Star> starsList2;
   private InfoAdapter adapter2;
+
+  private TextView textSearch;
+  private Button cancelInfo;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -59,43 +61,73 @@ public class InfoFragment extends Fragment {
     //ViewGroup infoCategories = (ViewGroup) inflater.inflate(R.layout.info_categories, listView, false);
     listView.addHeaderView(infoHeader, null, false);
     //listView.addHeaderView(infoCategories, null, false);
+    cancelInfo = view.findViewById(R.id.cancel_button_info);
+    cancelInfo.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
 
+        getActivity().onBackPressed();
+
+
+      }
+    });
     starsList2 = new LinkedList<>();
 
     adapter2 = new InfoAdapter(Objects.requireNonNull(getContext()), starsList2);
     listView.setAdapter(adapter2);
 
 //
-//    adapter2 = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList2);
-//    listView.setAdapter(adapter2);
+    //adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList);
+    //listView.setAdapter(adapter);
 
     //Create a listener for the listitems to get details
     listView.setOnItemClickListener(new OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view1, int position, long id) {
         //This is the star they clicked on
-        StarDisplay clickedStar = starList.get(position);
+        Star clickedStar = starsList2.get(position);
         //Call the async task and show details in dialog
         final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.info_dialog);
-        dialog.setTitle("Title...");
+
 
         // set the custom dialog components - text, image and button
-        TextView textSearch = (TextView) dialog.findViewById(R.id.text_info);
-        textSearch.setText("Android custom dialog example!");
-        //ImageView image = (ImageView) dialog.findViewById(R.id.image);
-        // image.setImageResource(R.drawable.ic_launcher);
+        textSearch = (TextView) dialog.findViewById(R.id.text_info);
+        textSearch.setText("Request: HD23822\n"
+            + "Status:0 \n"
+            + "\n"
+            + "Verbiage: OK \n"
+            + "\n"
+            + "Object ID= S413751 \n"
+            + "\n"
+            + "Type ID: 1 Star \n"
+            + "\n"
+            + "Name HD: 23822 \n"
+            + "\n"
+            + "CatID HD 23822\n"
+            + "\n"
+            + "Constellation ID: 78, Taurus \n"
+            + "\n"
+            + "RA unit (Hour): 3.8158168 \n"
+            + "\n"
+            + "De unit (Degree): 23.857127\n"
+            + "\n"
+            + "Mag: 6.473");
+
+
 
         Button dialogButton = (Button) dialog.findViewById(R.id.infoButtonOK);
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View v) {
+
             dialog.dismiss();
           }
         });
 
-        new StarQueryTask().execute();
+        //new StarDetailsTask().execute(225043l);
+        //new StarQueryTask().execute();
         dialog.show();
       }
     });
@@ -122,37 +154,29 @@ public class InfoFragment extends Fragment {
     }
   }
 
-  public static class StarDetailsTask extends AsyncTask<String, Void, StarDetail> {
+  public class StarDetailsTask extends AsyncTask<Long, Void, StarDetail> {
 
     @Override
-    protected StarDetail doInBackground(String... strings) {
+    protected StarDetail doInBackground(Long... id) {
       try {
-        List<StarDetail> stars = InstanceHolder.INSTANCE
-            .getStars(GoogleSignInService.getInstance().getAccount().getIdToken()).execute()
+        Response<StarDetail> starDetailResponse = ServerWebService.getINSTANCE()
+            .getStarByHdid(getString(R.string.auth_header,
+                GoogleSignInService.getInstance().getAccount().getIdToken()), id[0])
+            .execute();
+        StarDetail star = starDetailResponse
             .body();
-        return stars.get(0);
+        return star;
       } catch (IOException e) {
         e.printStackTrace();
       }
       return null;
     }
-  }
-
-//    Modify this task to retrieve details about one star
-
-  private class StarQueryTask extends AsyncTask<Void, Void, List<StarDisplay>> {
 
     @Override
-    protected void onPostExecute(List<StarDisplay> starDisplays) {
-
-      starList.clear();
-      starList.addAll(starDisplays);
-      adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    protected List<StarDisplay> doInBackground(Void... voids) {
-      return CelestialBodiesDB.getInstance().getStarDisplayDao().findAll();
+    protected void onPostExecute(StarDetail starDetail) {
+      textSearch.setText(starDetail.getComp() + " ");
     }
   }
+
+
 }

@@ -10,7 +10,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
@@ -21,6 +20,8 @@ import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
  */
 public class SearchFragment extends Fragment {
 
+  private TextView textSearch;
+  private Button cancelSearch;
 
   private OnFragmentInteractionListener mListener;
 
@@ -32,21 +33,49 @@ public class SearchFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    View view = inflater.inflate(R.layout.fragment_search, container, false);
+  View view = inflater.inflate(R.layout.fragment_search, container, false);
+    cancelSearch = view.findViewById(R.id.cancel_search);
+    cancelSearch.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        Fragment fragment = getFragmentManager().findFragmentByTag("SearchFragment");
+        if (fragment != null) {
+          getFragmentManager().beginTransaction().remove(fragment).commit();
+        }
+
+      }
+    });
+
+
     Button searchButton = view.findViewById(R.id.search_button);
+
 
     searchButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        Toast.makeText(getActivity(), "Search Started", Toast.LENGTH_LONG).show();
 
-        final Dialog dialog = new Dialog(getContext(), R.style.Dialog);
+        final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.search_dialog);
-        dialog.setTitle("Title...");
+
 
         // set the custom dialog components - text, image and button
         TextView textSearch = (TextView) dialog.findViewById(R.id.text_search);
-        textSearch.setText("Android custom dialog example!");
+        textSearch.setText("Constellation: Orion \n"
+            + "\n"
+            + " α Ori / 58 Ori\n"
+            + "\n"
+            + " HIP 27989 HR 2061 \n"
+            + "\n"
+            + " Variable: α Ori; Range 0.28 - 0.57\n"
+            + "\n"
+            + " Spectral Type: M2Ib\n"
+            + "\n"
+            + " Distance: 499 light years \n"
+            + "\n"
+            + " Magnitude: 0.45 \n"
+            + "\n"
+            + " Luminosity: 13427.6");
         //ImageView image = (ImageView) dialog.findViewById(R.id.image);
         // image.setImageResource(R.drawable.ic_launcher);
 
@@ -64,7 +93,8 @@ public class SearchFragment extends Fragment {
     });
 
 
-    return view;
+
+  return view;
 
   }
 
