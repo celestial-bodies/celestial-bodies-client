@@ -36,7 +36,7 @@ Celestial Bodies is close to being complete, the user is able to point their dev
 
 ### Known Issues/Bugs
 
-+ App crashes if there is a duplicate star within a search.
++ Currently having issues with connecting to backend server, search and info hard coded.
 
 ## Android API Version and Hardware
 
@@ -51,20 +51,22 @@ for this application the following were used to test UI and function.
 
 + [Retrofit](https://square.github.io/retrofit/) (includes OkHttp and Retrofit)
 
-  Retrofit is designed to establish and perform requests to CoolClimate API web service.
+  Retrofit is designed to establish and perform requests to WikiSky API web service.
   
 + [Stetho](https://github.com/facebook/stetho/blob/master/README.md)
 
   Stetho is a developmental tool that examines the local display resources and database contents.
 
 + [Deep Dive Android Utilities](https://github.com/deep-dive-coding-java/android-utilities/blob/master/README.md)
+    This repository contains utility classes (currently 2 of them) that simplify the use of some important Android features in          application code.
 
-+ Room
++ [Room](https://developer.android.com/jetpack/androidx/releases/room)
+    
+    Room provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.
 
 + [Sensor-fusion](https://bitbucket.org/apacha/sensor-fusion-demo)
 
-  Sensor-fusion is a publicly-available demo that allows the user to access their phone's gyroscope and/or accelerometer
-     in order to map out its spatial orientation.
+  Sensor-fusion is a publicly-available demo that allows the user to access their phone's gyroscope and/or accelerometer in order to map out its spatial orientation.
 
 ## External Services
 This app accesses has the HYG star database pre-loaded as well accesses the Wikisky XML API.
@@ -97,7 +99,7 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ## Design Documentation
 
-+ [Wireframe](/docs/Celestial Bodies WireFrame 1.1.pdf)
++ [Wireframe](docs/Celestial Bodies WireFrame 1.1.pdf)
 
 + [User Stories](docs/User_Stories.md)
 
