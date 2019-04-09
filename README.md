@@ -41,7 +41,6 @@ Celestial Bodies is close to being complete, the user is able to point their dev
 ## Android API Version and Hardware
 
 for this application the following were used to test UI and function.
-+ Samsung Galaxy J7 Sky Pro
 + Andrid API 27
 + Nexus 5x emulator
 
@@ -89,9 +88,9 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ### User Interface Improvements
 
-Improve font and the color scheme.
-
 ## Design Documentation
+
++ [Wireframe]
 
 + [User Stories](docs/User_Stories.md)
 
