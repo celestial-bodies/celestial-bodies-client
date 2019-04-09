@@ -107,6 +107,8 @@ As this application progresses in development, the focuse will start to implemen
 
 + [DDL](docs/ddl.md)
 
++ [ERD](ERD_frontend.pdf)
+
 ## Javadoc Page
 
 ## Licenses/Copyright
