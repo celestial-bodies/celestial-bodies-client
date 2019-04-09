@@ -51,17 +51,6 @@ public class InfoFragment extends Fragment {
     adapter2 = new InfoAdapter(Objects.requireNonNull(getContext()), starsList2);
     listView.setAdapter(adapter2);
 
-//
-//    adapter2 = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList2);
-//    listView.setAdapter(adapter2);
-
-    //Create a listener for the listitems to get details
-    //listView.setOnItemClickListener((parent, view1, position, id) -> {
-    //This is the star they clicked on
-    //StarDisplay clickedStar = starList2.get(position);
-    //Call the async task and show details in dialog
-    //});
-
     new InfoQueryTask().execute();
     return view;
   }
@@ -82,21 +71,5 @@ public class InfoFragment extends Fragment {
       return CelestialBodiesDB.getInstance().getStarDao().findAll();
     }
   }
-
-  //Modify this task to retrieve details about one star
-//  public static class StarDetailsTask extends AsyncTask<String, Void, StarDetail>{
-//
-//    @Override
-//    protected StarDetail doInBackground(String... strings) {
-//      try {
-//        List<StarDetail> stars = InstanceHolder.INSTANCE
-//            .getStars(GoogleSignInService.getInstance().getAccount().getIdToken()).execute().body();
-//        return stars.get(0);
-//      } catch (IOException e) {
-//        e.printStackTrace();
-//      }
-//      return null;
-//    }
-//  }
 
 }

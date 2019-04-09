@@ -29,14 +29,6 @@ public class DashboardFragment extends Fragment {
 
   }
 
-  // TODO what will this method be used for?
-  public void onButtonPressed(Uri uri) {
-    if (mListener != null) {
-      mListener.onFragmentInteraction(uri);
-    }
-  }
-
-
   @Override
   public void onDetach() {
     super.onDetach();
