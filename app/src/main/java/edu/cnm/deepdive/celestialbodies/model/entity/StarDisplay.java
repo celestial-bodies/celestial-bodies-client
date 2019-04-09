@@ -17,6 +17,9 @@ import java.util.Date;
     )
 )
 
+/**
+ *
+ */
 public class StarDisplay {
 
   @PrimaryKey
@@ -59,14 +62,6 @@ public class StarDisplay {
   public void setUserId(long userId) {
     this.userId = userId;
   }
-
-//  public Date getTime() {
-//    return time;
-//  }
-
-//  public void setTime(Date time) {
-//    this.time = time;
-//  }
 
   public float getLatitude() {
     return latitude;

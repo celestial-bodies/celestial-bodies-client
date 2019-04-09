@@ -18,21 +18,12 @@ import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
 /**
- * Declares the {@link #get(String, String)} Retrofit service method () for communicating with the
+ * Declares the  get(String, String) Retrofit service method () for communicating with the
  * WikiSky web service, and defines nested classes in support of making these requests and
  * deserializing the JSON data returned.
  */
 public interface DisplayWebService {
 
-  /**
-   * Note that the implementation of this method is completed by Retrofit.
-   *
-   * @param ra ra
-   * @param dec dec
-   * @param angle angle
-   * @param max_stars max_stars
-   * @param max_vmag max_vmag
-   */
   @GET("getstars.jsp")
   Call<StarResponse> get(@QueryMap Map<String, String> queryMap);
 
@@ -58,8 +49,8 @@ public interface DisplayWebService {
   }
 
   /**
-   * Encapsulates the request lifecycle for the NASA APOD web service as a {@link
-   * AsyncTask} subclass.
+   * Encapsulates the request lifecycle for the WikiSky web service as a {@link AsyncTask}
+   * subclass.
    */
   class GetFromWikiSkyTask extends AsyncTask<Map<String, String>, Void, StarResponse> {
 
@@ -119,13 +110,24 @@ public interface DisplayWebService {
     @Element
     private String ra;
 
+    /**
+     * Gets a String representation of the declination of a Star entity.
+     *
+     * @return de a star declination.
+     */
     public String getDe() {
       return de;
     }
 
+    /**
+     * Sets a String representation of the declination of a Star entity.
+     *
+     * @param de a star declination.
+     */
     public void setDe(String de) {
       this.de = de;
     }
+
 
     public String getMsgs() {
       return msgs;
@@ -135,34 +137,66 @@ public interface DisplayWebService {
       this.msgs = msgs;
     }
 
+    /**
+     * Returns a list of stars
+     * @return star from a list of stars
+     */
     public List<Star> getStar() {
       return star;
     }
 
+    /**
+     * Sets a list of stars
+     * @param star a list of stars queried from WikiSky
+     */
     public void setStar(List<Star> star) {
       this.star = star;
     }
 
+    /**
+     * Returns angle which sets scope of sky to be viewed
+     * @return angle angle determines amount of sky examined
+     */
     public String getAngle() {
       return angle;
     }
 
+    /**
+     * Sets angle for determining scope of sky to be viewed.
+     * @param angle viewing angle of sky.
+     */
     public void setAngle(String angle) {
       this.angle = angle;
     }
 
+    /**
+     * Returns maximum number of stars to be returned by query.
+     * @return max_stars
+     */
     public String getMax_stars() {
       return max_stars;
     }
 
+    /**
+     * Sets the maximum number of stars to be returned for display to user.
+     * @param max_stars maximum number of stars to be returned by query.
+     */
     public void setMax_stars(String max_stars) {
       this.max_stars = max_stars;
     }
 
+    /**
+     * Returns the right ascension of star viewing angle.
+     * @return ra the right ascension.
+     */
     public String getRa() {
       return ra;
     }
 
+    /**
+     * Sets the right ascension of star area to be view
+     * @param ra the right ascension.
+     */
     public void setRa(String ra) {
       this.ra = ra;
     }

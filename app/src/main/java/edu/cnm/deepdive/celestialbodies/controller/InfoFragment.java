@@ -20,10 +20,8 @@ import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDetail;
-import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
 import edu.cnm.deepdive.celestialbodies.service.GoogleSignInService;
 import edu.cnm.deepdive.celestialbodies.service.ServerWebService;
-import edu.cnm.deepdive.celestialbodies.service.ServerWebService.InstanceHolder;
 import edu.cnm.deepdive.celestialbodies.view.InfoAdapter;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -43,6 +41,7 @@ public class InfoFragment extends Fragment {
   private TextView textSearch;
 
 
+  @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 
       @Nullable Bundle savedInstanceState) {
@@ -118,7 +117,7 @@ public class InfoFragment extends Fragment {
     }
   }
 
-  public class StarDetailsTask extends AsyncTask<Long, Void, StarDetail> {
+  class StarDetailsTask extends AsyncTask<Long, Void, StarDetail> {
 
     @Override
     protected StarDetail doInBackground(Long... id) {

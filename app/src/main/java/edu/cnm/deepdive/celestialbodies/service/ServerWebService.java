@@ -10,7 +10,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Query;
 
-
+/**
+ * This is a service class for carrying out the work of passing a star id obtained from a service such as WikiSky, to the server which contains detailed information of 119,624 stars.  The details of the given star can then be retrieved from the server.
+ */
 public interface ServerWebService {
 
 

@@ -17,7 +17,7 @@ package edu.cnm.deepdive.celestialbodies.service;
 import edu.cnm.deepdive.celestialbodies.units.Vector3;
 
 /**
- * A home for the application's few global constants.
+ * A home for the application's few global constants.  Celestial Bodies App made use of constants from this class.
  */
 public class ApplicationConstants {
 
