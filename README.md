@@ -1,9 +1,9 @@
 # Celestial Bodies Client
 
 ## Star gazing isn't just a hobby, It's a way of life. 
-Celestial Bodies helps the a curious star gazers to simply point their device in the direction of a star and recieve information about the star at a click of a button.
+Celestial Bodies helps the a curious star gazers to simply point their device in the direction of a star and receive information about the star at a click of a button.
 
-This app allows the user to point his phone at a celestial object or constellation in the night time sky, touch the screen at the location of the object, and that celestial app will be identified immediately in context of other celesial objects. The name, location, current knowledge of the object, etc. will be made available. The presentation of the celestial sky will be aesthetically pleasing as possible. The app will require acquiring access to an api database containing the description and locations of those objects. Also, to make the app work, gps location capability tied to angle tilt of the phone will be required. The coordinate information needed for the app to locate and display a given celestial object will be constantly updated via the api. I believe a server will be needed for obtaining gps coordinates of the user. This app will allow users to log in and provide to other users useful information such as particularly good locations for observing the stars. Only those who log in to the service and have filled out a form will be able to communicate with others via the app: A third person user authentication service will be used for this part of the service.
+This app allows the user to point his phone at a celestial object or constellation in the night time sky, touch the screen at the location of the object, and that celestial app will be identified immediately in context of other celestial objects. The name, location, current knowledge of the object, etc. will be made available. The presentation of the celestial sky will be aesthetically pleasing as possible. The app will require acquiring access to an API database containing the description and locations of those objects. Also, to make the app work, gps location capability tied to angle tilt of the phone will be required. The coordinate information needed for the app to locate and display a given celestial object will be constantly updated via the API. I believe a server will be needed for obtaining gps coordinates of the user. This app will allow users to log in and provide to other users useful information such as particularly good locations for observing the stars. Only those who log in to the service and have filled out a form will be able to communicate with others via the app: A third person user authentication service will be used for this part of the service.
 
 ## Required functional components
 
@@ -29,7 +29,7 @@ Celestial Bodies is close to being complete, the user is able to point their dev
 
 ### Unimplemented/Incomplete Elements of Celestial Bodies
 
-+ The dashboard displays categories to search, but each categories do not diplay anything once clicked.
++ The dashboard displays categories to search, but each categories do not display anything once clicked.
 + The search is currently no connected to backend server, therefore cannot make queries.
 + Info doesn't search when item is clicked
 + Need to make the app stay in profile orientation by disabling landscape view
@@ -41,7 +41,7 @@ Celestial Bodies is close to being complete, the user is able to point their dev
 ## Android API Version and Hardware
 
 for this application the following were used to test UI and function.
-+ Andrid API 27
++ Android API 27
 + Nexus 5x emulator
 + Samsung Galaxy Note 9
 + HTC One M9
@@ -80,7 +80,7 @@ WikiSky provided the ability information and the ability to search for stars.
 
 + [WikiSky XML Documentation](http://server7.wikisky.org/XML_API_V1.0.html)
 
-+ [WikiSky Image Genenerator Documentation](http://server7.wikisky.org/ImageGenerator_1.0.html)
++ [WikiSky Image Generator Documentation](http://server7.wikisky.org/ImageGenerator_1.0.html)
 
 ### HYG Database
 
@@ -106,7 +106,7 @@ As this application progresses in development, the focuse will start to implemen
 
 + Display category items and clickable items from dashboard.
 + Make sure captured star image displays full screen.
-+ Implement fucntion using camera as a way to let users see where they are pointing their phone.
++ Implement fiction using camera as a way to let users see where they are pointing their phone.
 
 ## Design Documentation
 
