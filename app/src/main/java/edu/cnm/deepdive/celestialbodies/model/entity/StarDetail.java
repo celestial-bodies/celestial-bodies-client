@@ -118,148 +118,288 @@ public class StarDetail {
   private Double varMax;
 
   /**
+   * Returns the database primary key
    *
-   * @return
+   * @return id database primary key
    */
-  public Integer getId() {
+  public long getId() {
     return id;
   }
 
   /**
+   * Sets the database primary key
    *
-   * @param id
+   * @param id database primary key
    */
   public void setId(Integer id) {
     this.id = id;
   }
 
-  public Integer getHip() {
+  /**
+   * Returns The star's ID in the Hipparcos catalog, if known.
+   *
+   * @return hip the star's ID in the Hipparcos catalog, if known.
+   */
+  public long getHip() {
     return hip;
   }
 
+  /**
+   * Sets the star's ID in the Hipparcos catalog, if known.
+   *
+   * @param hip the star's ID in the Hipparcos catalog, if known.
+   */
   public void setHip(Integer hip) {
     this.hip = hip;
   }
 
-  public Integer getHd() {
+  /**
+   * Returns the star's ID in the Henry Draper catalog, if known.
+   *
+   * @return hd the star's ID in the Henry Draper catalog, if known.
+   */
+  public long getHd() {
     return hd;
   }
 
+  /**
+   * Sets the star's ID in the Henry Draper catalog, if known.
+   *
+   * @param hd the star's ID in the Henry Draper catalog, if known.
+   */
   public void setHd(Integer hd) {
     this.hd = hd;
   }
 
+  /**
+   * Returns the star's ID in the Harvard Revised catalog, which is the same as its number in the
+   * Yale Bright Star Catalog.
+   *
+   * @return hr the star's ID in the Harvard Revised catalog, which is the same as its number in the
+   * Yale Bright Star Catalog.
+   */
   public String getHr() {
     return hr;
   }
 
+  /**
+   * Sets the star's ID in the Harvard Revised catalog, which is the same as its number in the Yale
+   * Bright Star Catalog.
+   *
+   * @param hr the star's ID in the Harvard Revised catalog, which is the same as its number in the
+   * Yale Bright Star Catalog.
+   */
   public void setHr(String hr) {
     this.hr = hr;
   }
 
+  /**
+   * Returns the star's ID in the third edition of the Gliese Catalog of Nearby Stars.
+   *
+   * @return gl the star's ID in the third edition of the Gliese Catalog of Nearby Stars.
+   */
   public String getGl() {
     return gl;
   }
 
+  /**
+   * Sets the star's ID in the third edition of the Gliese Catalog of Nearby Stars.
+   *
+   * @param gl the star's ID in the third edition of the Gliese Catalog of Nearby Stars.
+   */
   public void setGl(String gl) {
     this.gl = gl;
   }
 
+  /**
+   * Returns The Bayer / Flamsteed designation, primarily from the Fifth Edition of the Yale Bright
+   * Star Catalog. This is a combination of the two designations. The Flamsteed number, if present,
+   * is given first; then a three-letter abbreviation for the Bayer Greek letter; the Bayer
+   * superscript number, if present; and finally, the three-letter constellation abbreviation.
+   *
+   * @return bf the Bayer / Flamsteed designation.
+   */
   public String getBf() {
     return bf;
   }
 
+  /**
+   * Sets the Bayer / Flamsteed designation.
+   *
+   * @param bf the Bayer / Flamsteed designation.
+   */
   public void setBf(String bf) {
     this.bf = bf;
   }
 
+  /**
+   * Returns a common name for the star.
+   *
+   * @return proper a common name for the star.
+   */
   public String getProper() {
     return proper;
   }
 
+  /**
+   * Sets the common name for the star.
+   *
+   * @param proper the common name for the star
+   */
   public void setProper(String proper) {
     this.proper = proper;
   }
 
-  public Double getRa() {
+  /**
+   * Returns the star's right ascension for epoch and equinox 2000.0.
+   *
+   * @return ra
+   */
+  public double getRa() {
     return ra;
   }
 
-  public void setRa(Double ra) {
+  /**
+   * Sets the star's right ascension, for epoch and equinox 2000.0.
+   *
+   * @param ra the star's right ascension, for epoch and equinox 2000.0.
+   */
+  public void setRa(double ra) {
     this.ra = ra;
   }
 
-  public Double getDec() {
+  /**
+   * Returns the star's declination, for epoch and equinox 2000.0.
+   *
+   * @return dec
+   */
+  public double getDec() {
     return dec;
   }
 
-  public void setDec(Double dec) {
+  /**
+   * Sets the star's declination, for epoch and equinox 2000.0.
+   *
+   * @param dec the star's declination, for epoch and equinox 2000.0.
+   */
+  public void setDec(double dec) {
     this.dec = dec;
   }
 
-  public Integer getDist() {
+  /**
+   * Returns the star's distance in parsecs
+   */
+  public double getDist() {
     return dist;
   }
 
+  /**
+   * Sets the star's distance in parsecs
+   */
   public void setDist(Integer dist) {
     this.dist = dist;
   }
 
-  public Double getPmra() {
+  /**
+   * Returns the star's proper motion in right ascension
+   */
+  public double getPmra() {
     return pmra;
   }
 
-  public void setPmra(Double pmra) {
+  /**
+   * Sets he star's proper motion in right ascension.
+   */
+  public void setPmra(double pmra) {
     this.pmra = pmra;
   }
 
-  public Double getPmdec() {
+  /**
+   * Returns the star's proper motion in declination.
+   */
+  public double getPmdec() {
     return pmdec;
   }
 
-  public void setPmdec(Double pmdec) {
+  /**
+   * Sets the star's proper motion in declination.
+   */
+  public void setPmdec(double pmdec) {
     this.pmdec = pmdec;
   }
 
-  public Integer getRv() {
+  /**
+   * Returns the star's radial velocity in km/sec, where known.
+   */
+  public int getRv() {
     return rv;
   }
 
-  public void setRv(Integer rv) {
+  /**
+   * Sets the star's radial velocity in km/sec, where known.
+   */
+  public void setRv(int rv) {
     this.rv = rv;
   }
 
-  public Double getMag() {
+  /**
+   * Returns the star's apparent visual magnitude.
+   */
+  public double getMag() {
     return mag;
   }
 
-  public void setMag(Double mag) {
+  /**
+   * Sets the star's apparent visual magnitude.
+   */
+  public void setMag(double mag) {
     this.mag = mag;
   }
 
-  public Double getAbsmag() {
+  /**
+   * Returns the star's absolute visual magnitude (its apparent magnitude from a distance of 10
+   * parsecs).
+   */
+  public double getAbsmag() {
     return absmag;
   }
 
-  public void setAbsmag(Double absmag) {
+  /**
+   * Sets the star's absolute visual magnitude (its apparent magnitude from a distance of 10
+   * parsecs).
+   */
+  public void setAbsmag(double absmag) {
     this.absmag = absmag;
   }
 
+  /**
+   * Returns the star's spectral type, if known.
+   */
   public String getSpect() {
     return spect;
   }
 
+  /**
+   * Sets the star's spectral type, if known.
+   */
   public void setSpect(String spect) {
     this.spect = spect;
   }
 
+  /**
+   * Returns the star's color index (blue magnitude - visual magnitude), where known.
+   */
   public Double getCi() {
     return ci;
   }
 
+  /**
+   * Sets the star's color index (blue magnitude - visual magnitude), where known.
+   */
   public void setCi(Double ci) {
     this.ci = ci;
   }
+
 
   public Double getX() {
     return x;
@@ -285,140 +425,213 @@ public class StarDetail {
     this.z = z;
   }
 
+
+  /**
+   * Returns the Cartesian velocity components of the star, in the same coordinate system described
+   * immediately above.
+   */
   public Double getVx() {
     return vx;
   }
 
+  /**
+   * Sets the Cartesian velocity components of the star, in the same coordinate system described
+   * immediately above.
+   */
   public void setVx(Double vx) {
     this.vx = vx;
   }
 
+  /**
+   * Returns the Cartesian velocity components of the star, in the same coordinate system described
+   * immediately above.
+   */
   public Double getVy() {
     return vy;
   }
 
+  /**
+   * Sets the Cartesian velocity components of the star, in the same coordinate system described
+   * immediately above.
+   */
   public void setVy(Double vy) {
     this.vy = vy;
   }
 
+  /**
+   * Returns the Cartesian velocity components of the star, in the same coordinate system described
+   * immediately above.
+   */
   public Double getVz() {
     return vz;
   }
 
+  /**
+   * Sets the Cartesian velocity components of the star, in the same coordinate system described
+   * immediately above.
+   */
   public void setVz(Double vz) {
     this.vz = vz;
   }
 
-  public Double getRarad() {
+  /**
+   * Returns the position in radians
+   */
+  public double getRarad() {
     return rarad;
   }
 
-  public void setRarad(Double rarad) {
+  /**
+   * Sets the position in radians
+   */
+  public void setRarad(double rarad) {
     this.rarad = rarad;
   }
 
-  public Double getDecrad() {
+  /**
+   * Returns the position in radians.
+   */
+  public double getDecrad() {
     return decrad;
   }
 
-  public void setDecrad(Double decrad) {
+  /**
+   * Sets the position in radians.
+   */
+  public void setDecrad(double decrad) {
     this.decrad = decrad;
   }
 
-  public Double getPmrarad() {
+  /**
+   * Returns the position in proper radians.
+   */
+  public double getPmrarad() {
     return pmrarad;
   }
 
-  public void setPmrarad(Double pmrarad) {
+  /**
+   * Sets the position in proper radians.
+   */
+  public void setPmrarad(double pmrarad) {
     this.pmrarad = pmrarad;
   }
 
-  public Double getPmdecrad() {
+  /**
+   * Returns the position in proper radians.
+   */
+  public double getPmdecrad() {
     return pmdecrad;
   }
 
-  public void setPmdecrad(Double pmdecrad) {
+  /**
+   * Sets the position in proper radians.
+   */
+  public void setPmdecrad(double pmdecrad) {
     this.pmdecrad = pmdecrad;
   }
 
+  /**
+   * Returns the Bayer designation as a distinct value.
+   */
   public String getBayer() {
     return bayer;
   }
 
+  /**
+   * Sets the Bayer designation as a distinct value
+   */
   public void setBayer(String bayer) {
     this.bayer = bayer;
   }
 
+  /**
+   * Returns the Flamsteed number as a distinct value.
+   */
   public String getFlam() {
     return flam;
   }
 
+  /**
+   * Sets the Flamsteed number as a distinct value.
+   */
   public void setFlam(String flam) {
     this.flam = flam;
   }
 
+  /**
+   * Returns the standard constellation abbreviation
+   */
   public String getCon() {
     return con;
   }
 
+  /**
+   * Sets the standard constellation abbreviation.
+   */
   public void setCon(String con) {
     this.con = con;
   }
 
-  public Integer getComp() {
+  /**
+   * Returns a star in a multiple star system. comp = ID of companion star.
+   */
+  public double getComp() {
     return comp;
   }
 
+  /**
+   * Sets a star in a multiple star system, comp = ID of companion star.
+   */
   public void setComp(Integer comp) {
     this.comp = comp;
   }
 
-  public Integer getCompPrimary() {
-    return compPrimary;
-  }
-
-  public void setCompPrimary(Integer compPrimary) {
-    this.compPrimary = compPrimary;
-  }
-
+  /**
+   * Returns a star in a multiple star system. Base = catalog ID or name for this multi-star
+   * system.
+   */
   public String getBase() {
     return base;
   }
 
+  /**
+   * Sets a star in a multiple star system. Base = catalog ID or name for this multi-star
+   * system.
+   * @param base
+   */
   public void setBase(String base) {
     this.base = base;
   }
 
-  public Double getLum() {
+  /**
+   * Returns a star's luminosity as a multiple of Solar luminosity.
+   * @return
+   */
+  public double getLum() {
     return lum;
   }
 
-  public void setLum(Double lum) {
+  /**
+   * Sets a star's luminosity as a multiple of Solar luminosity.
+   * @param lum
+   */
+  public void setLum(double lum) {
     this.lum = lum;
   }
 
+  /**
+   * Returns a star's standard variable star designation, when known.
+   * @return
+   */
   public String getVar() {
     return var;
   }
 
+  /**
+   * Sets a star's standard variable star designation, when known.
+   * @param var
+   */
   public void setVar(String var) {
     this.var = var;
   }
-
-  public Double getVarMin() {
-    return varMin;
-  }
-
-  public void setVarMin(Double varMin) {
-    this.varMin = varMin;
-  }
-
-  public Double getVarMax() {
-    return varMax;
-  }
-
-  public void setVarMax(Double varMax) {
-    this.varMax = varMax;
-  }
-
 }
