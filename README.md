@@ -213,16 +213,39 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 ## The search is located in bottom navigaion and allows the user to search for a single star.
  
  
- ## 1. Click on the search,
+ ## 1. Search navigation is located to the right of the capture option in the bottom navigation,
  
  ![signoutnav](https://user-images.githubusercontent.com/44448717/55818069-002b6300-5ab3-11e9-8401-8e6f12a824c4.png)
  
+ ## 2. Upon clicking search, this will display a search box that allows the user to enter a name of a star they would like more information.
+ 
+ ![search_box](https://user-images.githubusercontent.com/44448717/55821998-f22e1000-5abb-11e9-9cd2-388b73b6cdc5.png)
+ 
+ ## 3. Upon clicking the search button will prompt a display of the stars information.
+ 
+ ![search_star_nav](https://user-images.githubusercontent.com/44448717/55818063-002b6300-5ab3-11e9-8d56-b078d9e85c29.png)
+ 
+ ### Star Information
+ 
+ ![search_info](https://user-images.githubusercontent.com/44448717/55817084-f0ab1a80-5ab0-11e9-9dc1-99ded04038c2.png)
+ 
+ ## Search History
+ 
+## The history menu option provides the user with list of previous stars that they searched for.
 
-![search_box](https://user-images.githubusercontent.com/44448717/55817069-e7ba4900-5ab0-11e9-89ca-52234a149603.png)
+## 1. User history is located at the top right corner of the screen.
 
-![search_info](https://user-images.githubusercontent.com/44448717/55817084-f0ab1a80-5ab0-11e9-9dc1-99ded04038c2.png)
+  ![historynav](https://user-images.githubusercontent.com/44448717/55818071-00c3f980-5ab3-11e9-9894-3a6fbcbf324b.png)
+  
+## 2. Upon clicking the history icon, the user will see a display of their past queries.
 
-![historyfragment](https://user-images.githubusercontent.com/44448717/55817111-ff91cd00-5ab0-11e9-97f3-4d6afdcc819c.png)
+  ![historyfragment](https://user-images.githubusercontent.com/44448717/55817111-ff91cd00-5ab0-11e9-97f3-4d6afdcc819c.png)
+  
+## Sign out
+
+## When the user is finished using the Celestial Bodies, the user has the option to sign out of the app or simply close the app and remain signed in.
+
+## 1. Sign out is located in the top right corner of the screen to left of history icon within the action bar menu.
 
 ![signout](https://user-images.githubusercontent.com/44448717/55817118-03bdea80-5ab1-11e9-857d-fcc02f24d437.png)
 
