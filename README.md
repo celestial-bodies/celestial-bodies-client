@@ -69,7 +69,7 @@ for this application the following were used to test UI and function.
   Sensor-fusion is a publicly-available demo that allows the user to access their phone's gyroscope and/or accelerometer in order to map out its spatial orientation.
 
 ## External Services
-This app accesses has the HYG star database pre-loaded as well accesses the Wikisky XML API.
+This app accesses has the HYG star database pre-loaded as well accesses the Wikisky API.
 
 ### WikiSky
 
@@ -92,12 +92,21 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ## Potential Future of Celestial Bodies
 
-As this application progresses in development, the focuse will start to implement a cummunit based functionality. Users will be able to make a uer profile, coneect with friends and other star gazers. User
+As this application progresses in development, the focuse will start to implement a cummunit based functionality. Users will be able to make a user profile, coneect with friends and other star gazers. The user would be able to share their location and objects they have searched or captures.  User should be able to retrieve more infomation from the dashboard in the form of categories; i.e. planets, stars, comets. 
 
 ### Goals
 
++ Implement system to allow users to access camera to be able to see where and which star they are pointing thier device.
++ Enable search to query stars from the back end server.
++ Find common names for stars to implement method for front end star names to match up with back end stars.
++ Enable sharing between Celestial Bodies users.
++ Dashboard should retrieve information about the categories that are presented.
+
 ### User Interface Improvements
-+ 
+
++ Display category items and clickable items from dashboard.
++ Make sure captured star image displays full screen.
++ Implement fucntion using camera as a way to let users see where they are pointing their phone.
 
 ## Design Documentation
 
@@ -107,14 +116,12 @@ As this application progresses in development, the focuse will start to implemen
 
 + [DDL](docs/ddl.md)
 
-+ [ERD](ERD_frontend.pdf)
++ [ERD](docs/ERD_frontend.pdf)
 
 ## Javadoc Page
 
 ## Licenses/Copyright
 [Copyright & Licenses](/docs/Copyright_&_Licenses.md)
-
-[MIT License](/docs/LICENSE.txt)
 
 ## Instructions for Building Celestial Bodies
 
@@ -123,14 +130,6 @@ As this application progresses in development, the focuse will start to implemen
 # Instructions for Using Celestial Bodies
 
 [User Instructions](docs/Using_Celestial_Bodies.md)
-
-
-
-
-
-
-
-
 
 
 ## Celestial Bodies, All Rights Reserved
