@@ -92,11 +92,11 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ## Potential Future of Celestial Bodies
 
-As this application progresses in development, the focuse will start to implement a cummunit based functionality. Users will be able to make a user profile, coneect with friends and other star gazers. The user would be able to share their location and objects they have searched or captures.  User should be able to retrieve more infomation from the dashboard in the form of categories; i.e. planets, stars, comets. 
+As this application progresses in development, the focuse will start to implement a community based functionality. Users will be able to make a user profile, coneect with friends and other star gazers. The user would be able to share their location and objects they have searched or captures.  User should be able to retrieve more infomation from the dashboard in the form of categories; i.e. planets, stars, comets. 
 
 ### Goals
 
-+ Implement system to allow users to access camera to be able to see where and which star they are pointing thier device.
++ Implement system to allow users to access camera to be able to see where and which star they are pointing their device.
 + Enable search to query stars from the back end server.
 + Find common names for stars to implement method for front end star names to match up with back end stars.
 + Enable sharing between Celestial Bodies users.
