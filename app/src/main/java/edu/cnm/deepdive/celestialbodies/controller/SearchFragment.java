@@ -1,17 +1,16 @@
 package edu.cnm.deepdive.celestialbodies.controller;
 
+import android.app.Dialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 import edu.cnm.deepdive.celestialbodies.R;
-import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 
@@ -21,6 +20,8 @@ import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
  */
 public class SearchFragment extends Fragment {
 
+  private TextView textSearch;
+  private Button cancelSearch;
 
   private OnFragmentInteractionListener mListener;
 
@@ -32,20 +33,71 @@ public class SearchFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    View view = inflater.inflate(R.layout.fragment_search, container, false);
-    Button searchButton = view.findViewById(R.id.search_button);
-
-    searchButton.setOnClickListener(new OnClickListener() {
+  View view = inflater.inflate(R.layout.fragment_search, container, false);
+    cancelSearch = view.findViewById(R.id.cancel_search);
+    cancelSearch.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        Toast.makeText(getActivity(), "Search Started", Toast.LENGTH_LONG).show();
+
+        Fragment fragment = getFragmentManager().findFragmentByTag("SearchFragment");
+        if (fragment != null) {
+          getFragmentManager().beginTransaction().remove(fragment).commit();
+        }
 
       }
     });
 
-    return view;
+
+    Button searchButton = view.findViewById(R.id.search_button);
+
+
+    searchButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.search_dialog);
+
+
+        // set the custom dialog components - text, image and button
+        TextView textSearch = (TextView) dialog.findViewById(R.id.text_search);
+        textSearch.setText("Constellation: Orion \n"
+            + "\n"
+            + " α Ori / 58 Ori\n"
+            + "\n"
+            + " HIP 27989 HR 2061 \n"
+            + "\n"
+            + " Variable: α Ori; Range 0.28 - 0.57\n"
+            + "\n"
+            + " Spectral Type: M2Ib\n"
+            + "\n"
+            + " Distance: 499 light years \n"
+            + "\n"
+            + " Magnitude: 0.45 \n"
+            + "\n"
+            + " Luminosity: 13427.6");
+        //ImageView image = (ImageView) dialog.findViewById(R.id.image);
+        // image.setImageResource(R.drawable.ic_launcher);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            dialog.dismiss();
+          }
+        });
+
+        dialog.show();
+      }
+    });
+
+
+
+  return view;
 
   }
+
 
   // TODO: Rename method, update argument and hook method into UI event
   public void onButtonPressed(Uri uri) {

@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import edu.cnm.deepdive.celestialbodies.R;
 
 /**
@@ -16,6 +18,7 @@ import edu.cnm.deepdive.celestialbodies.R;
 public class DashboardFragment extends Fragment {
 
 
+  private Button cancelButton;
 
   private OnFragmentInteractionListener mListener;
 
@@ -24,9 +27,20 @@ public class DashboardFragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
 
+    View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+    cancelButton = view.findViewById(R.id.cancel_button);
+    cancelButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
 
-    return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        Fragment fragment = getFragmentManager().findFragmentByTag("DashboardFragment");
+        if (fragment != null) {
+          getFragmentManager().beginTransaction().remove(fragment).commit();
+        }
 
+      }
+    });
+    return view;
   }
 
   @Override

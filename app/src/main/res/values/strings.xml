@@ -21,4 +21,7 @@
   <string name="star_history"><u>Star History</u></string>
   <string name="star_information"><u>Star Information</u></string>
   <string name="number_category"><u>Number:</u></string>
+  <string name="auth_header">Bearer %s</string>
+  <string name="betelgeuse"><u>Betelgeuse</u></string>
+  <string name="current_stars"><u>Current Stars</u></string>
 </resources>

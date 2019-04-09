@@ -292,7 +292,7 @@ public class StarDetail {
   /**
    * Returns the star's distance in parsecs
    */
-  public double getDist() {
+  public Integer getDist() {
     return dist;
   }
 

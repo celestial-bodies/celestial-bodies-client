@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="300dp"
+  android:layout_height="500dp"
+  android:orientation="vertical"
+  android:padding="10dp"
+  android:background="#60000000">
+
+
+  <TextView
+    android:id="@+id/info_title"
+    android:textStyle="bold"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#000000"
+    android:gravity="center"
+    android:text="@string/star_information"
+    android:textColor="@color/colorAccent"
+    android:textSize="25sp"
+    />
+
+  <TextView
+    android:id="@+id/text_info"
+    android:layout_width="fill_parent"
+    android:layout_height="350dp"
+    android:background="#80000000"
+    android:textColor="@color/colorAccent"
+    android:textSize="15sp"
+    />
+
+
+  <Button
+    android:id="@+id/infoButtonOK"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:text=" Ok "
+
+    />
+
+</LinearLayout>
