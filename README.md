@@ -41,6 +41,7 @@ Celestial Bodies is close to being complete, the user is able to point their dev
 ## Android API Version and Hardware
 
 for this application the following were used to test UI and function.
++ Samsung Galaxy J7 Sky Pro
 + Andrid API 27
 + Nexus 5x emulator
 
