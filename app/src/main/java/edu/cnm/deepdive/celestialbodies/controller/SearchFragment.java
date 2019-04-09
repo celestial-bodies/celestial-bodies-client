@@ -78,7 +78,6 @@ public class SearchFragment extends Fragment {
 
   }
 
-
   // TODO: Rename method, update argument and hook method into UI event
   public void onButtonPressed(Uri uri) {
     if (mListener != null) {
@@ -87,7 +86,6 @@ public class SearchFragment extends Fragment {
 
     //EXAMPLE
     new StarGetter().execute(/*Right Ascension, etc*/);
-
 
   }
 
