@@ -88,6 +88,8 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ### User Interface Improvements
 
+Improve font and the color scheme.
+
 ## Design Documentation
 
 + [User Stories](docs/User_Stories.md)
