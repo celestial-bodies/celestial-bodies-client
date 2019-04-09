@@ -33,7 +33,7 @@
     
    ![capturefragment](https://user-images.githubusercontent.com/44448717/55816987-bd688b80-5ab0-11e9-8fb4-2863c4d1b4b1.png)
    
- ### With the help of the phones internal motion sensors, the user will see up to date position, tilt, roll, and direction of their     device.
+### With the help of the phones internal motion sensors, the user will see up to date position, tilt, roll, and direction of their     device.
     
    ![motionsensor](https://user-images.githubusercontent.com/44448717/55819424-f820f280-5ab5-11e9-9403-7907f56f87db.png)
 
@@ -68,24 +68,24 @@
 
 ## The search is located in bottom navigaion and allows the user to search for a single star.
  
- 
- ## 1. Search navigation is located to the right of the capture option in the bottom navigation,
+
+## 1. Search navigation is located to the right of the capture option in the bottom navigation,
  
  ![signoutnav](https://user-images.githubusercontent.com/44448717/55818069-002b6300-5ab3-11e9-8401-8e6f12a824c4.png)
  
- ## 2. Upon clicking search, this will display a search box that allows the user to enter a name of a star they would like more information.
+## 2. Upon clicking search, this will display a search box that allows the user to enter a name of a star they would like more information.
  
  ![search_box](https://user-images.githubusercontent.com/44448717/55821998-f22e1000-5abb-11e9-9cd2-388b73b6cdc5.png)
  
- ## 3. Upon clicking the search button will prompt a display of the stars information.
+## 3. Upon clicking the search button will prompt a display of the stars information.
  
  ![search_star_nav](https://user-images.githubusercontent.com/44448717/55818063-002b6300-5ab3-11e9-8d56-b078d9e85c29.png)
  
- ### Star Information
+### Star Information
  
  ![search_info](https://user-images.githubusercontent.com/44448717/55817084-f0ab1a80-5ab0-11e9-9dc1-99ded04038c2.png)
  
- ## Search History
+## Search History
  
 ## The history menu option provides the user with list of previous stars that they searched for.
 
