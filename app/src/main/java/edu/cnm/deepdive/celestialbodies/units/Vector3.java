@@ -17,7 +17,8 @@ package edu.cnm.deepdive.celestialbodies.units;
 import edu.cnm.deepdive.celestialbodies.util.MathUtil;
 
 /**
- * This class is made us of by the Celestial Bodies app for determining right ascension and declination via its vector methods.
+ * This class is made us of by the Celestial Bodies app for determining right ascension and
+ * declination via its vector methods.
  */
 public class Vector3 {
 
@@ -32,14 +33,14 @@ public class Vector3 {
   }
 
   /**
-   * Constructs a Vector3 from a float[2] object.
-   * Checks for length. This is probably inefficient, so if you're using this
-   * you should already be questioning your use of float[] instead of Vector3.
-   * @param xyz
+   * Constructs a Vector3 from a float[2] object. Checks for length. This is probably inefficient,
+   * so if you're using this you should already be questioning your use of float[] instead of
+   * Vector3.
    */
   public Vector3(float[] xyz) throws IllegalArgumentException {
     if (xyz.length != 3) {
-      throw new IllegalArgumentException("Trying to create 3 vector from array of length: " + xyz.length);
+      throw new IllegalArgumentException(
+          "Trying to create 3 vector from array of length: " + xyz.length);
     }
     this.x = xyz[0];
     this.y = xyz[1];
@@ -79,7 +80,7 @@ public class Vector3 {
    * Returns the square of the vector's length.
    */
   public float length2() {
-    return this.x*this.x + this.y*this.y + this.z*this.z;
+    return this.x * this.x + this.y * this.y + this.z * this.z;
   }
 
   /**
@@ -102,12 +103,14 @@ public class Vector3 {
   }
 
   public float[] toFloatArray() {
-    return new float[] {x, y, z};
+    return new float[]{x, y, z};
   }
 
   @Override
   public boolean equals(Object object) {
-    if (!(object instanceof Vector3)) return false;
+    if (!(object instanceof Vector3)) {
+      return false;
+    }
     Vector3 other = (Vector3) object;
     // float equals is a bit of a dodgy concept
     return other.x == x && other.y == y && other.z == z;

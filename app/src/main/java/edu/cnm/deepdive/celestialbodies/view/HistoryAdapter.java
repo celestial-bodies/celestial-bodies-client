@@ -13,15 +13,20 @@ import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import java.text.DateFormat;
 import java.util.List;
 
+/**
+ * <code>HistoryAdapter</code> provides a link between the database and UI display. Using the
+ * the available categories within the {@link Star} entity as a reference to make the columns
+ * (date and score) that are displayed when HistoryFragment is inflated for display for
+ * the user.
+ */
 public class HistoryAdapter extends ArrayAdapter<Star> {
 
-  DateFormat dateFormat;
-  String starIdFormat;
+  private DateFormat dateFormat;
 
   /**
    * <code>HistoryAdapter</code> provides a link between the database and UI display. Using the
    * the available categories within the {@link Star} entity as a reference to make the columns
-   * (date and score) that are displayed when {@link HistoryFragment} is inflated for display for
+   * (date and score) that are displayed when HistoryFragment is inflated for display for
    * the user.
    *
    * @param context access to the database
@@ -31,7 +36,7 @@ public class HistoryAdapter extends ArrayAdapter<Star> {
   public HistoryAdapter(@NonNull Context context, List<Star> items) {
     super(context, R.layout.history_item, items);
     dateFormat = android.text.format.DateFormat.getDateFormat(context);
-    starIdFormat = context.getString(R.string.star_format);
+    String starIdFormat = context.getString(R.string.star_format);
   }
 
 

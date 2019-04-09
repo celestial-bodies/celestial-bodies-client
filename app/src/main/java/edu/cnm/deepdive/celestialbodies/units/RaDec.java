@@ -14,9 +14,6 @@
 
 package edu.cnm.deepdive.celestialbodies.units;
 
-import edu.cnm.deepdive.celestialbodies.util.Geometry;
-import edu.cnm.deepdive.celestialbodies.util.MathUtil;
-
 /**
  * This class is used by the Celestial Bodies app.
  */
@@ -35,47 +32,6 @@ public class RaDec {
     sb.append("Dec: " + dec + " degrees\n");
     return sb.toString();
   }
-//
-//  public static RaDec calculateRaDecDist(HeliocentricCoordinates coords) {
-//    // find the RA and DEC from the rectangular equatorial coords
-//    float ra = Geometry.mod2pi(MathUtil.atan2(coords.y, coords.x)) * Geometry.RADIANS_TO_DEGREES;
-//    float dec = MathUtil.atan(coords.z / MathUtil.sqrt(coords.x * coords.x + coords.y * coords.y))
-//        * Geometry.RADIANS_TO_DEGREES;
-//
-//    return new RaDec(ra, dec);
-//  }
-//
-//  public static RaDec getInstance(Planet planet, Date time,
-//      HeliocentricCoordinates earthCoordinates) {
-//    // TODO(serafini): This is a temporary hack until we re-factor the Planetary calculations.
-//    if (planet.equals(Planet.Moon)) {
-//      return Planet.calculateLunarGeocentricLocation(time);
-//    }
-
-//    HeliocentricCoordinates coords = null;
-//    if (planet.equals(Planet.Sun)) {
-//      // Invert the view, since we want the Sun in earth coordinates, not the Earth in sun
-//      // coordinates.
-//      coords = new HeliocentricCoordinates(earthCoordinates.radius, earthCoordinates.x * -1.0f,
-//          earthCoordinates.y * -1.0f, earthCoordinates.z * -1.0f);
-//    } else {
-//      coords = HeliocentricCoordinates.getInstance(planet, time);
-//      coords.Subtract(earthCoordinates);
-//    }
-//    HeliocentricCoordinates equ = coords.CalculateEquatorialCoordinates();
-//    return calculateRaDecDist(equ);
-//  }
-
-  public static RaDec getInstance(GeocentricCoordinates coords) {
-    float raRad = MathUtil.atan2(coords.y, coords.x);
-    if (raRad < 0) raRad += MathUtil.TWO_PI;
-    float decRad = MathUtil.atan2(coords.z,
-        MathUtil.sqrt(coords.x * coords.x + coords.y * coords.y));
-
-    return new RaDec(raRad * Geometry.RADIANS_TO_DEGREES,
-        decRad * Geometry.RADIANS_TO_DEGREES);
-  }
-
 
   // This should be relatively easy to do. In the northern hemisphere,
   // objects never set if dec > 90 - lat and never rise if dec < lat -

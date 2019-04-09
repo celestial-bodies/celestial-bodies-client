@@ -31,9 +31,11 @@ import java.util.Date;
  */
 
 /**
- * This class is used by the Celestial Bodies app for necessary calculations for determining right ascension and declination.
+ * This class is used by the Celestial Bodies app for necessary calculations for determining right
+ * ascension and declination.
  */
 public class Geometry {
+
   // Convert Degrees to Radians
   public static final float DEGREES_TO_RADIANS = MathUtil.PI / 180.0f;
 
@@ -48,16 +50,16 @@ public class Geometry {
    */
   public static float abs_floor(float x) {
     float result;
-    if (x >= 0.0)
+    if (x >= 0.0) {
       result = MathUtil.floor(x);
-    else
+    } else {
       result = MathUtil.ceil(x);
+    }
     return result;
   }
 
   /**
-   * Returns the modulo the given value by 2\pi. Returns an angle in the range 0
-   * to 2\pi radians.
+   * Returns the modulo the given value by 2\pi. Returns an angle in the range 0 to 2\pi radians.
    */
   public static float mod2pi(float x) {
     float factor = x / MathUtil.TWO_PI;
@@ -82,13 +84,12 @@ public class Geometry {
    * Scales the vector by the given amount and returns a new vector.
    */
   public static Vector3 scaleVector(Vector3 v, float scale) {
-    return new Vector3 (scale * v.x, scale * v.y, scale * v.z);
+    return new Vector3(scale * v.x, scale * v.y, scale * v.z);
   }
 
   /**
    * Creates and returns a new Vector3 which is the sum of both arguments.
-   * @param first
-   * @param second
+   *
    * @return vector sum first + second
    */
   public static Vector3 addVectors(Vector3 first, Vector3 second) {
@@ -129,30 +130,29 @@ public class Geometry {
    * Multiply two 3X3 matrices m1 * m2.
    */
   public static Matrix33 matrixMultiply(Matrix33 m1, Matrix33 m2) {
-    return new Matrix33(m1.xx*m2.xx + m1.xy*m2.yx + m1.xz*m2.zx,
-        m1.xx*m2.xy + m1.xy*m2.yy + m1.xz*m2.zy,
-        m1.xx*m2.xz + m1.xy*m2.yz + m1.xz*m2.zz,
-        m1.yx*m2.xx + m1.yy*m2.yx + m1.yz*m2.zx,
-        m1.yx*m2.xy + m1.yy*m2.yy + m1.yz*m2.zy,
-        m1.yx*m2.xz + m1.yy*m2.yz + m1.yz*m2.zz,
-        m1.zx*m2.xx + m1.zy*m2.yx + m1.zz*m2.zx,
-        m1.zx*m2.xy + m1.zy*m2.yy + m1.zz*m2.zy,
-        m1.zx*m2.xz + m1.zy*m2.yz + m1.zz*m2.zz);
+    return new Matrix33(m1.xx * m2.xx + m1.xy * m2.yx + m1.xz * m2.zx,
+        m1.xx * m2.xy + m1.xy * m2.yy + m1.xz * m2.zy,
+        m1.xx * m2.xz + m1.xy * m2.yz + m1.xz * m2.zz,
+        m1.yx * m2.xx + m1.yy * m2.yx + m1.yz * m2.zx,
+        m1.yx * m2.xy + m1.yy * m2.yy + m1.yz * m2.zy,
+        m1.yx * m2.xz + m1.yy * m2.yz + m1.yz * m2.zz,
+        m1.zx * m2.xx + m1.zy * m2.yx + m1.zz * m2.zx,
+        m1.zx * m2.xy + m1.zy * m2.yy + m1.zz * m2.zy,
+        m1.zx * m2.xz + m1.zy * m2.yz + m1.zz * m2.zz);
   }
 
   /**
    * Calculate w = m * v where m is a 3X3 matrix and v a column vector.
    */
   public static Vector3 matrixVectorMultiply(Matrix33 m, Vector3 v) {
-    return new Vector3(m.xx*v.x + m.xy*v.y + m.xz*v.z,
-        m.yx*v.x + m.yy*v.y + m.yz*v.z,
-        m.zx*v.x + m.zy*v.y + m.zz*v.z);
+    return new Vector3(m.xx * v.x + m.xy * v.y + m.xz * v.z,
+        m.yx * v.x + m.yy * v.y + m.yz * v.z,
+        m.zx * v.x + m.zy * v.y + m.zz * v.z);
   }
 
   /**
-   * Calculate the rotation matrix for a certain number of degrees about the
-   * give axis.
-   * @param degrees
+   * Calculate the rotation matrix for a certain number of degrees about the give axis.
+   *
    * @param axis - must be a unit vector.
    */
   public static Matrix33 calculateRotationMatrix(float degrees, Vector3 axis) {

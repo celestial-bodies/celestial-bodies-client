@@ -14,14 +14,16 @@ package edu.cnm.deepdive.celestialbodies.util;
 // limitations under the License.
 
 /**
- * Methods for doing mathematical operations with floats.
- * This class is used by the Celestial Bodies app for necessary calculations for determining right ascension and declination.
-
+ * Methods for doing mathematical operations with floats. This class is used by the Celestial Bodies
+ * app for necessary calculations for determining right ascension and declination.
+ *
  * @author Brent Bryan
  */
 // TODO(jontayler): eliminate this class if we can eliminate floats.
 public class MathUtil {
-  private MathUtil() {}
+
+  private MathUtil() {
+  }
 
   public static final float PI = (float) Math.PI;
   public static final float TWO_PI = 2f * PI;
@@ -36,11 +38,11 @@ public class MathUtil {
     return (float) Math.sqrt(x);
   }
 
-  public static float floor(float x) {
+   static float floor(float x) {
     return (float) Math.floor(x);
   }
 
-  public static float ceil(float x) {
+   static float ceil(float x) {
     return (float) Math.ceil(x);
   }
 
@@ -81,7 +83,9 @@ public class MathUtil {
    * operation, it assumes x >=0 and that x < 2y.
    */
   public static float quickModulo(float x, float y) {
-    if (x > y) return x - y;
+    if (x > y) {
+      return x - y;
+    }
     return x;
   }
 

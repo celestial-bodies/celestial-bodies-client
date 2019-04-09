@@ -13,6 +13,12 @@ import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import java.text.DateFormat;
 import java.util.List;
 
+/**
+ * <code>InfoFragment</code> provides a link between the database and UI display. Using the
+ * the available categories within the {@link Star} entity as a reference to make the columns
+ * (date and score) that are displayed when InfoFragment is inflated for display for the
+ * user.
+ */
 
 public class InfoAdapter extends ArrayAdapter<Star> {
 
