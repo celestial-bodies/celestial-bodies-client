@@ -172,35 +172,38 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
         1000, TIME_CONSTANT);
 
     Button captureButton = view.findViewById(R.id.bn_capture);
-    captureButton.setOnClickListener(v -> {
+    captureButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
 
-      new ClearStarTableTask().execute();
+        new ClearStarTableTask().execute();
 
-      //      AstronomerModelImpl getDir = new AstronomerModelImpl(magneticDeclinationCalculator);
+        //      AstronomerModelImpl getDir = new AstronomerModelImpl(magneticDeclinationCalculator);
 
-      //      GeocentricCoordinates geocenCoord = new GeocentricCoordinates(
-      //          (float) (getX()), (float) getY(),
-      //          (float) getZ());
+        //      GeocentricCoordinates geocenCoord = new GeocentricCoordinates(
+        //          (float) (getX()), (float) getY(),
+        //          (float) getZ());
 
-      GeocentricCoordinates geocenCoord = new GeocentricCoordinates(-rotationMatrix[2],
-          -rotationMatrix[5], -rotationMatrix[8]);
+        GeocentricCoordinates geocenCoord = new GeocentricCoordinates(-rotationMatrix[2],
+            -rotationMatrix[5], -rotationMatrix[8]);
 
-      dec = geocenCoord.getDec();
-      ra = geocenCoord.getRa();
-      String decstring = "";
-      decstring += dec;
-      String raString = "";
-      raString += ra;
+        dec = geocenCoord.getDec();
+        ra = geocenCoord.getRa();
+        String decstring = "";
+        decstring += dec;
+        String raString = "";
+        raString += ra;
 
-      Map<String, String> imageMap = new HashMap<>();
-      imageMap.put("ra", raString);
-      imageMap.put("dec", decstring);
-      imageMap.put("angle", "45");
-      imageMap.put("max_stars", "25");
+        Map<String, String> imageMap = new HashMap<>();
+        imageMap.put("ra", raString);
+        imageMap.put("dec", decstring);
+        imageMap.put("angle", "45");
+        imageMap.put("max_stars", "25");
 
-      new GetImageTask().execute(imageMap);
-      new GetStarInfoTask().execute(imageMap);
+        new GetImageTask().execute(imageMap);
+        new GetStarInfoTask().execute(imageMap);
 
+      }
     });
 
     infoButton = view.findViewById(R.id.bn_info);

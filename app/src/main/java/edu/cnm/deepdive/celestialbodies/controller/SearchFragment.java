@@ -10,7 +10,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
@@ -66,7 +65,6 @@ public class SearchFragment extends Fragment {
     searchButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        Toast.makeText(getActivity(), "Search Started", Toast.LENGTH_LONG).show();
 
         final Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.search_dialog);
