@@ -30,6 +30,9 @@ import java.util.Date;
  * @author John Taylor
  */
 
+/**
+ * This class is used by the Celestial Bodies app for necessary calculations for determining right ascension and declination.
+ */
 public class Geometry {
   // Convert Degrees to Radians
   public static final float DEGREES_TO_RADIANS = MathUtil.PI / 180.0f;

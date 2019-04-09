@@ -10,10 +10,8 @@ import android.support.annotation.Nullable;
 import edu.cnm.deepdive.celestialbodies.CelestialApplication;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB.Converters;
 import edu.cnm.deepdive.celestialbodies.model.dao.StarDao;
-import edu.cnm.deepdive.celestialbodies.model.dao.StarDisplayDao;
 import edu.cnm.deepdive.celestialbodies.model.dao.UserDao;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
-import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
 import edu.cnm.deepdive.celestialbodies.model.entity.User;
 import java.util.Calendar;
 
@@ -22,7 +20,7 @@ import java.util.Calendar;
  * pattern implemented for app-wide use of a single connection, and declares methods to retrieve
  * data access objects (DAOs) for the database entities.
  */
-@Database(entities = {StarDisplay.class, User.class, Star.class},
+@Database(entities = { User.class, Star.class},
     version = 1,
     exportSchema = true)
 
@@ -40,12 +38,12 @@ public abstract class CelestialBodiesDB extends RoomDatabase {
     return InstanceHolder.INSTANCE;
   }
 
-  /**
-   * Returns an instance of a Room-generated implementation of {@link StarDisplayDao}.
-   *
-   * @return data access object for CRUD operations involving {@link StarDisplay} instances.
-   */
-  public abstract StarDisplayDao getStarDisplayDao();
+//  /**
+//   * Returns an instance of a Room-generated implementation of {@link StarDisplayDao}.
+//   *
+//   * @return data access object for CRUD operations involving {@link StarDisplay} instances.
+//   */
+//  public abstract StarDisplayDao getStarDisplayDao();
 
   /**
    * Returns an instance of a Room-generated implementation of {@link StarDao}.

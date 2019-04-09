@@ -15,7 +15,8 @@ package edu.cnm.deepdive.celestialbodies.util;
 
 /**
  * Methods for doing mathematical operations with floats.
- *
+ * This class is used by the Celestial Bodies app for necessary calculations for determining right ascension and declination.
+
  * @author Brent Bryan
  */
 // TODO(jontayler): eliminate this class if we can eliminate floats.

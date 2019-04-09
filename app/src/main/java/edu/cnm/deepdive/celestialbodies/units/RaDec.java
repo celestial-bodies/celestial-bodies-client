@@ -17,6 +17,9 @@ package edu.cnm.deepdive.celestialbodies.units;
 import edu.cnm.deepdive.celestialbodies.util.Geometry;
 import edu.cnm.deepdive.celestialbodies.util.MathUtil;
 
+/**
+ * This class is used by the Celestial Bodies app.
+ */
 public class RaDec {
   public float ra;        // In degrees
   public float dec;       // In degrees

@@ -117,10 +117,18 @@ public class StarDetail {
   @Expose
   private Double varMax;
 
+  /**
+   *
+   * @return
+   */
   public Integer getId() {
     return id;
   }
 
+  /**
+   *
+   * @param id
+   */
   public void setId(Integer id) {
     this.id = id;
   }

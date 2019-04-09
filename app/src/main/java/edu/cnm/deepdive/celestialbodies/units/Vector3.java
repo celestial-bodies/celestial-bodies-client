@@ -16,6 +16,9 @@ package edu.cnm.deepdive.celestialbodies.units;
 
 import edu.cnm.deepdive.celestialbodies.util.MathUtil;
 
+/**
+ * This class is made us of by the Celestial Bodies app for determining right ascension and declination via its vector methods.
+ */
 public class Vector3 {
 
   public float x;

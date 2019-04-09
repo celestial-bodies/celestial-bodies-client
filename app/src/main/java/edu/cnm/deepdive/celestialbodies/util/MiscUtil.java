@@ -17,17 +17,23 @@ package edu.cnm.deepdive.celestialbodies.util;
 import edu.cnm.deepdive.celestialbodies.service.ApplicationConstants;
 
 /**
- * A collection of miscellaneous utility functions.
+ * A collection of miscellaneous utility functions. This class is used by the Celestial Bodies app
+ * for necessary calculations for determining right ascension and declination.
  *
  * @author Brent Bryan
  */
-public class MiscUtil {
-  private MiscUtil() {}
 
-  /** Returns the Tag for a class to be used in Android logging statements */
+public class MiscUtil {
+
+  private MiscUtil() {
+  }
+
+  /**
+   * Returns the Tag for a class to be used in Android logging statements
+   */
   public static String getTag(Object o) {
     if (o instanceof Class<?>) {
-      return ApplicationConstants.APP_NAME + "." + ((Class<?>)o).getSimpleName();
+      return ApplicationConstants.APP_NAME + "." + ((Class<?>) o).getSimpleName();
     }
     return ApplicationConstants.APP_NAME + "." + o.getClass().getSimpleName();
   }
