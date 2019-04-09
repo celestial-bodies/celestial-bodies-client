@@ -63,5 +63,6 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 ### Celestial Bodies License
  
  All Rights Reserved by Celestial Bodies
+ 
  [Celestial Bodies License](/docs/LICENSE.md)
 
