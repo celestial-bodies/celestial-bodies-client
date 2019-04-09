@@ -9,7 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
@@ -33,6 +35,7 @@ public class HistoryFragment extends Fragment {
 
   private List<Star> starsList;
   private HistoryAdapter adapter;
+  private Button cancelHistory;
 
   /**
    * <code>onCreateView</code> loads and displays the layout for {@link HistoryFragment} by
@@ -66,7 +69,18 @@ public class HistoryFragment extends Fragment {
 
     adapter = new HistoryAdapter(Objects.requireNonNull(getContext()), starsList);
     listView.setAdapter(adapter);
+    cancelHistory = view.findViewById(R.id.cancel_history);
+    cancelHistory.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
 
+        Fragment fragment = getFragmentManager().findFragmentByTag("HistoryFragment");
+        if (fragment != null) {
+          getFragmentManager().beginTransaction().remove(fragment).commit();
+        }
+
+      }
+    });
     new StarQueryTask().execute();
     return view;
   }
@@ -78,8 +92,7 @@ public class HistoryFragment extends Fragment {
   /**
    * <code>StarQueryTask</code> takes a query of the local database and displays the scores in
    * descending order by date. The categories are provided by the entity classes {@link Star}
-   * and {@link}. The query method is provided by
-   * {@link StarDao}.
+   * and {@link}. The query method is provided by.
    */
   @SuppressLint("StaticFieldLeak")
   private class StarQueryTask extends AsyncTask<Void, Void, List<Star>> {

@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import edu.cnm.deepdive.celestialbodies.CelestialApplication;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB.Converters;
 import edu.cnm.deepdive.celestialbodies.model.dao.StarDao;
-import edu.cnm.deepdive.celestialbodies.model.dao.StarDisplayDao;
 import edu.cnm.deepdive.celestialbodies.model.dao.UserDao;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
@@ -40,7 +39,7 @@ public abstract class CelestialBodiesDB extends RoomDatabase {
    *
    * @return data access object for CRUD operations involving {@zaryn927 Consumption} instances.
    */
-  public abstract StarDisplayDao getStarDisplayDao();
+  //public abstract StarDisplayDao getStarDisplayDao();
 
   public abstract StarDao getStarDao();
 

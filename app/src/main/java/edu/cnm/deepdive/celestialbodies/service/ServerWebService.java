@@ -21,10 +21,13 @@ public interface ServerWebService {
       @Query("hdid") long hdid);
 
   //Url for emulator to local server: 10.0.2.2
-
+  public static ServerWebService getINSTANCE() {
+    return InstanceHolder.INSTANCE;
+  }
   class InstanceHolder {
 
-    public static final ServerWebService INSTANCE;
+
+    private static final ServerWebService INSTANCE;
 
     static {
       Retrofit retrofit = new Retrofit.Builder()
