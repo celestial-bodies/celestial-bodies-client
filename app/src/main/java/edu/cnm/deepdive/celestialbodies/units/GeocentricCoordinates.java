@@ -19,7 +19,7 @@ import edu.cnm.deepdive.celestialbodies.util.MathUtil;
 /**
  * This class corresponds to an object's location in Euclidean space
  * when it is projected onto a unit sphere (with the Earth at the
- * center). This class contains two public methods not commented by the author.
+ * center). This class contains two public methods not commented by the author.  This class is made use of by the app Celestial Bodies for the purpose of determining the right ascension and declination toward which the mobile phone is pointing.
  *
  * @author Brent Bryan
  */
