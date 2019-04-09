@@ -92,16 +92,20 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ## Potential Future of Celestial Bodies
 
+As this application progresses in development, the focuse will start to implement a cummunit based functionality. Users will be able to make a uer profile, coneect with friends and other star gazers. User
 
 ### Goals
 
 ### User Interface Improvements
++ 
 
 ## Design Documentation
 
 + [Wireframe](docs/Celestial_Bodies_WireFrame_1_1.pdf)
 
 + [User Stories](docs/User_Stories.md)
+
++ [DDL](docs/ddl.md)
 
 ## Javadoc Page
 
