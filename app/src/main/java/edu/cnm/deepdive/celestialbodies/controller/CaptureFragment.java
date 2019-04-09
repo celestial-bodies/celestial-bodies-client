@@ -102,27 +102,6 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
   };
 
   @Override
-  public void onStop() {
-    super.onStop();
-    // unregister sensor listeners to prevent the activity from draining the device's battery.
-    mSensorManager.unregisterListener(this);
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-    // unregister sensor listeners to prevent the activity from draining the device's battery.
-    mSensorManager.unregisterListener(this);
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    // restore the sensor listeners when user resumes the application.
-    initListeners();
-  }
-
-  @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
@@ -246,27 +225,6 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
 
   @Override
   public void onAccuracyChanged(Sensor sensor, int accuracy) {
-  }
-
-  @Override
-  public void onSensorChanged(SensorEvent event) {
-    switch (event.sensor.getType()) {
-      case Sensor.TYPE_ACCELEROMETER:
-        // copy new accelerometer data into accel array and calculate orientation
-        System.arraycopy(event.values, 0, accel, 0, 3);
-        calculateAccMagOrientation();
-        break;
-
-      case Sensor.TYPE_GYROSCOPE:
-        // process gyro data
-        gyroFunction(event);
-        break;
-
-      case Sensor.TYPE_MAGNETIC_FIELD:
-        // copy new magnetometer data into magnet array
-        System.arraycopy(event.values, 0, magnet, 0, 3);
-        break;
-    }
   }
 
   // calculates orientation angles from accelerometer and magnetometer output
