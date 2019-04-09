@@ -19,7 +19,7 @@ import edu.cnm.deepdive.celestialbodies.util.MathUtil;
 /**
  * This class corresponds to an object's location in Euclidean space
  * when it is projected onto a unit sphere (with the Earth at the
- * center).
+ * center). This class contains two public methods not commented by the author.
  *
  * @author Brent Bryan
  */

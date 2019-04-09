@@ -17,6 +17,9 @@ package edu.cnm.deepdive.celestialbodies.units;
 import edu.cnm.deepdive.celestialbodies.util.Geometry;
 import edu.cnm.deepdive.celestialbodies.util.MathUtil;
 
+/**
+ * This class is used by the Celestial Bodies app.
+ */
 public class RaDec {
   public float ra;        // In degrees
   public float dec;       // In degrees
@@ -32,15 +35,15 @@ public class RaDec {
     sb.append("Dec: " + dec + " degrees\n");
     return sb.toString();
   }
-
-  public static RaDec calculateRaDecDist(HeliocentricCoordinates coords) {
-    // find the RA and DEC from the rectangular equatorial coords
-    float ra = Geometry.mod2pi(MathUtil.atan2(coords.y, coords.x)) * Geometry.RADIANS_TO_DEGREES;
-    float dec = MathUtil.atan(coords.z / MathUtil.sqrt(coords.x * coords.x + coords.y * coords.y))
-        * Geometry.RADIANS_TO_DEGREES;
-
-    return new RaDec(ra, dec);
-  }
+//
+//  public static RaDec calculateRaDecDist(HeliocentricCoordinates coords) {
+//    // find the RA and DEC from the rectangular equatorial coords
+//    float ra = Geometry.mod2pi(MathUtil.atan2(coords.y, coords.x)) * Geometry.RADIANS_TO_DEGREES;
+//    float dec = MathUtil.atan(coords.z / MathUtil.sqrt(coords.x * coords.x + coords.y * coords.y))
+//        * Geometry.RADIANS_TO_DEGREES;
+//
+//    return new RaDec(ra, dec);
+//  }
 //
 //  public static RaDec getInstance(Planet planet, Date time,
 //      HeliocentricCoordinates earthCoordinates) {

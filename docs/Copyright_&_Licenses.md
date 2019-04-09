@@ -2,12 +2,22 @@
 
 ## WikiSky
 
+WikiSky is a wiki and interactive sky map that covers more than half a billion celestial objects. Users can view the whole star sky at once and zoom in to view areas in greater detail. WikiSky includes many stars, galaxies, constellations, and planets, but it is still in development. Users can also edit information about different stars by writing articles, adding Internet links, uploading images, or create a special interest group for a specific task.
+
+Wikisky image copyrights
+Some images from Wikisky, such as Digitized Sky Survey (DSS2) are "non-commercial use". The DSS datarights are held by multiple institutions. Sloan Digital Sky Survey (SDSS) images are now public domain, although earlier data releases were for non-commercial use only
+
++ [Digitized Sky Survey (DDS) Copyright](https://web.archive.org/web/20080909112611/http://wikisky.org/wiki/Copyright_-_DSS2_images)
++ [Data Copyrights](http://gsss.stsci.edu/Acknowledgements/DataCopyrights.htm)
++ [Image Use Policy](https://www.sdss.org/collaboration/image-use-policy/)
+
+
 ## HYG Star Database
 
 HYG Star Database provided and managed 100,000+ star database that was used in our backend server.
 This data set is licensed by a Creative Commons Attribution-ShareAlike license. For more details, read the Creative Commons page.
 
-[Creative Commons Licenses](https://creativecommons.org/licenses/by-sa/2.5/)
++ [Creative Commons Licenses](https://creativecommons.org/licenses/by-sa/2.5/)
 
 
 
@@ -21,7 +31,7 @@ You may obtain a copy of the License at
  
  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License
  
- ## Retrofit
+## Retrofit
  
   Copyright 2013 Square, Inc.
 Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at
@@ -29,15 +39,6 @@ Licensed under the Apache License, Version 2.0 (the “License”); you may not 
   [www.apache.org/licenses/LICENSE-2.0](www.apache.org/licenses/LICENSE-2.0)
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-## Deep Dive Coding Android Utilities
-
-Copyright 2019 Nicholas Bennett & Deep Dive Coding
-Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-  www.apache.org/licenses/LICENSE-2.0
-  
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License
 
 ## Stetho
 
@@ -51,5 +52,8 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### Celestial Bodies License
-
+ 
+ All Rights Reserved by Celestial Bodies
+ 
+ [Celestial Bodies License](/docs/LICENSE.md)
 

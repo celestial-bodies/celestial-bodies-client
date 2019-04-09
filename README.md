@@ -36,34 +36,51 @@ Celestial Bodies is close to being complete, the user is able to point their dev
 
 ### Known Issues/Bugs
 
-+ App crashes if there is a duplicate star within a search.
++ Currently having issues with connecting to backend server, search and info hard coded.
 
 ## Android API Version and Hardware
 
 for this application the following were used to test UI and function.
 + Andrid API 27
 + Nexus 5x emulator
++ Samsung Galaxy Note 9
++ HTC One M9
++ Galaxy J7 Sky Pro
 
 ## Third Party Libraries
 
 + [Retrofit](https://square.github.io/retrofit/) (includes OkHttp and Retrofit)
 
-  Retrofit is designed to establish and perform requests to CoolClimate API web service.
+  Retrofit is designed to establish and perform requests to WikiSky API web service.
   
 + [Stetho](https://github.com/facebook/stetho/blob/master/README.md)
 
   Stetho is a developmental tool that examines the local display resources and database contents.
 
 + [Deep Dive Android Utilities](https://github.com/deep-dive-coding-java/android-utilities/blob/master/README.md)
+    This repository contains utility classes (currently 2 of them) that simplify the use of some important Android features in          application code.
 
-+ Room
++ [Room](https://developer.android.com/jetpack/androidx/releases/room)
+    
+    Room provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.
+
++ [Sensor-fusion](https://bitbucket.org/apacha/sensor-fusion-demo)
+
+  Sensor-fusion is a publicly-available demo that allows the user to access their phone's gyroscope and/or accelerometer in order to map out its spatial orientation.
 
 ## External Services
+This app accesses has the HYG star database pre-loaded as well accesses the Wikisky API.
 
 ### WikiSky
 
 WikiSky provided the ability information and the ability to search for stars.
 + [WikiSky.org](http://www.wikisky.org/)
+
++ [WikiSky API](http://server7.wikisky.org/api?locale=EN)
+
++ [WikiSky XML Documentation](http://server7.wikisky.org/XML_API_V1.0.html)
+
++ [WikiSky Image Genenerator Documentation](http://server7.wikisky.org/ImageGenerator_1.0.html)
 
 ### HYG Database
 
@@ -75,18 +92,46 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ## Potential Future of Celestial Bodies
 
+As this application progresses in development, the focuse will start to implement a community based functionality. Users will be able to make a user profile, coneect with friends and other star gazers. The user would be able to share their location and objects they have searched or captures.  User should be able to retrieve more infomation from the dashboard in the form of categories; i.e. planets, stars, comets. 
+
 ### Goals
+
++ Implement system to allow users to access camera to be able to see where and which star they are pointing their device.
++ Enable search to query stars from the back end server.
++ Find common names for stars to implement method for front end star names to match up with back end stars.
++ Enable sharing between Celestial Bodies users.
++ Dashboard should retrieve information about the categories that are presented.
 
 ### User Interface Improvements
 
++ Display category items and clickable items from dashboard.
++ Make sure captured star image displays full screen.
++ Implement fucntion using camera as a way to let users see where they are pointing their phone.
+
 ## Design Documentation
+
++ [Wireframe](docs/Celestial_Bodies_WireFrame_1_1.pdf)
+
++ [User Stories](docs/User_Stories.md)
+
++ [DDL](docs/ddl.md)
+
++ [ERD](docs/ERD_frontend.pdf)
 
 ## Javadoc Page
 
 ## Licenses/Copyright
+[Copyright & Licenses](/docs/Copyright_&_Licenses.md)
 
-## Instructions for Building Celestrial Bodies
+## Instructions for Building Celestial Bodies
 
-## Instructions for Using Celestial Bodies
+[Build Instructions](docs/Build_Instructions.md)
+
+# Instructions for Using Celestial Bodies
+
+[User Instructions](docs/Using_Celestial_Bodies.md)
+
 
 ## Celestial Bodies, All Rights Reserved
+
+[Celestial Bodies License](/docs/LICENSE.md)

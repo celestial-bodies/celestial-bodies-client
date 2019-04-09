@@ -13,6 +13,7 @@ import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import java.text.DateFormat;
 import java.util.List;
 
+
 public class InfoAdapter extends ArrayAdapter<Star> {
 
   DateFormat dateFormat2;
@@ -59,18 +60,5 @@ public class InfoAdapter extends ArrayAdapter<Star> {
 
     return view;
   }
-
-//  @Nullable
-//  @TypeConverter
-//  public static Calendar calendarFromLong(@Nullable Long milliseconds) {
-//    if (milliseconds != null) {
-//      Calendar calendar = Calendar.getInstance();
-//      calendar.setTimeInMillis(milliseconds);
-//      return calendar;
-//    }
-//    return null;
-//
-//
-//  }
 
 }

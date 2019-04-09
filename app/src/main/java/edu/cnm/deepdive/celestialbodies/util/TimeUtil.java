@@ -19,27 +19,30 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /**
- * Utilities for working with Dates and times.
+ * Utilities for working with Dates and times. This class is used by the Celestial Bodies app for
+ * necessary calculations for determining right ascension and declination.
  *
  * @author Kevin Serafini
  * @author Brent Bryan
  */
 public class TimeUtil {
-  private TimeUtil() {}
+
+  private TimeUtil() {
+  }
+
   /**
-   * Calculate the number of Julian Centuries from the epoch 2000.0
-   * (equivalent to Julian Day 2451545.0).
+   * Calculate the number of Julian Centuries from the epoch 2000.0 (equivalent to Julian Day
+   * 2451545.0).
    */
   public static double julianCenturies(Date date) {
     double jd = calculateJulianDay(date);
     double delta = jd - 2451545.0;
-    return delta/36525.0;
+    return delta / 36525.0;
   }
 
   /**
-   * Calculate the Julian Day for a given date using the following formula:
-   * JD = 367 * Y - INT(7 * (Y + INT((M + 9)/12))/4) + INT(275 * M / 9)
-   *      + D + 1721013.5 + UT/24
+   * Calculate the Julian Day for a given date using the following formula: JD = 367 * Y - INT(7 *
+   * (Y + INT((M + 9)/12))/4) + INT(275 * M / 9) + D + 1721013.5 + UT/24
    *
    * Note that this is only valid for the year range 1900 - 2099.
    */
@@ -48,32 +51,31 @@ public class TimeUtil {
     cal.setTime(date);
 
     double hour = cal.get(Calendar.HOUR_OF_DAY)
-        + cal.get(Calendar.MINUTE)/60.0f
-        + cal.get(Calendar.SECOND)/3600.0f;
+        + cal.get(Calendar.MINUTE) / 60.0f
+        + cal.get(Calendar.SECOND) / 3600.0f;
 
     int year = cal.get(Calendar.YEAR);
     int month = cal.get(Calendar.MONTH) + 1;
     int day = cal.get(Calendar.DAY_OF_MONTH);
 
     double jd = 367.0 * year - Math.floor(7.0 * (year
-                    + Math.floor((month + 9.0) / 12.0)) / 4.0)
-                + Math.floor(275.0 * month / 9.0) + day
-                + 1721013.5 + hour/24.0;
+        + Math.floor((month + 9.0) / 12.0)) / 4.0)
+        + Math.floor(275.0 * month / 9.0) + day
+        + 1721013.5 + hour / 24.0;
     return jd;
   }
-  
+
   /**
-   * Convert the given Julian Day to Gregorian Date (in UT time zone).
-   * Based on the formula given in the Explanitory Supplement to the
-   * Astronomical Almanac, pg 604.
+   * Convert the given Julian Day to Gregorian Date (in UT time zone). Based on the formula given in
+   * the Explanitory Supplement to the Astronomical Almanac, pg 604.
    */
-public static Date calculateGregorianDate(double jd) {
+  public static Date calculateGregorianDate(double jd) {
     int l = (int) jd + 68569;
     int n = (4 * l) / 146097;
     l = l - (146097 * n + 3) / 4;
     int i = (4000 * (l + 1)) / 1461001;
     l = l - (1461 * i) / 4 + 31;
-    int j =(80 * l) / 2447;
+    int j = (80 * l) / 2447;
     int d = l - (2447 * j) / 80;
     l = j / 11;
     int m = j + 2 - 12 * l;
@@ -92,8 +94,8 @@ public static Date calculateGregorianDate(double jd) {
   }
 
   /**
-   * Calculate local mean sidereal time in degrees. Note that longitude is
-   * negative for western longitude values.
+   * Calculate local mean sidereal time in degrees. Note that longitude is negative for western
+   * longitude values.
    */
   public static float meanSiderealTime(Date date, float longitude) {
     // First, calculate number of Julian days since J2000.0.
@@ -112,7 +114,9 @@ public static Date calculateGregorianDate(double jd) {
    */
   public static double normalizeAngle(double angle) {
     double remainder = angle % 360;
-    if (remainder < 0) remainder += 360;
+    if (remainder < 0) {
+      remainder += 360;
+    }
     return remainder;
   }
 
@@ -121,14 +125,15 @@ public static Date calculateGregorianDate(double jd) {
    */
   public static double normalizeHours(double time) {
     double remainder = time % 24;
-    if (remainder < 0) remainder += 24;
+    if (remainder < 0) {
+      remainder += 24;
+    }
     return remainder;
   }
 
   /**
-   * Take a universal time between 0 and 24 and return a triple
-   * [hours, minutes, seconds].
-   * 
+   * Take a universal time between 0 and 24 and return a triple [hours, minutes, seconds].
+   *
    * @param ut Universal time - presumed to be between 0 and 24.
    * @return [hours, minutes, seconds]
    */

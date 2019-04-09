@@ -22,31 +22,18 @@ import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 public class SearchFragment extends Fragment {
 
 
-
   private OnFragmentInteractionListener mListener;
 
   public SearchFragment() {
     // Required empty public constructor
   }
 
-
-
-//  @Override
-//  public void onCreate(Bundle savedInstanceState) {
-//    super.onCreate(savedInstanceState);
-//    if (getArguments() != null) {
-//      mParam1 = getArguments().getString(ARG_PARAM1);
-//      mParam2 = getArguments().getString(ARG_PARAM2);
-//    }
-//  }
-
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-  View view = inflater.inflate(R.layout.fragment_search, container, false);
+    View view = inflater.inflate(R.layout.fragment_search, container, false);
     Button searchButton = view.findViewById(R.id.search_button);
-    Button exitButton = view.findViewById(R.id.navigation_search);
 
     searchButton.setOnClickListener(new OnClickListener() {
       @Override
@@ -77,18 +64,7 @@ public class SearchFragment extends Fragment {
     });
 
 
-//    exitButton.setOnClickListener(new OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        MainActivity mainActivity = new MainActivity();
-//        assert SearchFragment.this.getFragmentManager() != null;
-//        SearchFragment.this.getFragmentManager().beginTransaction()
-//            .replace(R.id.fragment_container,  )
-//            .commit();
-//      }
-//    });
-
-  return view;
+    return view;
 
   }
 
@@ -105,17 +81,13 @@ public class SearchFragment extends Fragment {
 
   }
 
-  public class StarGetter extends GetFromWikiSkyTask{
+  public class StarGetter extends GetFromWikiSkyTask {
 
     @Override
     protected void onPostExecute(StarResponse starResponse) {
       //Star[] stars = starResponse.getStar();
     }
   }
-
-
-
-
 
 
   /**

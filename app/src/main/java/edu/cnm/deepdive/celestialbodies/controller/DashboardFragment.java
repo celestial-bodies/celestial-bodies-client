@@ -19,10 +19,6 @@ public class DashboardFragment extends Fragment {
 
   private OnFragmentInteractionListener mListener;
 
-  public DashboardFragment() {
-    // Required empty public constructor
-  }
-
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -33,7 +29,7 @@ public class DashboardFragment extends Fragment {
 
   }
 
-  // TODO: Rename method, update argument and hook method into UI event
+  // TODO what will this method be used for?
   public void onButtonPressed(Uri uri) {
     if (mListener != null) {
       mListener.onFragmentInteraction(uri);
@@ -57,7 +53,6 @@ public class DashboardFragment extends Fragment {
    */
   public interface OnFragmentInteractionListener {
 
-    // TODO: Update argument type and name
     void onFragmentInteraction(Uri uri);
   }
 }

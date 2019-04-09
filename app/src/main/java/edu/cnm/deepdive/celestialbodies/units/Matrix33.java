@@ -16,7 +16,7 @@ package edu.cnm.deepdive.celestialbodies.units;
 
 /**
  * Class for representing a 3x3 matrix explicitly, avoiding heap
- * allocation as far as possible.
+ * allocation as far as possible. This class is made use of by the Celestial Bodies app.
  *
  * @author Dominic Widdows
  */

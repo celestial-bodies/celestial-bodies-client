@@ -30,8 +30,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+//import android.widget.ArrayAdapter;
+
 /**
- * A simple {@link Fragment} subclass.
+ * Populates a {@link android.webkit.WebView} with a list of detailed information about a star
+ * chosen from a history list of stars which was formed when the user pressed the capture button,
+ * see {@link CaptureFragment}. The star is chosen by clicking on the list of stars at which point
+ * the server databae is queried for the relevant star's information.
  */
 public class InfoFragment extends Fragment {
 
@@ -41,7 +46,7 @@ public class InfoFragment extends Fragment {
   private List<Star> starsList2;
   private InfoAdapter adapter2;
 
-
+  @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
 
       @Nullable Bundle savedInstanceState) {
@@ -61,8 +66,8 @@ public class InfoFragment extends Fragment {
     listView.setAdapter(adapter2);
 
 //
-    //adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList);
-    //listView.setAdapter(adapter);
+//    adapter2 = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, starList2);
+//    listView.setAdapter(adapter2);
 
     //Create a listener for the listitems to get details
     listView.setOnItemClickListener(new OnItemClickListener() {
@@ -97,7 +102,7 @@ public class InfoFragment extends Fragment {
 
 
     new InfoQueryTask().execute();
-        return view;
+    return view;
   }
 
 
@@ -151,4 +156,3 @@ public class InfoFragment extends Fragment {
     }
   }
 }
-

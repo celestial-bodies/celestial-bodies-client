@@ -58,17 +58,4 @@ public class HistoryAdapter extends ArrayAdapter<Star> {
     return view;
   }
 
-//  @Nullable
-//  @TypeConverter
-//  public static Calendar calendarFromLong(@Nullable Long milliseconds) {
-//    if (milliseconds != null) {
-//      Calendar calendar = Calendar.getInstance();
-//      calendar.setTimeInMillis(milliseconds);
-//      return calendar;
-//    }
-//    return null;
-//
-//
-//  }
-
 }

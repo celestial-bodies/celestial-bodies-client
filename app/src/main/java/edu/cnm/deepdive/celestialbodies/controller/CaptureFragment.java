@@ -18,13 +18,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 import edu.cnm.deepdive.celestialbodies.R;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB;
+import edu.cnm.deepdive.celestialbodies.model.entity.Star;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.GetImageFromWikiSkyTask;
 import edu.cnm.deepdive.celestialbodies.service.DisplayWebService.StarResponse;
 import edu.cnm.deepdive.celestialbodies.units.GeocentricCoordinates;
-import edu.cnm.deepdive.celestialbodies.units.LatLong;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -32,9 +33,9 @@ import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
- * {@link CaptureFragment} interface to handle interaction events.
- *
- * fragment.
+ * {@link CaptureFragment} interface to handle interaction events. Populates a {@link
+ * android.webkit.WebView} with the image of the {@link Star} instance for the for the selected
+ * portion of the sky retrieved from the WikiSky web service.
  */
 public class CaptureFragment extends Fragment implements SensorEventListener {
 
@@ -81,9 +82,6 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
   private Button captureButton;
   private Button infoButton;
 
-  public CaptureFragment() {
-    // Required empty public constructor
-  }
   private float dec;
   private float ra;
 
@@ -97,18 +95,6 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
     View view = inflater
         .inflate(R.layout.fragment_capture, container, false);
     wikiImage = view.findViewById(R.id.wiki_image);
-    //
-    //    MagneticDeclinationCalculator magneticDeclinationCalculator = new MagneticDeclinationCalculator() {
-    //      @Override
-    //      public float getDeclination() {
-    //        return 0;
-    //      }
-    //
-    //      @Override
-    //      public void setLocationAndTime(LatLong location, long timeInMillis) {
-    //
-    //      }
-    //    };
 
     gyroOrientation[0] = 0.0f;
     gyroOrientation[1] = 0.0f;
@@ -472,14 +458,14 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
     @Override
     protected void onPostExecute(Bitmap bitmap) {
       wikiImage.setImageBitmap(bitmap);
-
     }
   }
 
   class GetStarInfoTask extends GetFromWikiSkyTask {
 
     @Override
-    protected StarResponse doInBackground(Map<String, String>... params) {
+    @SafeVarargs
+    protected final StarResponse doInBackground(Map<String, String>... params) {
       StarResponse starResponse = super.doInBackground(params);
       if (starResponse.getStar() != null) {
         CelestialBodiesDB.getInstance().getStarDao().insert(starResponse.getStar());
@@ -488,7 +474,7 @@ public class CaptureFragment extends Fragment implements SensorEventListener {
     }
   }
 
-  class ClearStarTableTask extends AsyncTask<Void, Void, Void> {
+  static class ClearStarTableTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {

@@ -10,14 +10,17 @@ import android.support.annotation.Nullable;
 import edu.cnm.deepdive.celestialbodies.CelestialApplication;
 import edu.cnm.deepdive.celestialbodies.model.CelestialBodiesDB.Converters;
 import edu.cnm.deepdive.celestialbodies.model.dao.StarDao;
-import edu.cnm.deepdive.celestialbodies.model.dao.StarDisplayDao;
 import edu.cnm.deepdive.celestialbodies.model.dao.UserDao;
 import edu.cnm.deepdive.celestialbodies.model.entity.Star;
-import edu.cnm.deepdive.celestialbodies.model.entity.StarDisplay;
 import edu.cnm.deepdive.celestialbodies.model.entity.User;
 import java.util.Calendar;
 
-@Database(entities = {StarDisplay.class, User.class, Star.class},
+/**
+ * Defines the local database as a collection of its entities and converters, with the singleton
+ * pattern implemented for app-wide use of a single connection, and declares methods to retrieve
+ * data access objects (DAOs) for the database entities.
+ */
+@Database(entities = { User.class, Star.class},
     version = 1,
     exportSchema = true)
 
@@ -27,23 +30,33 @@ public abstract class CelestialBodiesDB extends RoomDatabase {
   private static final String DB_NAME = "celestial_bodies_db";
 
   /**
-   * Returns the single instance of {@zaryn927 ConsumptionDao} for the current application context.
+   * Returns the single instance of {@link CelestialBodiesDB} for the current application context.
    *
-   * @return single {@zaryn927 ConsumptionDao} instance reference.
+   * @return single {@link CelestialBodiesDB} instance reference.
    */
   public synchronized static CelestialBodiesDB getInstance() {
     return InstanceHolder.INSTANCE;
   }
 
-  /**
-   * Returns an instance of a Room-generated implementation of {@zaryn927 ConsumptionDao}.
-   *
-   * @return data access object for CRUD operations involving {@zaryn927 Consumption} instances.
-   */
-  public abstract StarDisplayDao getStarDisplayDao();
+//  /**
+//   * Returns an instance of a Room-generated implementation of {@link StarDisplayDao}.
+//   *
+//   * @return data access object for CRUD operations involving {@link StarDisplay} instances.
+//   */
+//  public abstract StarDisplayDao getStarDisplayDao();
 
+  /**
+   * Returns an instance of a Room-generated implementation of {@link StarDao}.
+   *
+   * @return data access object for CRUD operations involving {@link Star} instances.
+   */
   public abstract StarDao getStarDao();
 
+  /**
+   * Returns an instance of a Room-generated implementation of {@link UserDao}.
+   *
+   * @return data access object for CRUD operations involving {@link User} instances.
+   */
   public abstract UserDao getUserDao();
 
   private static class InstanceHolder {
@@ -55,6 +68,10 @@ public abstract class CelestialBodiesDB extends RoomDatabase {
 
   }
 
+  /**
+   * Supports conversion operations for persistence of relevant types not natively supported by
+   * Room/SQLite.
+   */
   public static class Converters {
 
 
@@ -65,7 +82,6 @@ public abstract class CelestialBodiesDB extends RoomDatabase {
      * @param milliseconds date-time as a number of milliseconds since the start of the Unix epoch.
      * @return date-time as a {@link Calendar} instance.
      */
-
     @Nullable
     @TypeConverter
     public static Calendar calendarFromLong(@Nullable Long milliseconds) {
