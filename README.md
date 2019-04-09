@@ -43,6 +43,9 @@ Celestial Bodies is close to being complete, the user is able to point their dev
 for this application the following were used to test UI and function.
 + Andrid API 27
 + Nexus 5x emulator
++ Samsung Galaxy Note 9
++ HTC One M9
++ Galaxy J7 Sky Pro
 
 ## Third Party Libraries
 
@@ -71,7 +74,11 @@ This app accesses has the HYG star database pre-loaded as well accesses the Wiki
 WikiSky provided the ability information and the ability to search for stars.
 + [WikiSky.org](http://www.wikisky.org/)
 
-+ [Wikisy XML API](http://server3.wikisky.org/XML_API_V1.0.html)
++ [WikiSky API](http://server7.wikisky.org/api?locale=EN)
+
++ [WikiSky XML Documentation](http://server7.wikisky.org/XML_API_V1.0.html)
+
++ [WikiSky Image Genenerator Documentation](http://server7.wikisky.org/ImageGenerator_1.0.html)
 
 ### HYG Database
 
@@ -90,7 +97,7 @@ HYG Star Database provided and managed 100,000+ star database that was used for 
 
 ## Design Documentation
 
-+ [Wireframe]
++ [Wireframe](/docs/Celestial Bodies WireFrame 1.1.pdf)
 
 + [User Stories](docs/User_Stories.md)
 
