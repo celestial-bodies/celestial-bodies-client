@@ -133,4 +133,4 @@ As this application progresses in development, the focuse will start to implemen
 
 ## Celestial Bodies, All Rights Reserved
 
-[Celestial Bodies License](docs/LICENSE.md)
+[Celestial Bodies License](/LICENSE.md)
