@@ -1,0 +1,9 @@
+edu.cnm.deepdive.celestialbodies
+edu.cnm.deepdive.celestialbodies.controller
+edu.cnm.deepdive.celestialbodies.model
+edu.cnm.deepdive.celestialbodies.model.dao
+edu.cnm.deepdive.celestialbodies.model.entity
+edu.cnm.deepdive.celestialbodies.service
+edu.cnm.deepdive.celestialbodies.units
+edu.cnm.deepdive.celestialbodies.util
+edu.cnm.deepdive.celestialbodies.view

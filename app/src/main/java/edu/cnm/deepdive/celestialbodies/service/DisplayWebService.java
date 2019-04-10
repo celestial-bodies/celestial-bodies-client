@@ -18,7 +18,7 @@ import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
 /**
- * Declares the {@link #get(String, String)} Retrofit service method () for communicating with the
+ * Declares the Retrofit service method () for communicating with the
  * WikiSky web service, and defines nested classes in support of making these requests and
  * deserializing the JSON data returned.
  */
@@ -26,12 +26,6 @@ public interface DisplayWebService {
 
   /**
    * Note that the implementation of this method is completed by Retrofit.
-   *
-   * @param ra ra
-   * @param dec dec
-   * @param angle angle
-   * @param max_stars max_stars
-   * @param max_vmag max_vmag
    */
   @GET("getstars.jsp")
   Call<StarResponse> get(@QueryMap Map<String, String> queryMap);
@@ -143,14 +137,14 @@ public interface DisplayWebService {
     }
 
     /**
-     * Returns {@list List} of stars returned from query to WikiSky.
+     * Returns of stars returned from query to WikiSky.
      */
     public List<Star> getStar() {
       return star;
     }
 
     /**
-     * Sets a {@list List} of stars returned from query to WikiSky.
+     * Sets a List of stars returned from query to WikiSky.
      */
     public void setStar(List<Star> star) {
       this.star = star;

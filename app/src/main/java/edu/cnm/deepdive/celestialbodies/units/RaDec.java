@@ -43,8 +43,8 @@ public class RaDec {
   /**
    * Return true if the given Ra/Dec is always above the horizon. Return
    * false otherwise.
-   * In the northern hemisphere, objects never set if dec > 90 - lat.
-   * In the southern hemisphere, objects never set if dec < -90 - lat.
+   * In the northern hemisphere, objects never set if dec greater than 90 - lat.
+   * In the southern hemisphere, objects never set if dec less than -90 - lat.
    */
   public boolean isCircumpolarFor(LatLong loc) {
     if (loc.getLatitude() > 0.0f) {
@@ -58,8 +58,8 @@ public class RaDec {
   /**
    * Return true if the given Ra/Dec is always below the horizon. Return
    * false otherwise.
-   * In the northern hemisphere, objects never rise if dec < lat - 90.
-   * In the southern hemisphere, objects never rise if dec > 90 - lat.
+   * In the northern hemisphere, objects never rise if dec less than lat - 90.
+   * In the southern hemisphere, objects never rise if dec greater than 90 - lat.
    */
   public boolean isNeverVisible(LatLong loc) {
     if (loc.getLatitude() > 0.0f) {

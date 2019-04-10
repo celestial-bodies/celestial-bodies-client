@@ -28,7 +28,7 @@ public class InfoAdapter extends ArrayAdapter<Star> {
   /**
    * <code>HistoryAdapter</code> provides a link between the database and UI display. Using the
    * the available categories within the {@link Star} entity as a reference to make the columns
-   * (date and score) that are displayed when {@link InfoFragment} is inflated for display for the
+   * (date and score) that are displayed when InfoFragment is inflated for display for the
    * user.
    *
    * @param context access to the database

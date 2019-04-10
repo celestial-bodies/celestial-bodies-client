@@ -38,11 +38,11 @@ public class MathUtil {
     return (float) Math.sqrt(x);
   }
 
-   static float floor(float x) {
+  static float floor(float x) {
     return (float) Math.floor(x);
   }
 
-   static float ceil(float x) {
+  static float ceil(float x) {
     return (float) Math.ceil(x);
   }
 
@@ -79,8 +79,9 @@ public class MathUtil {
   }
 
   /**
-   * Returns x if x <= y, or x-y if not. While this utility performs a role similar to a modulo
-   * operation, it assumes x >=0 and that x < 2y.
+   * Returns x if x greater than or equal y, or x-y if not. While this utility performs a role
+   * similar to a modulo operation, it assumes x greater than or equal to 0 and that x less than
+   * 2y.
    */
   public static float quickModulo(float x, float y) {
     if (x > y) {

@@ -110,7 +110,7 @@ public class TimeUtil {
   }
 
   /**
-   * Normalize the angle to the range 0 <= value < 360.
+   * Normalize the angle to the range 0 less than or equal to value less than 360.
    */
   public static double normalizeAngle(double angle) {
     double remainder = angle % 360;
@@ -121,7 +121,7 @@ public class TimeUtil {
   }
 
   /**
-   * Normalize the time to the range 0 <= value < 24.
+   * Normalize the time to the range 0 less than or equal to value less than 24.
    */
   public static double normalizeHours(double time) {
     double remainder = time % 24;
