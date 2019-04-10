@@ -57,9 +57,6 @@ for this application the following were used to test UI and function.
 
   Stetho is a developmental tool that examines the local display resources and database contents.
 
-+ [Deep Dive Android Utilities](https://github.com/deep-dive-coding-java/android-utilities/blob/master/README.md)
-    This repository contains utility classes (currently 2 of them) that simplify the use of some important Android features in          application code.
-
 + [Room](https://developer.android.com/jetpack/androidx/releases/room)
     
     Room provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite.
@@ -120,7 +117,7 @@ As this application progresses in development, the focuse will start to implemen
 
 ## Javadoc Page
 
-[Javadocs](/docs/api/)
+[Javadocs](/docs/api)
 
 ## Licenses/Copyright
 [Copyright & Licenses](/docs/Copyright_&_Licenses.md)
