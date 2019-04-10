@@ -1,0 +1,154 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "a2c7c972787b6ad73409083018fa4b50",
+    "entities": [
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `favorites` TEXT, `city` TEXT, `email` TEXT, `timestamp` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "userId",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "favorites",
+            "columnName": "favorites",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "user_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_User_user_id",
+            "unique": true,
+            "columnNames": [
+              "user_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_User_user_id` ON `${TABLE_NAME}` (`user_id`)"
+          },
+          {
+            "name": "index_User_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE  INDEX `index_User_name` ON `${TABLE_NAME}` (`name`)"
+          },
+          {
+            "name": "index_User_favorites",
+            "unique": false,
+            "columnNames": [
+              "favorites"
+            ],
+            "createSql": "CREATE  INDEX `index_User_favorites` ON `${TABLE_NAME}` (`favorites`)"
+          },
+          {
+            "name": "index_User_city",
+            "unique": false,
+            "columnNames": [
+              "city"
+            ],
+            "createSql": "CREATE  INDEX `index_User_city` ON `${TABLE_NAME}` (`city`)"
+          },
+          {
+            "name": "index_User_email",
+            "unique": false,
+            "columnNames": [
+              "email"
+            ],
+            "createSql": "CREATE  INDEX `index_User_email` ON `${TABLE_NAME}` (`email`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Star",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `time` INTEGER NOT NULL, `catId` TEXT, `de` TEXT, `mag` TEXT, `ra` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "catId",
+            "columnName": "catId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "de",
+            "columnName": "de",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mag",
+            "columnName": "mag",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ra",
+            "columnName": "ra",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a2c7c972787b6ad73409083018fa4b50\")"
+    ]
+  }
+}
