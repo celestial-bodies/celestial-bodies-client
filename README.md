@@ -120,7 +120,7 @@ As this application progresses in development, the focuse will start to implemen
 [Javadocs](docs/api)
 
 ## Licenses/Copyright
-[Copyright & Licenses](/docs/Copyright_&_Licenses.md)
+[Copyright & Licenses](docs/Copyright_&_Licenses.md)
 
 ## Instructions for Building Celestial Bodies
 
