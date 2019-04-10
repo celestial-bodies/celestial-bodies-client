@@ -107,7 +107,7 @@ public interface DisplayWebService {
   class StarResponse {
 
     @Element
-    private String dec;
+    private String de;
 
     @Element(required = false)
     private String msgs;
@@ -127,19 +127,19 @@ public interface DisplayWebService {
     /**
      * Returns the star's declination, for epoch and equinox 2000.0.
      *
-     * @return dec
+     * @return de
      */
-    public String getDec() {
-      return dec;
+    public String getDe() {
+      return de;
     }
 
     /**
      * Sets the star's declination, for epoch and equinox 2000.0.
      *
-     * @param dec the star's declination, for epoch and equinox 2000.0.
+     * @param de the star's declination, for epoch and equinox 2000.0.
      */
-    public void setDec(String dec) {
-      this.dec = dec;
+    public void setDe(String de) {
+      this.de = de;
     }
 
     /**
@@ -200,7 +200,7 @@ public interface DisplayWebService {
 
     @Override
     public String toString() {
-      return "ClassPojo [de = " + dec + ", msgs = " + msgs + ", star = " + star + ", angle = "
+      return "ClassPojo [de = " + de + ", msgs = " + msgs + ", star = " + star + ", angle = "
           + angle + ", max_stars = " + max_stars + ", ra = " + ra + "]";
     }
   }
